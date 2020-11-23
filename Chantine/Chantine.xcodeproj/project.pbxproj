@@ -16,6 +16,9 @@
 		FE07FCAE2567FC8900E1A537 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE07FCAC2567FC8900E1A537 /* LaunchScreen.storyboard */; };
 		FE07FCB92567FC8A00E1A537 /* ChantineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCB82567FC8A00E1A537 /* ChantineTests.swift */; };
 		FE07FCC42567FC8A00E1A537 /* ChantineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCC32567FC8A00E1A537 /* ChantineUITests.swift */; };
+		FE07FCE6256BCDD400E1A537 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCE5256BCDD400E1A537 /* ViewModel.swift */; };
+		FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCF0256BCE2500E1A537 /* Colors.swift */; };
+		FE07FCFA256BCE8F00E1A537 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCF9256BCE8F00E1A537 /* RepositoryProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		FE07FCBF2567FC8A00E1A537 /* ChantineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChantineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FCC32567FC8A00E1A537 /* ChantineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChantineUITests.swift; sourceTree = "<group>"; };
 		FE07FCC52567FC8A00E1A537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FE07FCE5256BCDD400E1A537 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		FE07FCF0256BCE2500E1A537 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		FE07FCF9256BCE8F00E1A537 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,14 +107,13 @@
 		FE07FC9D2567FC8700E1A537 /* Chantine */ = {
 			isa = PBXGroup;
 			children = (
-				FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */,
-				FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */,
-				FE07FCA22567FC8700E1A537 /* ViewController.swift */,
-				FE07FCA42567FC8700E1A537 /* Main.storyboard */,
+				FE07FCDB256BCD7400E1A537 /* Model */,
+				FE07FCE2256BCD7B00E1A537 /* View */,
+				FE07FCE3256BCD8100E1A537 /* ViewModel */,
+				FE07FCED256BCDF900E1A537 /* Utils */,
+				FE07FCE4256BCD9800E1A537 /* Shared */,
 				FE07FCAA2567FC8900E1A537 /* Assets.xcassets */,
-				FE07FCAC2567FC8900E1A537 /* LaunchScreen.storyboard */,
 				FE07FCAF2567FC8900E1A537 /* Info.plist */,
-				FE07FCA72567FC8700E1A537 /* Chantine.xcdatamodeld */,
 			);
 			path = Chantine;
 			sourceTree = "<group>";
@@ -129,6 +134,74 @@
 				FE07FCC52567FC8A00E1A537 /* Info.plist */,
 			);
 			path = ChantineUITests;
+			sourceTree = "<group>";
+		};
+		FE07FCDB256BCD7400E1A537 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FCA72567FC8700E1A537 /* Chantine.xcdatamodeld */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FE07FCE2256BCD7B00E1A537 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FCF8256BCE4A00E1A537 /* Main */,
+				FE07FCAC2567FC8900E1A537 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FE07FCE3256BCD8100E1A537 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FCE5256BCDD400E1A537 /* ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FE07FCE4256BCD9800E1A537 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */,
+				FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		FE07FCED256BCDF900E1A537 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FCEF256BCE0E00E1A537 /* Protocols */,
+				FE07FCEE256BCE0500E1A537 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		FE07FCEE256BCE0500E1A537 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FCF0256BCE2500E1A537 /* Colors.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		FE07FCEF256BCE0E00E1A537 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FCF9256BCE8F00E1A537 /* RepositoryProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		FE07FCF8256BCE4A00E1A537 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FCA42567FC8700E1A537 /* Main.storyboard */,
+				FE07FCA22567FC8700E1A537 /* ViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +355,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FE07FCFA256BCE8F00E1A537 /* RepositoryProtocol.swift in Sources */,
+				FE07FCE6256BCDD400E1A537 /* ViewModel.swift in Sources */,
+				FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */,
 				FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */,
 				FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */,
 				FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */,
