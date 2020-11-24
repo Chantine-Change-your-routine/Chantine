@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */; };
 		FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */; };
-		FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA22567FC8700E1A537 /* ViewController.swift */; };
 		FE07FCA62567FC8700E1A537 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE07FCA42567FC8700E1A537 /* Main.storyboard */; };
 		FE07FCA92567FC8700E1A537 /* Chantine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA72567FC8700E1A537 /* Chantine.xcdatamodeld */; };
 		FE07FCAB2567FC8900E1A537 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FE07FCAA2567FC8900E1A537 /* Assets.xcassets */; };
@@ -19,6 +18,16 @@
 		FE07FCE6256BCDD400E1A537 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCE5256BCDD400E1A537 /* ViewModel.swift */; };
 		FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCF0256BCE2500E1A537 /* Colors.swift */; };
 		FE07FCFA256BCE8F00E1A537 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCF9256BCE8F00E1A537 /* RepositoryProtocol.swift */; };
+		FE07FD0F256BE55600E1A537 /* HabitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD0E256BE55600E1A537 /* HabitViewController.swift */; };
+		FE07FD17256BE5CC00E1A537 /* HabitViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD16256BE5CC00E1A537 /* HabitViewModel.swift */; };
+		FE07FD1C256BE63A00E1A537 /* HabitViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD1B256BE63A00E1A537 /* HabitViewModelProtocol.swift */; };
+		FE07FD22256BE8EE00E1A537 /* HabitCardData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD21256BE8EE00E1A537 /* HabitCardData.swift */; };
+		FE07FD27256BEC8200E1A537 /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD26256BEC8200E1A537 /* CalendarView.swift */; };
+		FE07FD2C256BEEAA00E1A537 /* CalendarDayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD2B256BEEAA00E1A537 /* CalendarDayData.swift */; };
+		FE07FD55256C0CD400E1A537 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD54256C0CD400E1A537 /* Font.swift */; };
+		FE07FD5A256C305C00E1A537 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD59256C305C00E1A537 /* Calendar.swift */; };
+		FE07FD5F256C3F0F00E1A537 /* CalendarViewDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD5E256C3F0F00E1A537 /* CalendarViewDayCell.swift */; };
+		FE07FD79256C5C5500E1A537 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD78256C5C5500E1A537 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,7 +51,6 @@
 		FE07FC9B2567FC8700E1A537 /* Chantine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chantine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		FE07FCA22567FC8700E1A537 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		FE07FCA52567FC8700E1A537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE07FCA82567FC8700E1A537 /* Chantine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chantine.xcdatamodel; sourceTree = "<group>"; };
 		FE07FCAA2567FC8900E1A537 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +65,16 @@
 		FE07FCE5256BCDD400E1A537 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FE07FCF0256BCE2500E1A537 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FE07FCF9256BCE8F00E1A537 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		FE07FD0E256BE55600E1A537 /* HabitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewController.swift; sourceTree = "<group>"; };
+		FE07FD16256BE5CC00E1A537 /* HabitViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModel.swift; sourceTree = "<group>"; };
+		FE07FD1B256BE63A00E1A537 /* HabitViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitViewModelProtocol.swift; sourceTree = "<group>"; };
+		FE07FD21256BE8EE00E1A537 /* HabitCardData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitCardData.swift; sourceTree = "<group>"; };
+		FE07FD26256BEC8200E1A537 /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
+		FE07FD2B256BEEAA00E1A537 /* CalendarDayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayData.swift; sourceTree = "<group>"; };
+		FE07FD54256C0CD400E1A537 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		FE07FD59256C305C00E1A537 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
+		FE07FD5E256C3F0F00E1A537 /* CalendarViewDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewDayCell.swift; sourceTree = "<group>"; };
+		FE07FD78256C5C5500E1A537 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +157,7 @@
 		FE07FCDB256BCD7400E1A537 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				FE07FD20256BE8DE00E1A537 /* Structs */,
 				FE07FCA72567FC8700E1A537 /* Chantine.xcdatamodeld */,
 			);
 			path = Model;
@@ -147,6 +166,7 @@
 		FE07FCE2256BCD7B00E1A537 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FE07FD0C256BE53400E1A537 /* Habit */,
 				FE07FCF8256BCE4A00E1A537 /* Main */,
 				FE07FCAC2567FC8900E1A537 /* LaunchScreen.storyboard */,
 			);
@@ -157,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				FE07FCE5256BCDD400E1A537 /* ViewModel.swift */,
+				FE07FD16256BE5CC00E1A537 /* HabitViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -183,6 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				FE07FCF0256BCE2500E1A537 /* Colors.swift */,
+				FE07FD54256C0CD400E1A537 /* Font.swift */,
+				FE07FD59256C305C00E1A537 /* Calendar.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -191,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				FE07FCF9256BCE8F00E1A537 /* RepositoryProtocol.swift */,
+				FE07FD1B256BE63A00E1A537 /* HabitViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -199,9 +223,36 @@
 			isa = PBXGroup;
 			children = (
 				FE07FCA42567FC8700E1A537 /* Main.storyboard */,
-				FE07FCA22567FC8700E1A537 /* ViewController.swift */,
+				FE07FD78256C5C5500E1A537 /* MainViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		FE07FD0C256BE53400E1A537 /* Habit */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FD0D256BE53A00E1A537 /* CalendarView */,
+				FE07FD0E256BE55600E1A537 /* HabitViewController.swift */,
+			);
+			path = Habit;
+			sourceTree = "<group>";
+		};
+		FE07FD0D256BE53A00E1A537 /* CalendarView */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FD26256BEC8200E1A537 /* CalendarView.swift */,
+				FE07FD5E256C3F0F00E1A537 /* CalendarViewDayCell.swift */,
+			);
+			path = CalendarView;
+			sourceTree = "<group>";
+		};
+		FE07FD20256BE8DE00E1A537 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				FE07FD21256BE8EE00E1A537 /* HabitCardData.swift */,
+				FE07FD2B256BEEAA00E1A537 /* CalendarDayData.swift */,
+			);
+			path = Structs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,12 +407,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE07FCFA256BCE8F00E1A537 /* RepositoryProtocol.swift in Sources */,
+				FE07FD1C256BE63A00E1A537 /* HabitViewModelProtocol.swift in Sources */,
+				FE07FD2C256BEEAA00E1A537 /* CalendarDayData.swift in Sources */,
+				FE07FD27256BEC8200E1A537 /* CalendarView.swift in Sources */,
+				FE07FD79256C5C5500E1A537 /* MainViewController.swift in Sources */,
 				FE07FCE6256BCDD400E1A537 /* ViewModel.swift in Sources */,
 				FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */,
-				FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */,
+				FE07FD5F256C3F0F00E1A537 /* CalendarViewDayCell.swift in Sources */,
+				FE07FD0F256BE55600E1A537 /* HabitViewController.swift in Sources */,
+				FE07FD55256C0CD400E1A537 /* Font.swift in Sources */,
+				FE07FD5A256C305C00E1A537 /* Calendar.swift in Sources */,
 				FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */,
+				FE07FD17256BE5CC00E1A537 /* HabitViewModel.swift in Sources */,
 				FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */,
 				FE07FCA92567FC8700E1A537 /* Chantine.xcdatamodeld in Sources */,
+				FE07FD22256BE8EE00E1A537 /* HabitCardData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
