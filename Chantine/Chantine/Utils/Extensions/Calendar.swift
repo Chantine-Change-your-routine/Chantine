@@ -37,4 +37,12 @@ extension Calendar {
         guard let numberOfDaysInMonth = self.range(of: .day, in: .month, for: date) else { return 0 }
         return numberOfDaysInMonth.count
     }
+
+    func lastDayOfPastMonth(date: Date = Date()) -> Int {
+        let dateComponents = DateComponents(year: self.component(.year, from: date),
+                                            month: self.component(.month, from: date))
+        let firstDayDate = self.date(from: dateComponents)!
+        let lastDayDate = self.date(byAdding: .day, value: -1, to: firstDayDate)!
+        return self.component(.day, from: lastDayDate)
+    }
 }

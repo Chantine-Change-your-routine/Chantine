@@ -12,30 +12,13 @@ class HabitViewModel {
 //    private let habitRepository = HabitRepository()
 //    private let calendarRepository = CalendarHistoryRepository()
 
-    private var days: [CalendarDayData] = []
+//    private var days: [(Int, Int)] = []
 
-    private init() {
-        generateMockCalendar()
-    }
-
-    private func generateMockCalendar() {
-        for number in 1...31 {
-            let model = CalendarDayData(day: "\(number)")
-            days.append(model)
-        }
-    }
+    private init() {}
 }
 
 extension HabitViewModel: HabitViewModelProtocol {
-    func getCalendarTitle() -> String {
-        return "Novembro, 2020"
-    }
-
-    func numberOfDays() -> Int {
-        return days.count
-    }
-
-    func getDayDataModel(at index: Int) -> CalendarDayData {
-        return days[index]
+    func getHighlightDaysRange(month: Int, year: Int) -> [ClosedRange<Int>] {
+        return [1...5, 7...8, 12...20, 22...28]
     }
 }

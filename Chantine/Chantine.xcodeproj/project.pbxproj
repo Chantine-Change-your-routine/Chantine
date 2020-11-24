@@ -28,6 +28,7 @@
 		FE07FD5A256C305C00E1A537 /* Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD59256C305C00E1A537 /* Calendar.swift */; };
 		FE07FD5F256C3F0F00E1A537 /* CalendarViewDayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD5E256C3F0F00E1A537 /* CalendarViewDayCell.swift */; };
 		FE07FD79256C5C5500E1A537 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD78256C5C5500E1A537 /* MainViewController.swift */; };
+		FEBB8298256D367500C0BB0C /* CalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB8297256D367500C0BB0C /* CalendarDayView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		FE07FD59256C305C00E1A537 /* Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calendar.swift; sourceTree = "<group>"; };
 		FE07FD5E256C3F0F00E1A537 /* CalendarViewDayCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewDayCell.swift; sourceTree = "<group>"; };
 		FE07FD78256C5C5500E1A537 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		FEBB8297256D367500C0BB0C /* CalendarDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 			children = (
 				FE07FD26256BEC8200E1A537 /* CalendarView.swift */,
 				FE07FD5E256C3F0F00E1A537 /* CalendarViewDayCell.swift */,
+				FEBB8297256D367500C0BB0C /* CalendarDayView.swift */,
 			);
 			path = CalendarView;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				FE07FD0F256BE55600E1A537 /* HabitViewController.swift in Sources */,
 				FE07FD55256C0CD400E1A537 /* Font.swift in Sources */,
 				FE07FD5A256C305C00E1A537 /* Calendar.swift in Sources */,
+				FEBB8298256D367500C0BB0C /* CalendarDayView.swift in Sources */,
 				FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */,
 				FE07FD17256BE5CC00E1A537 /* HabitViewModel.swift in Sources */,
 				FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */,

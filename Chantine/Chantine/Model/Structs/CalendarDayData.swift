@@ -7,8 +7,25 @@
 
 import Foundation
 
-struct CalendarDayData {
-    let day: String
-    let isHighlighted: Bool = false
-    let isDisabled: Bool = false
-}
+//enum CalendarDayStyle {
+//    case normal
+//    case highlighted
+//    case disabled
+//}
+//
+//struct CalendarDayData {
+//    var day: String
+//    var style: CalendarDayStyle
+//
+//    init(day: String, state: CalendarDayStyle) {
+//        self.day = day
+//        switch state {
+//        case .normal:
+//            break
+//        case .highlighted:
+//            self.isHighlighted = true
+//        case .disabled:
+//            self.isDisabled = true
+//        }
+//    }
+//}

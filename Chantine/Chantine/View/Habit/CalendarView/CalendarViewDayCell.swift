@@ -13,7 +13,7 @@ class CalendarViewDayCell: UICollectionViewCell {
 
     public var day: CalendarDayData?
 
-    private lazy var numberLabel: UILabel = {
+    private lazy var dayLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
@@ -35,23 +35,34 @@ class CalendarViewDayCell: UICollectionViewCell {
         self.backgroundColor = .white
         self.layer.cornerRadius = 10
 
-        self.addSubview(numberLabel)
-        numberLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        numberLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        self.addSubview(dayLabel)
+        dayLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        dayLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 
-    public func configure(with data: CalendarDayData) {
-        self.numberLabel.text = data.day
-        self.backgroundColor = .carrotOrange
-        if data.isHighlighted {
-            self.numberLabel.tintColor = .white
-            if let calendarView = superview as? CalendarView {
-                self.backgroundColor = calendarView.highlightedColor
-            }
-        }
+    public func configure(text: String, style: DayViewStyle) {
+        self.dayLabel.text = text
+        self.setStyle(style: style)
+    }
 
-        if data.isDisabled {
-            self.tintColor = .systemGray
+    private func setStyle(style: DayViewStyle) {
+        switch style {
+        case .normal:
+            if let superView = superview as? CalendarView {
+                self.backgroundColor = superView.normalColor
+            } else {
+                self.backgroundColor = .clear
+            }
+            self.dayLabel.tintColor = .label
+        case .highlighted:
+            self.dayLabel.tintColor = .white
+            if let superView = superview as? CalendarView {
+                self.backgroundColor = superView.highlightedColor
+            } else {
+                self.backgroundColor = .systemBlue
+            }
+        case .disabled:
+            self.dayLabel.tintColor = .systemGray
             self.backgroundColor = .systemGray4
         }
     }
