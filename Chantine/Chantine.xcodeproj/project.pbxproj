@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		77BE479E256C29FC00D8B223 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BE479D256C29FC00D8B223 /* InitialView.swift */; };
 		FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */; };
 		FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */; };
 		FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA22567FC8700E1A537 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		77BE479D256C29FC00D8B223 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		FE07FC9B2567FC8700E1A537 /* Chantine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chantine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77BE479C256C29E900D8B223 /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				77BE479D256C29FC00D8B223 /* InitialView.swift */,
+			);
+			path = Initial;
+			sourceTree = "<group>";
+		};
 		FE07FC922567FC8700E1A537 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +157,7 @@
 		FE07FCE2256BCD7B00E1A537 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				77BE479C256C29E900D8B223 /* Initial */,
 				FE07FCF8256BCE4A00E1A537 /* Main */,
 				FE07FCAC2567FC8900E1A537 /* LaunchScreen.storyboard */,
 			);
@@ -356,6 +367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE07FCFA256BCE8F00E1A537 /* RepositoryProtocol.swift in Sources */,
+				77BE479E256C29FC00D8B223 /* InitialView.swift in Sources */,
 				FE07FCE6256BCDD400E1A537 /* ViewModel.swift in Sources */,
 				FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */,
 				FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */,
