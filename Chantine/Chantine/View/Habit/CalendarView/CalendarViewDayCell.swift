@@ -11,8 +11,6 @@ class CalendarViewDayCell: UICollectionViewCell {
 
     public static let identifier = "CalendarViewDayCell"
 
-    public var day: CalendarDayData?
-
     private lazy var dayLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false

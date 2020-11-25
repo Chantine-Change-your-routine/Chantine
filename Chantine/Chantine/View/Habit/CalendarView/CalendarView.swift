@@ -20,26 +20,6 @@ class CalendarView: UIView {
         }
     }
 
-    public var dataSource: UICollectionViewDataSource? {
-        didSet {
-            self.currentMonthView.dataSource = self.dataSource
-        }
-    }
-
-    public var delegate: UICollectionViewDelegate? {
-        didSet {
-            self.currentMonthView.delegate = self.delegate
-        }
-    }
-
-    private static let layout: UICollectionViewLayout = {
-        let layout = UICollectionViewFlowLayout()
-        layout.estimatedItemSize = CGSize(width: 35, height: 35)
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 15
-        return layout
-    }()
-
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Janeiro, 2020"
@@ -48,12 +28,14 @@ class CalendarView: UIView {
         return label
     }()
 
-    private var currentMonthView: UICollectionView
+    private let gauge: CGFloat
 
     init(width: CGFloat, highlightedRanges: [ClosedRange<Int>]) {
-        self.currentMonthView = CalendarView.generateDaysCollection()
+
+        self.gauge = width
 
         super.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         self.heightAnchor.constraint(equalToConstant: width * 1.074).isActive = true
 
@@ -73,7 +55,6 @@ class CalendarView: UIView {
         self.layer.shadowOpacity = 0.1
 
         self.addSubview(titleLabel)
-        titleLabel.font = .roundedFont(ofSize: proportionalSize(20), weight: .semibold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: proportionalSize(20)).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -81,23 +62,13 @@ class CalendarView: UIView {
         let weekdayStack = generateWeekdayStack()
         self.addSubview(weekdayStack)
         weekdayStack.translatesAutoresizingMaskIntoConstraints = false
-        weekdayStack.leftAnchor.constraint(equalTo: self.leftAnchor, constant: proportionalSize(20)).isActive = true
-        weekdayStack.rightAnchor.constraint(equalTo: self.rightAnchor, constant: proportionalSize(-20)).isActive = true
+        weekdayStack.leftAnchor.constraint(equalTo: self.leftAnchor,
+                                           constant: proportionalSize(20)).isActive = true
+        weekdayStack.rightAnchor.constraint(equalTo: self.rightAnchor,
+                                            constant: proportionalSize(-20)).isActive = true
         weekdayStack.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10).isActive = true
 
-        self.addSubview(currentMonthView)
-        currentMonthView.translatesAutoresizingMaskIntoConstraints = false
-        currentMonthView.widthAnchor.constraint(equalToConstant: 305).isActive = true
-        currentMonthView.heightAnchor.constraint(equalToConstant: 260).isActive = true
-        currentMonthView.topAnchor.constraint(equalTo: weekdayStack.bottomAnchor, constant: 10).isActive = true
-        currentMonthView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
-    }
-
-    private static func generateDaysCollection() -> UICollectionView {
-        let collection = UICollectionView(frame: .zero, collectionViewLayout: CalendarView.layout)
-        collection.backgroundColor = .clear
-        collection.register(CalendarViewDayCell.self, forCellWithReuseIdentifier: CalendarViewDayCell.identifier)
-        return collection
+        let monthStack = generateMonthStack()
     }
 
     private func generateWeekdayStack() -> UIStackView {
@@ -122,7 +93,7 @@ class CalendarView: UIView {
         return stack
     }
 
-    private func generateMonth() -> UIStackView {
+    private func generateMonthStack() -> UIStackView {
         let monthStack = UIStackView()
         monthStack.axis = .vertical
         monthStack.spacing = 10
@@ -137,16 +108,20 @@ class CalendarView: UIView {
 
         var days = [CalendarDayView]()
 
-        for i in offsetPastMonth...0 {
-            days.append(generateDayView(number: lastDayPastMonth - i, style: .disabled))
+        if offsetPastMonth > 0 {
+            for i in 1...offsetPastMonth {
+                days.append(generateDayView(number: lastDayPastMonth - (offsetPastMonth - i), style: .disabled))
+            }
         }
 
         for i in 1...numberOfDays {
             days.append(generateDayView(number:  i, style: .normal))
         }
 
-        for i in 1...offsetNextMonth {
-            days.append(generateDayView(number: i, style: .disabled))
+        if offsetNextMonth > 0 {
+            for i in 1...offsetNextMonth {
+                days.append(generateDayView(number: i, style: .disabled))
+            }
         }
 
         return monthStack
@@ -171,22 +146,11 @@ class CalendarView: UIView {
     }
 
     public func proportionalSize(_ value: CGFloat) -> CGFloat {
-        return value * self.frame.width / 335
-    }
-}
-
-extension CalendarView: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        42
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: CalendarViewDayCell.identifier,
-                for: indexPath) as? CalendarViewDayCell else {
-            return CalendarViewDayCell()
+        let proportionalSize = CGFloat.rounded((value * (self.gauge/374)))()
+        if self.gauge/374 >= 0.9 {
+            return proportionalSize
+        } else {
+            return CGFloat.rounded(proportionalSize * 0.9)()
         }
-//        cell.configure(text: indexPath.row, style: )
-        return cell
     }
 }

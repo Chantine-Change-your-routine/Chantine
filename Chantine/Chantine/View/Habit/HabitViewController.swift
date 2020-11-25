@@ -11,8 +11,6 @@ class HabitViewController: UIViewController {
 
     private let viewModel: HabitViewModel = HabitViewModel.shared
 
-    private let calendarView = CalendarView(width: CGFloat(335), highlightedRanges: [])
-
     override func loadView() {
         super.loadView()
         setupLayout()
@@ -24,6 +22,9 @@ class HabitViewController: UIViewController {
 
     private func setupLayout() {
         self.view.backgroundColor = .white
+
+        let calendarWidth = UIScreen.main.bounds.width - 40
+        let calendarView = CalendarView(width: calendarWidth, highlightedRanges: [])
         self.view.addSubview(calendarView)
         calendarView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,
                                           constant: 20).isActive = true
