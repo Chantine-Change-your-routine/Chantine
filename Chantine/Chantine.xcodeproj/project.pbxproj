@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C8CA013256E83800057FB3C /* EditionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8CA012256E83800057FB3C /* EditionTableViewCell.swift */; };
+		7C9447EF256BED5B009D8C86 /* NewHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9447EE256BED5B009D8C86 /* NewHabitView.swift */; };
+		7C9447F2256BF3F5009D8C86 /* NewHabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9447F1256BF3F5009D8C86 /* NewHabitController.swift */; };
 		FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */; };
 		FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */; };
 		FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA22567FC8700E1A537 /* ViewController.swift */; };
@@ -39,6 +42,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C8CA012256E83800057FB3C /* EditionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditionTableViewCell.swift; sourceTree = "<group>"; };
+		7C9447EE256BED5B009D8C86 /* NewHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitView.swift; sourceTree = "<group>"; };
+		7C9447F1256BF3F5009D8C86 /* NewHabitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitController.swift; sourceTree = "<group>"; };
 		FE07FC9B2567FC8700E1A537 /* Chantine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chantine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +90,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7C9447F0256BF3D1009D8C86 /* NewHabit */ = {
+			isa = PBXGroup;
+			children = (
+				7C9447EE256BED5B009D8C86 /* NewHabitView.swift */,
+				7C9447F1256BF3F5009D8C86 /* NewHabitController.swift */,
+				7C8CA012256E83800057FB3C /* EditionTableViewCell.swift */,
+			);
+			path = NewHabit;
+			sourceTree = "<group>";
+		};
 		FE07FC922567FC8700E1A537 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +163,7 @@
 		FE07FCE2256BCD7B00E1A537 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7C9447F0256BF3D1009D8C86 /* NewHabit */,
 				FE07FCF8256BCE4A00E1A537 /* Main */,
 				FE07FCAC2567FC8900E1A537 /* LaunchScreen.storyboard */,
 			);
@@ -356,11 +373,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				FE07FCFA256BCE8F00E1A537 /* RepositoryProtocol.swift in Sources */,
+				7C9447F2256BF3F5009D8C86 /* NewHabitController.swift in Sources */,
 				FE07FCE6256BCDD400E1A537 /* ViewModel.swift in Sources */,
+				7C9447EF256BED5B009D8C86 /* NewHabitView.swift in Sources */,
 				FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */,
 				FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */,
 				FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */,
 				FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */,
+				7C8CA013256E83800057FB3C /* EditionTableViewCell.swift in Sources */,
 				FE07FCA92567FC8700E1A537 /* Chantine.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,7 +487,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -522,7 +542,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -538,7 +558,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TF4K4YZ8PT;
+				DEVELOPMENT_TEAM = Y8HUNAB446;
 				INFOPLIST_FILE = Chantine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -558,7 +578,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TF4K4YZ8PT;
+				DEVELOPMENT_TEAM = Y8HUNAB446;
 				INFOPLIST_FILE = Chantine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
