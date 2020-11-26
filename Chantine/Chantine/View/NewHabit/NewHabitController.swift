@@ -9,10 +9,8 @@ import UIKit
 
 class NewHabitController: UIViewController {
 
-    let titles = ["Data de início", "Lembretes", "Frequência"]
-    let exemples = ["Hoje", "08:00, 10:00", "Todos os dias"]
-    var toolBar = UIToolbar()
-    var picker  = UIPickerView()
+    private let titles = ["Data de início", "Lembretes", "Frequência"]
+    private var exemples = ["Hoje", "08:00, 10:00", "Todos os dias"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +20,8 @@ class NewHabitController: UIViewController {
         contentView.editionHabitTableView.register(EditionTableViewCell.self, forCellReuseIdentifier: "cell")
         contentView.editionHabitTableView.delegate = self
         contentView.editionHabitTableView.dataSource = self
-        picker.dataSource = self
-        picker.delegate = self
+        contentView.pickerView.delegate = self
+        contentView.pickerView.dataSource = self
     }
 
     lazy var contentView: NewHabitView = {
@@ -69,25 +67,28 @@ class NewHabitController: UIViewController {
     }
 
     func showPicker() {
-        picker = UIPickerView.init()
-        picker.backgroundColor = UIColor.white
-        picker.setValue(UIColor.black, forKey: "textColor")
-        picker.autoresizingMask = .flexibleWidth
-        picker.contentMode = .center
-        picker.frame = CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300,
-                                   width: UIScreen.main.bounds.size.width, height: 300)
-        view.addSubview(picker)
+        contentView.pickerView = UIPickerView.init()
+        contentView.pickerView.isHidden = false
+        contentView.pickerView.backgroundColor = UIColor.white
+        contentView.pickerView.setValue(UIColor.black, forKey: "textColor")
+        contentView.pickerView.autoresizingMask = .flexibleWidth
+        contentView.pickerView.contentMode = .center
+        contentView.pickerView.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 100)
+        contentView.pickerView.contentMode = .center
+        contentView.pickerView.isHidden = false
+        contentView.addSubview(contentView.pickerView)
 
-        toolBar = UIToolbar.init(frame: CGRect.init(x: 0.0, y: UIScreen.main.bounds.size.height - 300,
-                                                    width: UIScreen.main.bounds.size.width, height: 50))
-        toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self,
+        contentView.toolBar.isHidden = false
+        contentView.toolBar.translatesAutoresizingMaskIntoConstraints = false
+        contentView.toolBar.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 50)
+        contentView.toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self,
                                               action: #selector(onDoneButtonTapped))]
-        view.addSubview(toolBar)
+        contentView.addSubview(contentView.toolBar)
     }
 
     @objc func onDoneButtonTapped() {
-        toolBar.removeFromSuperview()
-        picker.removeFromSuperview()
+        contentView.toolBar.removeFromSuperview()
+        contentView.pickerView.removeFromSuperview()
     }
 
 }

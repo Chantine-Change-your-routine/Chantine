@@ -18,6 +18,7 @@ class NewHabitView: UIView {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.frame.height/2
         self.addSubview(imageView)
+        
         return imageView
     }()
 
@@ -76,7 +77,28 @@ class NewHabitView: UIView {
         tableView.frame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y,
                                  width: tableView.frame.size.width, height: tableView.contentSize.height)
         self.addSubview(tableView)
+
         return tableView
+    }()
+
+    lazy var pickerView: UIPickerView = {
+        let picker = UIPickerView()
+//        picker.isHidden = false
+//        //picker.translatesAutoresizingMaskIntoConstraints = false
+//        picker.backgroundColor = UIColor.white
+//        picker.setValue(UIColor.black, forKey: "textColor")
+//        picker.autoresizingMask = .flexibleWidth
+//        picker.contentMode = .center
+//        picker.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 100)
+//        self.addSubview(picker)
+
+        return picker
+    }()
+
+    lazy var toolBar: UIToolbar = {
+        let toolBar = UIToolbar()
+
+        return toolBar
     }()
 
     override init(frame: CGRect) {
@@ -148,5 +170,4 @@ class NewHabitView: UIView {
             editionHabitTableView.heightAnchor.constraint(equalToConstant: 150)
         ])
     }
-
 }
