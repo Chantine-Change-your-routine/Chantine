@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E6D6D19A256D34B600432D30 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D6D199256D34B600432D30 /* RepositoryProtocol.swift */; };
+		E670381D256ED0CD00A85427 /* HabitBiding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E670381C256ED0CD00A85427 /* HabitBiding.swift */; };
+		E6703822256ED49000A85427 /* CalendarBiding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6703821256ED49000A85427 /* CalendarBiding.swift */; };
+		E6703827256EE6E300A85427 /* CalendarHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6703826256EE6E300A85427 /* CalendarHistoryRepository.swift */; };
+		E6D6D1F5256E75A300432D30 /* HabitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D6D1F4256E75A300432D30 /* HabitRepository.swift */; };
+		E6D6D224256E82EE00432D30 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6D6D223256E82EE00432D30 /* CoreDataStack.swift */; };
 		FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */; };
 		FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */; };
 		FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA22567FC8700E1A537 /* ViewController.swift */; };
@@ -40,7 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		E6D6D199256D34B600432D30 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
+		E670381C256ED0CD00A85427 /* HabitBiding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitBiding.swift; sourceTree = "<group>"; };
+		E6703821256ED49000A85427 /* CalendarBiding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarBiding.swift; sourceTree = "<group>"; };
+		E6703826256EE6E300A85427 /* CalendarHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHistoryRepository.swift; sourceTree = "<group>"; };
+		E6D6D1F4256E75A300432D30 /* HabitRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRepository.swift; sourceTree = "<group>"; };
+		E6D6D223256E82EE00432D30 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		FE07FC9B2567FC8700E1A537 /* Chantine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chantine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -86,10 +94,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E6D6D198256D333100432D30 /* Repository */ = {
+		E670382B256EE6ED00A85427 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				E6D6D199256D34B600432D30 /* RepositoryProtocol.swift */,
+				E6D6D1F4256E75A300432D30 /* HabitRepository.swift */,
+				E6703826256EE6E300A85427 /* CalendarHistoryRepository.swift */,
+				E6D6D223256E82EE00432D30 /* CoreDataStack.swift */,
+				E670381C256ED0CD00A85427 /* HabitBiding.swift */,
+				E6703821256ED49000A85427 /* CalendarBiding.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -150,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				FE07FCA72567FC8700E1A537 /* Chantine.xcdatamodeld */,
-				E6D6D198256D333100432D30 /* Repository */,
+				E670382B256EE6ED00A85427 /* Repository */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -369,11 +381,15 @@
 				FE07FCFA256BCE8F00E1A537 /* RepositoryProtocol.swift in Sources */,
 				FE07FCE6256BCDD400E1A537 /* ViewModel.swift in Sources */,
 				FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */,
+				E670381D256ED0CD00A85427 /* HabitBiding.swift in Sources */,
 				FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */,
 				FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */,
-				E6D6D19A256D34B600432D30 /* RepositoryProtocol.swift in Sources */,
+				E6703827256EE6E300A85427 /* CalendarHistoryRepository.swift in Sources */,
+				E6703822256ED49000A85427 /* CalendarBiding.swift in Sources */,
+				E6D6D224256E82EE00432D30 /* CoreDataStack.swift in Sources */,
 				FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */,
 				FE07FCA92567FC8700E1A537 /* Chantine.xcdatamodeld in Sources */,
+				E6D6D1F5256E75A300432D30 /* HabitRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,7 +495,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -534,7 +550,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -550,7 +566,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TF4K4YZ8PT;
+				DEVELOPMENT_TEAM = QQK85Y8S7P;
 				INFOPLIST_FILE = Chantine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -570,7 +586,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TF4K4YZ8PT;
+				DEVELOPMENT_TEAM = QQK85Y8S7P;
 				INFOPLIST_FILE = Chantine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
