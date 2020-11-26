@@ -50,14 +50,14 @@ class CalendarDayView: UIView {
         dayLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 
-    private func setStyle(style: DayViewStyle) {
+    public func setStyle(style: DayViewStyle) {
         switch style {
         case .normal:
             self.dayLabel.textColor = .label
             self.backgroundColor = .clear
         case .highlighted:
             self.dayLabel.textColor = .white
-            self.backgroundColor = .carrotOrange
+            self.backgroundColor = .actionColor
         case .disabled:
             self.dayLabel.textColor = .systemGray
             self.backgroundColor = .systemGray6

@@ -11,7 +11,8 @@ struct HabitBindingData {
     let identifier: String
     let title: String
     let description: String
-    let image: UIImage
+    let imageId: Int
     let bgcolor: UIColor
-    let progress: Int
+    let bgcolorDark: UIColor
+    let progress: Float
 }

@@ -9,7 +9,13 @@ import UIKit
 
 class HabitViewController: UIViewController {
 
-    var viewModel: HabitViewModel?
+    var viewModel: HabitViewModel? {
+        didSet {
+            if let viewModel = self.viewModel {
+                self.updateLayout(habitData: viewModel.habitData)
+            }
+        }
+    }
 
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -18,16 +24,18 @@ class HabitViewController: UIViewController {
         return label
     }()
 
-    private let habitCardView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .white
-        view.layer.cornerRadius = 10
-        view.layer.shadowColor = UIColor.black.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 0)
-        view.layer.shadowRadius = 15
-        view.layer.shadowOpacity = 0.2
-        return view
+    private let habitCardView: CardComponentView = {
+        let cardView = CardComponentView(type: .descriptive)
+        cardView.backgroundColor = .white
+        cardView.layer.cornerRadius = 10
+        cardView.layer.shadowColor = UIColor.black.cgColor
+        cardView.layer.shadowOffset = CGSize(width: 0, height: 0)
+        cardView.layer.shadowRadius = 15
+        cardView.layer.shadowOpacity = 0.2
+        return cardView
     }()
+
+    private let calendarView = CalendarView()
 
     override func loadView() {
         super.loadView()
@@ -39,14 +47,20 @@ class HabitViewController: UIViewController {
         setupNavBar()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+//        self.navigationController?.isNavigationBarHidden = true
+    }
+
     private func setupNavBar() {
         self.title = "Hábito"
-        navigationController?.navigationBar.backgroundColor = .systemGray5
+        navigationController?.navigationBar.barTintColor = .primaryColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Editar",
                                                             style: .plain,
                                                             target: self,
                                                             action: #selector(editTapped))
-        navigationItem.rightBarButtonItem?.tintColor = .black
+        navigationItem.rightBarButtonItem?.tintColor = .actionColor
+        navigationController?.navigationBar.tintColor = .actionColor
     }
 
     @objc private func editTapped() {
@@ -71,19 +85,18 @@ class HabitViewController: UIViewController {
         habitCardView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         habitCardView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
         habitCardView.heightAnchor.constraint(equalToConstant: 85).isActive = true
-
-        var highlitedDaysRange = [ClosedRange<Int>]()
-        if let viewModel = self.viewModel {
-            titleLabel.text = viewModel.getHabitTitle()
-            highlitedDaysRange = viewModel.getHighlightDaysRange()
-        }
-
-        let calendarWidth = UIScreen.main.bounds.width - 40
-        let calendarView = CalendarView(width: calendarWidth,
-                                        highlightedDaysRanges: highlitedDaysRange)
+        
         self.view.addSubview(calendarView)
         calendarView.topAnchor.constraint(equalTo: habitCardView.bottomAnchor,
                                           constant: 20).isActive = true
         calendarView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+    }
+
+    private func updateLayout(habitData: HabitBindingData) {
+        if let viewModel = self.viewModel {
+            titleLabel.text = viewModel.getHabitTitle()
+            calendarView.highlightedDaysRanges = viewModel.getHighlightDaysRange()
+        }
+        self.habitCardView.setData(habitData)
     }
 }

@@ -26,13 +26,20 @@ class CalendarView: UIView {
     }()
 
     private let proportion: CGFloat
-    private var highlightedDaysRanges: [ClosedRange<Int>]
 
-    init(width: CGFloat, highlightedDaysRanges: [ClosedRange<Int>]) {
-        self.highlightedDaysRanges = highlightedDaysRanges
-        self.proportion = 374 / 374
+    private var currentMonthDaysViews: [CalendarDayView] = []
+    public var highlightedDaysRanges: [ClosedRange<Int>] = [] {
+        didSet {
+            self.updateHighlitedDays()
+        }
+    }
+
+
+    init(width: CGFloat = UIScreen.main.bounds.width - 40) {
+        self.proportion = width / 374
 
         super.init(frame: .zero)
+
         self.translatesAutoresizingMaskIntoConstraints = false
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
         let height = (proportion == 1) ? width : width + 20
@@ -97,6 +104,14 @@ class CalendarView: UIView {
         return stack
     }
 
+    public func updateHighlitedDays() {
+        for range in self.highlightedDaysRanges {
+            for index in range {
+                self.currentMonthDaysViews[index].setStyle(style: .highlighted)
+            }
+        }
+    }
+
     private func generateMonthStack() -> UIStackView {
         let monthStack = UIStackView()
         monthStack.backgroundColor = .clear
@@ -120,13 +135,9 @@ class CalendarView: UIView {
         }
 
         for numberOfDay in 1...numberOfDays {
-            var style: DayViewStyle = .normal
-
-            if shouldBeHghlighted(day: numberOfDay) {
-                style = .highlighted
-            }
-
-            days.append(generateDayView(number: numberOfDay, style: style))
+            let day = generateDayView(number: numberOfDay)
+            days.append(day)
+            self.currentMonthDaysViews.append(day)
         }
 
         if offsetNextMonth > 0 {
@@ -160,7 +171,7 @@ class CalendarView: UIView {
         return stack
     }
 
-    private func generateDayView(number: Int, style: DayViewStyle) -> CalendarDayView {
+    private func generateDayView(number: Int, style: DayViewStyle = .normal) -> CalendarDayView {
         let side = proportionalSize(35)
         let dayView = CalendarDayView(size: CGSize(width: side, height: side),
                                       style: style)
@@ -176,18 +187,5 @@ class CalendarView: UIView {
         } else {
             return CGFloat.rounded(value * 0.9)()
         }
-    }
-
-    private func shouldBeHghlighted(day: Int) -> Bool {
-        var range = self.highlightedDaysRanges
-        while range.count > 0 {
-            guard let max = range[0].max() else { return false }
-            if range[0].contains(day) && day <= Int(max) {
-                return true
-            } else {
-                range.removeFirst()
-            }
-        }
-        return false
     }
 }

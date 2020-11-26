@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770B8F4D256D51F70011F985 /* InitialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770B8F4C256D51F70011F985 /* InitialTableViewCell.swift */; };
+		772A6A1F256D7F46001E5888 /* CardComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A6A1E256D7F46001E5888 /* CardComponentView.swift */; };
+		776141D5256E813A00E831E7 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776141D4256E813A00E831E7 /* View.swift */; };
+		776141E3256ED69500E831E7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776141E2256ED69500E831E7 /* HeaderView.swift */; };
+		776141E8256ED74900E831E7 /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776141E7256ED74900E831E7 /* InitialViewModel.swift */; };
+		776141ED256ED78600E831E7 /* InitialViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776141EC256ED78600E831E7 /* InitialViewModelProtocol.swift */; };
+		77BAFDCC256D3AF200F1F83A /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BAFDCB256D3AF200F1F83A /* InitialViewController.swift */; };
+		77BAFDD4256D3E3700F1F83A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 77BAFDD3256D3E3700F1F83A /* .swiftlint.yml */; };
+		77BAFDD9256D442900F1F83A /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BAFDD8256D442900F1F83A /* Font.swift */; };
+		77BE479E256C29FC00D8B223 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BE479D256C29FC00D8B223 /* InitialView.swift */; };
 		FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */; };
 		FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */; };
 		FE07FCA62567FC8700E1A537 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE07FCA42567FC8700E1A537 /* Main.storyboard */; };
@@ -48,6 +58,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		770B8F4C256D51F70011F985 /* InitialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialTableViewCell.swift; sourceTree = "<group>"; };
+		772A6A1E256D7F46001E5888 /* CardComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponentView.swift; sourceTree = "<group>"; };
+		776141D4256E813A00E831E7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		776141E2256ED69500E831E7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		776141E7256ED74900E831E7 /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
+		776141EC256ED78600E831E7 /* InitialViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModelProtocol.swift; sourceTree = "<group>"; };
+		77BAFDCB256D3AF200F1F83A /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
+		77BAFDD3256D3E3700F1F83A /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		77BAFDD8256D442900F1F83A /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		77BE479D256C29FC00D8B223 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
 		FE07FC9B2567FC8700E1A537 /* Chantine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chantine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,9 +122,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		77BAFDC9256D3AC000F1F83A /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				77BAFDCA256D3ADD00F1F83A /* Initial */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		77BAFDCA256D3ADD00F1F83A /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				77BAFDCB256D3AF200F1F83A /* InitialViewController.swift */,
+			);
+			path = Initial;
+			sourceTree = "<group>";
+		};
+		77BE479C256C29E900D8B223 /* Initial */ = {
+			isa = PBXGroup;
+			children = (
+				77BE479D256C29FC00D8B223 /* InitialView.swift */,
+				770B8F4C256D51F70011F985 /* InitialTableViewCell.swift */,
+				772A6A1E256D7F46001E5888 /* CardComponentView.swift */,
+				776141E2256ED69500E831E7 /* HeaderView.swift */,
+			);
+			path = Initial;
+			sourceTree = "<group>";
+		};
 		FE07FC922567FC8700E1A537 = {
 			isa = PBXGroup;
 			children = (
+				77BAFDD3256D3E3700F1F83A /* .swiftlint.yml */,
 				FE07FC9D2567FC8700E1A537 /* Chantine */,
 				FE07FCB72567FC8A00E1A537 /* ChantineTests */,
 				FE07FCC22567FC8A00E1A537 /* ChantineUITests */,
@@ -125,6 +173,7 @@
 		FE07FC9D2567FC8700E1A537 /* Chantine */ = {
 			isa = PBXGroup;
 			children = (
+				77BAFDC9256D3AC000F1F83A /* ViewController */,
 				FE07FCDB256BCD7400E1A537 /* Model */,
 				FE07FCE2256BCD7B00E1A537 /* View */,
 				FE07FCE3256BCD8100E1A537 /* ViewModel */,
@@ -167,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				FE07FD0C256BE53400E1A537 /* Habit */,
+				77BE479C256C29E900D8B223 /* Initial */,
 				FE07FCF8256BCE4A00E1A537 /* Main */,
 				FE07FCAC2567FC8900E1A537 /* LaunchScreen.storyboard */,
 			);
@@ -178,6 +228,7 @@
 			children = (
 				FE07FCE5256BCDD400E1A537 /* ViewModel.swift */,
 				FE07FD16256BE5CC00E1A537 /* HabitViewModel.swift */,
+				776141E7256ED74900E831E7 /* InitialViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -206,6 +257,7 @@
 				FE07FCF0256BCE2500E1A537 /* Colors.swift */,
 				FE07FD54256C0CD400E1A537 /* Font.swift */,
 				FE07FD59256C305C00E1A537 /* Calendar.swift */,
+				776141D4256E813A00E831E7 /* View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -215,6 +267,7 @@
 			children = (
 				FE07FCF9256BCE8F00E1A537 /* RepositoryProtocol.swift */,
 				FE07FD1B256BE63A00E1A537 /* HabitViewModelProtocol.swift */,
+				776141EC256ED78600E831E7 /* InitialViewModelProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -359,6 +412,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77BAFDD4256D3E3700F1F83A /* .swiftlint.yml in Resources */,
 				FE07FCAE2567FC8900E1A537 /* LaunchScreen.storyboard in Resources */,
 				FE07FCAB2567FC8900E1A537 /* Assets.xcassets in Resources */,
 				FE07FCA62567FC8700E1A537 /* Main.storyboard in Resources */,
@@ -406,17 +460,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				776141D5256E813A00E831E7 /* View.swift in Sources */,
 				FE07FCFA256BCE8F00E1A537 /* RepositoryProtocol.swift in Sources */,
 				FE07FD1C256BE63A00E1A537 /* HabitViewModelProtocol.swift in Sources */,
 				FE07FD27256BEC8200E1A537 /* CalendarView.swift in Sources */,
 				FE07FD79256C5C5500E1A537 /* MainViewController.swift in Sources */,
 				FE07FCE6256BCDD400E1A537 /* ViewModel.swift in Sources */,
 				FEBB82D1256EC32300C0BB0C /* CalendarData.swift in Sources */,
-				FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */,
 				FE07FD0F256BE55600E1A537 /* HabitViewController.swift in Sources */,
 				FE07FD55256C0CD400E1A537 /* Font.swift in Sources */,
 				FE07FD5A256C305C00E1A537 /* Calendar.swift in Sources */,
 				FEBB8298256D367500C0BB0C /* CalendarDayView.swift in Sources */,
+				77BE479E256C29FC00D8B223 /* InitialView.swift in Sources */,
+				776141ED256ED78600E831E7 /* InitialViewModelProtocol.swift in Sources */,
+				77BAFDCC256D3AF200F1F83A /* InitialViewController.swift in Sources */,
+				776141E8256ED74900E831E7 /* InitialViewModel.swift in Sources */,
+				770B8F4D256D51F70011F985 /* InitialTableViewCell.swift in Sources */,
+				772A6A1F256D7F46001E5888 /* CardComponentView.swift in Sources */,
+				FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */,
+				776141E3256ED69500E831E7 /* HeaderView.swift in Sources */,
+				FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */,
 				FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */,
 				FE07FD17256BE5CC00E1A537 /* HabitViewModel.swift in Sources */,
 				FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */,
