@@ -21,25 +21,16 @@ class CalendarDayView: UIView {
         }
     }
 
-    var style: DayViewStyle = .normal {
-        didSet {
-            self.updateStyle()
-        }
-    }
-
-    private let dayLabel: UILabel = {
+    private var dayLabel: UILabel = {
         let label = UILabel()
+        label.tintColor = .red
         label.textAlignment = .center
-        label.tintColor = .label
         return label
     }()
 
-    init(size: CGSize) {
-        super.init(frame: .zero)
-
-        self.widthAnchor.constraint(equalToConstant: size.width).isActive = true
-        self.heightAnchor.constraint(equalToConstant: size.height).isActive = true
-
+    init(size: CGSize, style: DayViewStyle) {
+        super.init(frame: CGRect(x: 0, y: 0, width: size.width, height: size.height))
+        self.setStyle(style: style)
         setupLayout()
     }
 
@@ -48,37 +39,28 @@ class CalendarDayView: UIView {
     }
 
     private func setupLayout() {
-        self.backgroundColor = .clear
+        self.layer.cornerRadius = 10
+        self.widthAnchor.constraint(equalToConstant: self.frame.width).isActive = true
+        self.heightAnchor.constraint(equalToConstant: self.frame.height).isActive = true
 
         self.addSubview(dayLabel)
-        dayLabel.tintColor = .label
         dayLabel.font = .roundedFont(ofSize: self.frame.height * 0.5, weight: .semibold)
         dayLabel.translatesAutoresizingMaskIntoConstraints = false
-        dayLabel.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        dayLabel.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-        dayLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        dayLabel.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        dayLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        dayLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
     }
 
-    private func updateStyle() {
-        switch self.style {
+    private func setStyle(style: DayViewStyle) {
+        switch style {
         case .normal:
-            if let superView = superview as? CalendarView {
-                self.backgroundColor = superView.normalColor
-            } else {
-                self.backgroundColor = .clear
-            }
-            self.dayLabel.tintColor = .label
+            self.dayLabel.textColor = .label
+            self.backgroundColor = .clear
         case .highlighted:
-            self.dayLabel.tintColor = .white
-            if let superView = superview as? CalendarView {
-                self.backgroundColor = superView.highlightedColor
-            } else {
-                self.backgroundColor = .systemBlue
-            }
+            self.dayLabel.textColor = .white
+            self.backgroundColor = .carrotOrange
         case .disabled:
-            self.dayLabel.tintColor = .systemGray
-            self.backgroundColor = .systemGray4
+            self.dayLabel.textColor = .systemGray
+            self.backgroundColor = .systemGray6
         }
     }
 }

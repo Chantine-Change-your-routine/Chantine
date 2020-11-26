@@ -11,9 +11,6 @@ class CalendarView: UIView {
     private let calendar = Calendar.current
     private let today = Date()
 
-    public var normalColor: UIColor = .white
-    public var highlightedColor: UIColor = .systemBlue
-
     public var title: String? {
         didSet {
             self.titleLabel.text = title
@@ -28,16 +25,18 @@ class CalendarView: UIView {
         return label
     }()
 
-    private let gauge: CGFloat
+    private let proportion: CGFloat
+    private var highlightedDaysRanges: [ClosedRange<Int>]
 
-    init(width: CGFloat, highlightedRanges: [ClosedRange<Int>]) {
-
-        self.gauge = width
+    init(width: CGFloat, highlightedDaysRanges: [ClosedRange<Int>]) {
+        self.highlightedDaysRanges = highlightedDaysRanges
+        self.proportion = 374 / 374
 
         super.init(frame: .zero)
         self.translatesAutoresizingMaskIntoConstraints = false
         self.widthAnchor.constraint(equalToConstant: width).isActive = true
-        self.heightAnchor.constraint(equalToConstant: width * 1.074).isActive = true
+        let height = (proportion == 1) ? width : width + 20
+        self.heightAnchor.constraint(equalToConstant: height).isActive = true
 
         setupLayout()
     }
@@ -47,14 +46,15 @@ class CalendarView: UIView {
     }
 
     private func setupLayout() {
-        self.backgroundColor = self.normalColor
+        self.backgroundColor = .white
         self.layer.cornerRadius = 10
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
         self.layer.shadowRadius = 15
-        self.layer.shadowOpacity = 0.1
+        self.layer.shadowOpacity = 0.2
 
         self.addSubview(titleLabel)
+        titleLabel.text = "\(calendar.monthName()), \(calendar.currentYear)"
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: proportionalSize(20)).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -62,13 +62,17 @@ class CalendarView: UIView {
         let weekdayStack = generateWeekdayStack()
         self.addSubview(weekdayStack)
         weekdayStack.translatesAutoresizingMaskIntoConstraints = false
-        weekdayStack.leftAnchor.constraint(equalTo: self.leftAnchor,
-                                           constant: proportionalSize(20)).isActive = true
-        weekdayStack.rightAnchor.constraint(equalTo: self.rightAnchor,
-                                            constant: proportionalSize(-20)).isActive = true
-        weekdayStack.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 10).isActive = true
+        weekdayStack.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor,
+                                          constant: 10).isActive = true
+        weekdayStack.centerXAnchor.constraint(equalTo: titleLabel.centerXAnchor).isActive = true
 
         let monthStack = generateMonthStack()
+        self.addSubview(monthStack)
+        monthStack.translatesAutoresizingMaskIntoConstraints = false
+        monthStack.topAnchor.constraint(equalTo: weekdayStack.bottomAnchor,
+                                        constant: proportionalSize(10)).isActive = true
+        monthStack.leftAnchor.constraint(equalTo: weekdayStack.leftAnchor).isActive = true
+        monthStack.rightAnchor.constraint(equalTo: weekdayStack.rightAnchor).isActive = true
     }
 
     private func generateWeekdayStack() -> UIStackView {
@@ -79,7 +83,7 @@ class CalendarView: UIView {
         stack.axis = .horizontal
         stack.alignment = .center
         stack.distribution = .equalCentering
-        stack.spacing = 10
+        stack.spacing = proportionalSize(12)
 
         for day in days {
             let label = UILabel(frame: .zero)
@@ -95,10 +99,11 @@ class CalendarView: UIView {
 
     private func generateMonthStack() -> UIStackView {
         let monthStack = UIStackView()
+        monthStack.backgroundColor = .clear
         monthStack.axis = .vertical
-        monthStack.spacing = 10
         monthStack.alignment = .center
         monthStack.distribution = .equalSpacing
+        monthStack.spacing = 10
 
         let numberOfDays = calendar.numberOfDays()
         let firstWeekDay = calendar.firstWeekdayOfMonth()
@@ -106,51 +111,83 @@ class CalendarView: UIView {
         let offsetNextMonth = 42 - (offsetPastMonth + numberOfDays)
         let lastDayPastMonth = calendar.lastDayOfPastMonth()
 
-        var days = [CalendarDayView]()
+        var days: [CalendarDayView] = []
 
         if offsetPastMonth > 0 {
-            for i in 1...offsetPastMonth {
-                days.append(generateDayView(number: lastDayPastMonth - (offsetPastMonth - i), style: .disabled))
+            for offsetDay in 1...offsetPastMonth {
+                days.append(generateDayView(number: lastDayPastMonth - (offsetPastMonth - offsetDay), style: .disabled))
             }
         }
 
-        for i in 1...numberOfDays {
-            days.append(generateDayView(number:  i, style: .normal))
+        for numberOfDay in 1...numberOfDays {
+            var style: DayViewStyle = .normal
+
+            if shouldBeHghlighted(day: numberOfDay) {
+                style = .highlighted
+            }
+
+            days.append(generateDayView(number: numberOfDay, style: style))
         }
 
         if offsetNextMonth > 0 {
-            for i in 1...offsetNextMonth {
-                days.append(generateDayView(number: i, style: .disabled))
+            for offsetDay in 1...offsetNextMonth {
+                days.append(generateDayView(number: offsetDay, style: .disabled))
             }
+        }
+
+        while days.count > 6 {
+            let thisWeek = Array(days[0...6])
+            days.removeFirst(7)
+            let weekStack = generateWeekStack(daysViews: thisWeek)
+            monthStack.addArrangedSubview(weekStack)
         }
 
         return monthStack
     }
 
-    private func generateWeekStack() -> UIStackView {
+    private func generateWeekStack(daysViews: [CalendarDayView]) -> UIStackView {
         let stack = UIStackView()
         stack.backgroundColor = .clear
         stack.axis = .horizontal
         stack.alignment = .center
         stack.distribution = .equalCentering
-        stack.spacing = proportionalSize(10)
+        stack.spacing = proportionalSize(12)
+
+        for dayView in daysViews {
+            stack.addArrangedSubview(dayView)
+        }
+
         return stack
     }
 
     private func generateDayView(number: Int, style: DayViewStyle) -> CalendarDayView {
         let side = proportionalSize(35)
-        let dayView = CalendarDayView(size: CGSize(width: side, height: side))
+        let dayView = CalendarDayView(size: CGSize(width: side, height: side),
+                                      style: style)
         dayView.text = String(number)
-        dayView.style = style
         return dayView
     }
 
     public func proportionalSize(_ value: CGFloat) -> CGFloat {
-        let proportionalSize = CGFloat.rounded((value * (self.gauge/374)))()
-        if self.gauge/374 >= 0.9 {
-            return proportionalSize
+        if self.proportion >= 0.9 {
+            return value
+        } else if self.proportion <= 0.6 {
+            return CGFloat.rounded(value * 0.75)()
         } else {
-            return CGFloat.rounded(proportionalSize * 0.9)()
+            return CGFloat.rounded(value * 0.9)()
         }
+    }
+
+    private func shouldBeHghlighted(day: Int) -> Bool {
+        var range = self.highlightedDaysRanges
+        while range.count > 0 {
+            guard let max = range[0].max() else { return false }
+            if range[0].contains(day) && day <= Int(max) {
+                return true
+            } else {
+                range.removeFirst()
+            }
+        }
+        return false
     }
 }

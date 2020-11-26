@@ -8,6 +8,15 @@
 import Foundation
 
 protocol HabitViewModelProtocol {
-//    func getCardData() -> HabitCardData
-    func getHighlightDaysRange(month: Int, year: Int) -> [ClosedRange<Int>]
+
+//    static var habitRepository: HabitRepository { get }
+//    static var calendarRepository: CalendarRepository { get }
+    
+    var habitData: HabitBindingData { get set }
+    var calendarData: CalendarBindingData { get set }
+
+    init(habitData: HabitBindingData)
+
+    func getCardData() -> HabitBindingData
+//    func getCalendarData() -> CalendarData
 }

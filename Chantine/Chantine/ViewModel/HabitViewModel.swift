@@ -7,18 +7,27 @@
 
 import Foundation
 
-class HabitViewModel {
-    public static let shared = HabitViewModel()
-//    private let habitRepository = HabitRepository()
-//    private let calendarRepository = CalendarHistoryRepository()
+class HabitViewModel: HabitViewModelProtocol {
+    //    var calendarRepository = CalendarHistoryRepository()
 
-//    private var days: [(Int, Int)] = []
+    var habitData: HabitBindingData
+    var calendarData: CalendarBindingData
 
-    private init() {}
-}
+    required init(habitData: HabitBindingData) {
+        self.habitData = habitData
+        self.calendarData = CalendarBindingData(month: 11, year: 2020,
+                                                highlitedDaysRange: [1...5, 7...8, 12...20, 22...28])
+    }
 
-extension HabitViewModel: HabitViewModelProtocol {
-    func getHighlightDaysRange(month: Int, year: Int) -> [ClosedRange<Int>] {
-        return [1...5, 7...8, 12...20, 22...28]
+    func getCardData() -> HabitBindingData {
+        return self.habitData
+    }
+
+    func getHighlightDaysRange() -> [ClosedRange<Int>] {
+        return self.calendarData.highlitedDaysRange
+    }
+
+    func getHabitTitle() -> String {
+        return self.habitData.title
     }
 }

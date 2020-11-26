@@ -9,6 +9,10 @@ import Foundation
 
 extension Calendar {
 
+    public var currentYear: Int {
+        return self.component(.year, from: Date())
+    }
+
     private static let monthsNames = ["Janeiro", "Fevereiro", "Março",
                                       "Abril", "Maio", "Junho",
                                       "Julho", "Agosto", "Setembro",
@@ -16,7 +20,7 @@ extension Calendar {
 
     func monthName(date: Date = Date()) -> String {
         let month = self.component(.month, from: date)
-        return Calendar.monthsNames[month]
+        return Calendar.monthsNames[month - 1]
     }
 
     func firstWeekdayOfMonth(date: Date = Date()) -> Int {
@@ -32,7 +36,7 @@ extension Calendar {
         guard let lastDayDate = self.date(from: components) else { return 0 }
         return self.component(.weekday, from: lastDayDate)
     }
-    
+
     func numberOfDays(date: Date = Date()) -> Int {
         guard let numberOfDaysInMonth = self.range(of: .day, in: .month, for: date) else { return 0 }
         return numberOfDaysInMonth.count
