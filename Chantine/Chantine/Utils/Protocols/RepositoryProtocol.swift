@@ -7,6 +7,7 @@
 
 import Foundation
 
+//swiftlint:disable type_name
 protocol RepositoryProtocol {
     associatedtype T
 
