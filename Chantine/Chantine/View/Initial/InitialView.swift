@@ -49,15 +49,10 @@ class InitialView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .clear
         button.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold)), for: .normal)
-        button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
         button.tintColor = .actionColor
         button.layer.cornerRadius = 5
         return button
     }()
-    
-    @objc func buttonTapped(_ : UIButton) {
-        print("blabla")
-    }
     
     lazy var viewTableView: UIView = {
         let view = UIView()

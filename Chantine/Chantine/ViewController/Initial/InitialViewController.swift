@@ -30,6 +30,14 @@ class InitialViewController: UIViewController {
     
     func setupUI() {
         view.backgroundColor = .primaryColor
+        initialView.addHabitButon.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+    }
+    
+    @objc func buttonTapped(_ : UIButton) {
+        let controller = NewHabitController()
+        self.navigationController?.pushViewController(controller, animated: true)
+//        self.present(controller, animated: true, completion: nil)
+
     }
     
     func configureTableView() {

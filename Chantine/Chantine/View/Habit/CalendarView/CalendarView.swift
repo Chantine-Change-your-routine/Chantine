@@ -34,7 +34,6 @@ class CalendarView: UIView {
         }
     }
 
-
     init(width: CGFloat = UIScreen.main.bounds.width - 40) {
         self.proportion = width / 374
 
