@@ -12,9 +12,10 @@ class NewHabitView: UIView {
     lazy var petImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-        imageView.backgroundColor = .black
-        imageView.layer.masksToBounds = false
+        imageView.frame = CGRect(x: 0, y: 0, width: 70, height: 70)
+        imageView.contentMode = .scaleAspectFill
+        imageView.image = UIImage(named: "drinking-water-thumbnail-with-text")
+        imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.frame.height/2
         self.addSubview(imageView)
         return imageView
@@ -27,6 +28,7 @@ class NewHabitView: UIView {
         title.borderStyle = .roundedRect
         title.placeholder = "Beber água"
         title.textAlignment = .left
+        title.clearButtonMode = .always
         self.addSubview(title)
 
         return title
@@ -39,6 +41,7 @@ class NewHabitView: UIView {
         title.borderStyle = .roundedRect
         title.placeholder = "Ficar hidratado"
         title.textAlignment = .left
+        title.clearButtonMode = .always
         self.addSubview(title)
 
         return title

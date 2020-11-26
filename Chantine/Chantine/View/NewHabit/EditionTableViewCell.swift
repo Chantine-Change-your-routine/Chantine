@@ -9,10 +9,6 @@ import UIKit
 
 class EditionTableViewCell: UITableViewCell {
 
-    var buttonTapCallback: () -> ()  = {
-        print("dsdsds")
-    }
-
     let buttonCell: UIButton = {
         let button = UIButton()
         button.setTitle("Button", for: .normal)
@@ -30,8 +26,8 @@ class EditionTableViewCell: UITableViewCell {
        return label
     }()
 
-    @objc func didTapButton() {
-        buttonTapCallback()
+    @objc func didTapButton(sender: UIButton) {
+        NewHabitController().selectPicker(sender.tag)
     }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
