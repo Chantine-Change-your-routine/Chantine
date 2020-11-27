@@ -9,8 +9,9 @@ import UIKit
 
 class NewHabitController: UIViewController {
 
-    private let titles = ["Data de início", "Lembretes", "Frequência"]
-    private var exemples = ["Hoje", "08:00, 10:00", "Todos os dias"]
+    private let titles = ["Data de início", "Lembrete", "Frequência"]
+    private var exemples = ["Hoje", "08:00", "Todos os dias"]
+    private let repeatText = ["Todos os dias", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,8 +21,6 @@ class NewHabitController: UIViewController {
         contentView.editionHabitTableView.register(EditionTableViewCell.self, forCellReuseIdentifier: "cell")
         contentView.editionHabitTableView.delegate = self
         contentView.editionHabitTableView.dataSource = self
-        contentView.pickerView.delegate = self
-        contentView.pickerView.dataSource = self
     }
 
     lazy var contentView: NewHabitView = {
@@ -60,37 +59,6 @@ class NewHabitController: UIViewController {
     @objc func didTapView() {
         view.endEditing(true)
     }
-
-    func selectPicker(_ tag: Int) {
-        showPicker()
-        print(tag)
-    }
-
-    func showPicker() {
-        contentView.pickerView = UIPickerView.init()
-        contentView.pickerView.isHidden = false
-        contentView.pickerView.backgroundColor = UIColor.white
-        contentView.pickerView.setValue(UIColor.black, forKey: "textColor")
-        contentView.pickerView.autoresizingMask = .flexibleWidth
-        contentView.pickerView.contentMode = .center
-        contentView.pickerView.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 100)
-        contentView.pickerView.contentMode = .center
-        contentView.pickerView.isHidden = false
-        contentView.addSubview(contentView.pickerView)
-
-        contentView.toolBar.isHidden = false
-        contentView.toolBar.translatesAutoresizingMaskIntoConstraints = false
-        contentView.toolBar.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 50)
-        contentView.toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self,
-                                              action: #selector(onDoneButtonTapped))]
-        contentView.addSubview(contentView.toolBar)
-    }
-
-    @objc func onDoneButtonTapped() {
-        contentView.toolBar.removeFromSuperview()
-        contentView.pickerView.removeFromSuperview()
-    }
-
 }
 
 extension NewHabitController: UITableViewDataSource, UITableViewDelegate {
@@ -104,19 +72,27 @@ extension NewHabitController: UITableViewDataSource, UITableViewDelegate {
         else {
             fatalError("Error")
     }
+
     cell.title.text = titles[indexPath.row]
     cell.accessoryType = .disclosureIndicator
     cell.selectionStyle = .none
-    cell.buttonCell.setTitle(exemples[indexPath.row], for: .normal)
-    cell.buttonCell.tag = indexPath.row
+    cell.textField.placeholder = exemples[indexPath.row]
+    if indexPath.row == 0 {
+        cell.textField.inputView = generatePicker(pickerName: .startDate)
+    }
+    if indexPath.row == 1 {
+        cell.textField.inputView = generatePicker(pickerName: .reminders)
+    }
+    if indexPath.row == 2 {
+        cell.textField.inputView = generatePicker(pickerName: .frequencies)
+    }
     return cell
   }
-
 }
 
 extension NewHabitController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        titles.count
+        repeatText.count
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -124,7 +100,34 @@ extension NewHabitController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return titles[row]
+        return repeatText[row]
     }
 
+}
+
+enum Pickers {
+    case startDate
+    case reminders
+    case frequencies
+}
+
+extension NewHabitController {
+
+    private func generatePicker(pickerName: Pickers) -> UIView {
+        let datePicker = UIDatePicker()
+        let picker = UIPickerView()
+
+        switch pickerName {
+        case .startDate:
+            datePicker.datePickerMode = .date
+            return datePicker
+        case .reminders:
+            datePicker.datePickerMode = .time
+            return datePicker
+        case .frequencies:
+            picker.dataSource = self
+            picker.delegate = self
+            return picker
+        }
+    }
 }

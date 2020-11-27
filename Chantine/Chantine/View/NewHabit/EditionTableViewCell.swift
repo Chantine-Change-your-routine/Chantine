@@ -9,27 +9,11 @@ import UIKit
 
 class EditionTableViewCell: UITableViewCell {
 
-    let buttonCell: UIButton = {
-        let button = UIButton()
-        button.setTitle("Button", for: .normal)
-        button.setTitleColor(.gray, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 17)
-        button.contentHorizontalAlignment = .right
+    let textField: UITextField = {
+        let textField = UITextField()
+        textField.font = UIFont.systemFont(ofSize: 17)
 
-        return button
-    }()
-
-    lazy var pickerView: UIPickerView = {
-        let picker = UIPickerView()
-        picker.isHidden = false
-        picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.backgroundColor = UIColor.white
-        picker.setValue(UIColor.black, forKey: "textColor")
-        picker.autoresizingMask = .flexibleWidth
-        picker.contentMode = .center
-        picker.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 100)
-        self.addSubview(picker)
-        return picker
+        return textField
     }()
 
     let title: UILabel = {
@@ -38,10 +22,6 @@ class EditionTableViewCell: UITableViewCell {
         label.textColor = .black
        return label
     }()
-
-    @objc func didTapButton(sender: UIButton) {
-        NewHabitController().selectPicker(sender.tag)
-    }
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -60,13 +40,10 @@ class EditionTableViewCell: UITableViewCell {
         title.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
         title.widthAnchor.constraint(equalToConstant: 120).isActive = true
 
-        contentView.addSubview(buttonCell)
-        buttonCell.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
-        buttonCell.translatesAutoresizingMaskIntoConstraints = false
-        buttonCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
-        buttonCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
-        buttonCell.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        buttonCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10).isActive = true
+        contentView.addSubview(textField)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10).isActive = true
     }
 
 }
