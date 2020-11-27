@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 
+//swiftlint:disable unused_closure_parameter
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

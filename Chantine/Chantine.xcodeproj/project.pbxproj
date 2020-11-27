@@ -77,6 +77,7 @@
 		773147F925704CD90092CF60 /* EditionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditionTableViewCell.swift; sourceTree = "<group>"; };
 		773147FA25704CD90092CF60 /* NewHabitController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewHabitController.swift; sourceTree = "<group>"; };
 		7731480125704CFA0092CF60 /* EditDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditDelegate.swift; sourceTree = "<group>"; };
+		77314812257053620092CF60 /* Chantine.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Chantine.entitlements; sourceTree = "<group>"; };
 		776141D4256E813A00E831E7 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		776141E2256ED69500E831E7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		776141E7256ED74900E831E7 /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
@@ -158,6 +159,13 @@
 			path = NewHabit;
 			sourceTree = "<group>";
 		};
+		7731480C257051C10092CF60 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		77BAFDC9256D3AC000F1F83A /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +201,7 @@
 				FE07FCB72567FC8A00E1A537 /* ChantineTests */,
 				FE07FCC22567FC8A00E1A537 /* ChantineUITests */,
 				FE07FC9C2567FC8700E1A537 /* Products */,
+				7731480C257051C10092CF60 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,6 +218,7 @@
 		FE07FC9D2567FC8700E1A537 /* Chantine */ = {
 			isa = PBXGroup;
 			children = (
+				77314812257053620092CF60 /* Chantine.entitlements */,
 				77BAFDC9256D3AC000F1F83A /* ViewController */,
 				FE07FCDB256BCD7400E1A537 /* Model */,
 				FE07FCE2256BCD7B00E1A537 /* View */,
@@ -635,7 +645,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -690,7 +700,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -705,15 +715,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Chantine/Chantine.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TF4K4YZ8PT;
+				DEVELOPMENT_TEAM = VH525588L5;
 				INFOPLIST_FILE = Chantine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlosChantine;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlos.Chantine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -725,15 +737,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Chantine/Chantine.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TF4K4YZ8PT;
+				DEVELOPMENT_TEAM = VH525588L5;
 				INFOPLIST_FILE = Chantine/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlosChantine;
+				MARKETING_VERSION = 1.1;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlos.Chantine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

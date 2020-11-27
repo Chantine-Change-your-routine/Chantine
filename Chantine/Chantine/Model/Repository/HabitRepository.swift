@@ -4,7 +4,7 @@
 //
 //  Created by Brena Amorim on 25/11/20.
 //
-//swiftlint:disable type_name empty_count
+//swiftlint:disable type_name
 
 import Foundation
 import CoreData

@@ -49,7 +49,14 @@ class NewHabitController: UIViewController {
     }
 
     @objc func saveActivity() {
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+//        _ = navigationController?.popViewController(animated: true)
+        let alert = UIAlertController(title: "Ops!", message: "Esta funcionalidade ainda não foi implementada.",
+                                      preferredStyle: .alert)
+        let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        alert.addAction(dismissAction)
+        self.present(alert, animated: true, completion: nil)
+
     }
 
     func setDismissKeyboard() {
