@@ -81,26 +81,6 @@ class NewHabitView: UIView {
         return tableView
     }()
 
-    lazy var datePickerView: UIDatePicker = {
-        let picker = UIDatePicker()
-        picker.isHidden = true
-        picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.backgroundColor = UIColor.white
-        picker.setValue(UIColor.black, forKey: "textColor")
-        picker.autoresizingMask = .flexibleWidth
-        picker.contentMode = .center
-        picker.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 100)
-        self.addSubview(picker)
-
-        return picker
-    }()
-
-    lazy var toolBar: UIToolbar = {
-        let toolBar = UIToolbar()
-
-        return toolBar
-    }()
-
     override init(frame: CGRect) {
            super.init(frame: frame)
            backgroundColor = .white
