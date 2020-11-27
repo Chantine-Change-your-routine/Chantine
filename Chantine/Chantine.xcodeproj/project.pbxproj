@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		770B8F4D256D51F70011F985 /* InitialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770B8F4C256D51F70011F985 /* InitialTableViewCell.swift */; };
 		772A6A1F256D7F46001E5888 /* CardComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A6A1E256D7F46001E5888 /* CardComponentView.swift */; };
-		773147DF257042CB0092CF60 /* Chantine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 773147DD257042CB0092CF60 /* Chantine.xcdatamodeld */; };
 		773147E9257042D30092CF60 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773147E4257042D30092CF60 /* CoreDataStack.swift */; };
 		773147EA257042D30092CF60 /* CalendarBiding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773147E5257042D30092CF60 /* CalendarBiding.swift */; };
 		773147EB257042D30092CF60 /* HabitRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773147E6257042D30092CF60 /* HabitRepository.swift */; };
@@ -45,6 +44,7 @@
 		FE07FD79256C5C5500E1A537 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD78256C5C5500E1A537 /* MainViewController.swift */; };
 		FEBB8298256D367500C0BB0C /* CalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB8297256D367500C0BB0C /* CalendarDayView.swift */; };
 		FEBB82D1256EC32300C0BB0C /* CalendarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB82D0256EC32300C0BB0C /* CalendarData.swift */; };
+		FEC710FF2571651B0033E743 /* Chantine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEC710FD2571651B0033E743 /* Chantine.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +67,6 @@
 /* Begin PBXFileReference section */
 		770B8F4C256D51F70011F985 /* InitialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialTableViewCell.swift; sourceTree = "<group>"; };
 		772A6A1E256D7F46001E5888 /* CardComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponentView.swift; sourceTree = "<group>"; };
-		773147DE257042CB0092CF60 /* Chantine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chantine.xcdatamodel; sourceTree = "<group>"; };
 		773147E4257042D30092CF60 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		773147E5257042D30092CF60 /* CalendarBiding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarBiding.swift; sourceTree = "<group>"; };
 		773147E6257042D30092CF60 /* HabitRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HabitRepository.swift; sourceTree = "<group>"; };
@@ -109,6 +108,7 @@
 		FE07FD78256C5C5500E1A537 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FEBB8297256D367500C0BB0C /* CalendarDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDayView.swift; sourceTree = "<group>"; };
 		FEBB82D0256EC32300C0BB0C /* CalendarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarData.swift; sourceTree = "<group>"; };
+		FEC710FE2571651B0033E743 /* Chantine.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Chantine.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,7 +242,7 @@
 		FE07FCDB256BCD7400E1A537 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				773147DD257042CB0092CF60 /* Chantine.xcdatamodeld */,
+				FEC710FD2571651B0033E743 /* Chantine.xcdatamodeld */,
 				FE07FD20256BE8DE00E1A537 /* Structs */,
 				773147E3257042D30092CF60 /* Repository */,
 			);
@@ -506,7 +506,6 @@
 				FE07FD27256BEC8200E1A537 /* CalendarView.swift in Sources */,
 				FE07FD79256C5C5500E1A537 /* MainViewController.swift in Sources */,
 				FEBB82D1256EC32300C0BB0C /* CalendarData.swift in Sources */,
-				773147DF257042CB0092CF60 /* Chantine.xcdatamodeld in Sources */,
 				FE07FD0F256BE55600E1A537 /* HabitViewController.swift in Sources */,
 				FE07FD55256C0CD400E1A537 /* Font.swift in Sources */,
 				773147EB257042D30092CF60 /* HabitRepository.swift in Sources */,
@@ -517,6 +516,7 @@
 				776141ED256ED78600E831E7 /* InitialViewModelProtocol.swift in Sources */,
 				77BAFDCC256D3AF200F1F83A /* InitialViewController.swift in Sources */,
 				776141E8256ED74900E831E7 /* InitialViewModel.swift in Sources */,
+				FEC710FF2571651B0033E743 /* Chantine.xcdatamodeld in Sources */,
 				770B8F4D256D51F70011F985 /* InitialTableViewCell.swift in Sources */,
 				773147FD25704CD90092CF60 /* NewHabitController.swift in Sources */,
 				773147ED257042D30092CF60 /* CalendarHistoryRepository.swift in Sources */,
@@ -635,7 +635,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -866,14 +866,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		773147DD257042CB0092CF60 /* Chantine.xcdatamodeld */ = {
+		FEC710FD2571651B0033E743 /* Chantine.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				773147DE257042CB0092CF60 /* Chantine.xcdatamodel */,
+				FEC710FE2571651B0033E743 /* Chantine.xcdatamodel */,
 			);
-			currentVersion = 773147DE257042CB0092CF60 /* Chantine.xcdatamodel */;
-			name = Chantine.xcdatamodeld;
-			path = ../../../../Brena/Chantine/Chantine/Chantine/Model/Chantine.xcdatamodeld;
+			currentVersion = FEC710FE2571651B0033E743 /* Chantine.xcdatamodel */;
+			path = Chantine.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
