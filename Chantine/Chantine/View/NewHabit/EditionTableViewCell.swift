@@ -12,6 +12,9 @@ class EditionTableViewCell: UITableViewCell {
     let textField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont.systemFont(ofSize: 17)
+        textField.textAlignment = .right
+        textField.tintColor = .clear
+        textField.textColor = .actionColor
 
         return textField
     }()

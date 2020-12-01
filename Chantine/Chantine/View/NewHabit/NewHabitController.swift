@@ -36,10 +36,10 @@ class NewHabitController: UIViewController {
         title = "Novo Hábito"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self,
                                                            action: #selector(dismissModal))
-        navigationItem.leftBarButtonItem?.tintColor = .orange
+        navigationItem.leftBarButtonItem?.tintColor = .actionColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Salvar", style: .plain, target: self,
                                                             action: #selector(saveActivity))
-        navigationItem.rightBarButtonItem?.tintColor = .orange
+        navigationItem.rightBarButtonItem?.tintColor = .actionColor
     }
 
     @objc func dismissModal() {
@@ -103,6 +103,15 @@ extension NewHabitController: UIPickerViewDelegate, UIPickerViewDataSource {
         return repeatText[row]
     }
 
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let cell = contentView.editionHabitTableView.cellForRow(at: IndexPath(row: 2, section: 0))
+            as? EditionTableViewCell
+            else {
+                fatalError("Error")
+        }
+        cell.textField.text = repeatText[row]
+    }
+
 }
 
 enum Pickers {
@@ -116,6 +125,7 @@ extension NewHabitController {
     private func generatePicker(pickerName: Pickers) -> UIView {
         let datePicker = UIDatePicker()
         let picker = UIPickerView()
+        datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
 
         switch pickerName {
         case .startDate:
@@ -129,5 +139,45 @@ extension NewHabitController {
             picker.delegate = self
             return picker
         }
+    }
+
+    @objc func handleDatePicker(_ datePicker: UIDatePicker) {
+        if datePicker.datePickerMode == .date {
+            guard let cell = contentView.editionHabitTableView.cellForRow(at: IndexPath(row: 0, section: 0))
+                as? EditionTableViewCell
+                else {
+                    fatalError("Error")
+            }
+            cell.textField.text = datePicker.date.formattedDate
+        } else {
+            guard let cell = contentView.editionHabitTableView.cellForRow(at: IndexPath(row: 1, section: 0))
+                as? EditionTableViewCell
+                else {
+                    fatalError("Error")
+            }
+            cell.textField.text = datePicker.date.formattedTime
+        }
+
+    }
+
+}
+
+extension Date {
+    static let formatterDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd yyyy"
+        return formatter
+    }()
+    var formattedDate: String {
+        return Date.formatterDate.string(from: self)
+    }
+
+    static let formatterTime: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+    var formattedTime: String {
+        return Date.formatterTime.string(from: self)
     }
 }
