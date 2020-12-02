@@ -27,6 +27,7 @@ class NewHabitView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         title.borderStyle = .roundedRect
+        title.tintColor = .actionColor
         title.placeholder = "Beber água"
         title.textAlignment = .left
         title.clearButtonMode = .always
@@ -40,6 +41,7 @@ class NewHabitView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         title.borderStyle = .roundedRect
+        title.tintColor = .actionColor
         title.placeholder = "Ficar hidratado"
         title.textAlignment = .left
         title.clearButtonMode = .always

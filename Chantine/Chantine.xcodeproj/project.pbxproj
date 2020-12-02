@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C64A34D2577C19D00466B76 /* NewHabitViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64A34C2577C19D00466B76 /* NewHabitViewModal.swift */; };
 		7C8CA013256E83800057FB3C /* EditionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8CA012256E83800057FB3C /* EditionTableViewCell.swift */; };
 		7C9447EF256BED5B009D8C86 /* NewHabitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9447EE256BED5B009D8C86 /* NewHabitView.swift */; };
 		7C9447F2256BF3F5009D8C86 /* NewHabitController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C9447F1256BF3F5009D8C86 /* NewHabitController.swift */; };
@@ -19,7 +20,6 @@
 		FE07FCAE2567FC8900E1A537 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE07FCAC2567FC8900E1A537 /* LaunchScreen.storyboard */; };
 		FE07FCB92567FC8A00E1A537 /* ChantineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCB82567FC8A00E1A537 /* ChantineTests.swift */; };
 		FE07FCC42567FC8A00E1A537 /* ChantineUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCC32567FC8A00E1A537 /* ChantineUITests.swift */; };
-		FE07FCE6256BCDD400E1A537 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCE5256BCDD400E1A537 /* ViewModel.swift */; };
 		FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCF0256BCE2500E1A537 /* Colors.swift */; };
 		FE07FCFA256BCE8F00E1A537 /* RepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCF9256BCE8F00E1A537 /* RepositoryProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -42,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C64A34C2577C19D00466B76 /* NewHabitViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitViewModal.swift; sourceTree = "<group>"; };
 		7C8CA012256E83800057FB3C /* EditionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditionTableViewCell.swift; sourceTree = "<group>"; };
 		7C9447EE256BED5B009D8C86 /* NewHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitView.swift; sourceTree = "<group>"; };
 		7C9447F1256BF3F5009D8C86 /* NewHabitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitController.swift; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		FE07FCBF2567FC8A00E1A537 /* ChantineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChantineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FCC32567FC8A00E1A537 /* ChantineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChantineUITests.swift; sourceTree = "<group>"; };
 		FE07FCC52567FC8A00E1A537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE07FCE5256BCDD400E1A537 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FE07FCF0256BCE2500E1A537 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		FE07FCF9256BCE8F00E1A537 /* RepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -173,7 +173,7 @@
 		FE07FCE3256BCD8100E1A537 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				FE07FCE5256BCDD400E1A537 /* ViewModel.swift */,
+				7C64A34C2577C19D00466B76 /* NewHabitViewModal.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -374,13 +374,13 @@
 			files = (
 				FE07FCFA256BCE8F00E1A537 /* RepositoryProtocol.swift in Sources */,
 				7C9447F2256BF3F5009D8C86 /* NewHabitController.swift in Sources */,
-				FE07FCE6256BCDD400E1A537 /* ViewModel.swift in Sources */,
 				7C9447EF256BED5B009D8C86 /* NewHabitView.swift in Sources */,
 				FE07FCF1256BCE2500E1A537 /* Colors.swift in Sources */,
 				FE07FCA32567FC8700E1A537 /* ViewController.swift in Sources */,
 				FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */,
 				FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */,
 				7C8CA013256E83800057FB3C /* EditionTableViewCell.swift in Sources */,
+				7C64A34D2577C19D00466B76 /* NewHabitViewModal.swift in Sources */,
 				FE07FCA92567FC8700E1A537 /* Chantine.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

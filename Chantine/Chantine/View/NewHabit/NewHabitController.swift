@@ -16,6 +16,7 @@ class NewHabitController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDismissKeyboard()
+        setupActionSheetCaller()
         addNavbarItems()
         view.backgroundColor = .white
         contentView.editionHabitTableView.register(EditionTableViewCell.self, forCellReuseIdentifier: "cell")
@@ -58,6 +59,43 @@ class NewHabitController: UIViewController {
 
     @objc func didTapView() {
         view.endEditing(true)
+    }
+
+    private func setupActionSheetCaller() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.displayActionSheet))
+        tap.numberOfTouchesRequired = 1
+        contentView.petImageView.addGestureRecognizer(tap)
+        contentView.petImageView.isUserInteractionEnabled = true
+    }
+
+    @objc private func displayActionSheet() {
+        let optionalMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        let choosePhoto = UIAlertAction(title: "Escolher Foto", style: .default, handler: importPicture)
+        let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+
+        optionalMenu.addAction(choosePhoto)
+        optionalMenu.addAction(cancel)
+
+        self.present(optionalMenu, animated: true, completion: nil)
+    }
+
+}
+
+extension NewHabitController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+        contentView.petImageView.image = image
+        dismiss(animated: true, completion: nil)
+    }
+
+    func importPicture(alert: UIAlertAction) {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
     }
 }
 
