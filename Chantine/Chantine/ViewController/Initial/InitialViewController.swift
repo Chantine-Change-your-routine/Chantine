@@ -26,6 +26,20 @@ class InitialViewController: UIViewController {
         self.title = ""
         navigationController?.navigationBar.barTintColor = .primaryColor
         setupUI()
+        modalIndicatorGesture()
+    }
+    
+    func modalIndicatorGesture() {
+        let modalIndicatorGesture = UISwipeGestureRecognizer(target: self, action: #selector(gestureIndicatorModal))
+        modalIndicatorGesture.direction = .up
+        modalIndicatorGesture.numberOfTouchesRequired = 1
+        
+        initialView.modalIndicator.addGestureRecognizer(modalIndicatorGesture)
+        initialView.modalIndicator.isUserInteractionEnabled = true
+    }
+    
+    @objc func gestureIndicatorModal(_ gesture: UISwipeGestureRecognizer) {
+//        initialView.viewTableView.heightAnchor.constraint(equalToConstant: )
     }
     
     func setupUI() {

@@ -22,6 +22,7 @@
 		776141E3256ED69500E831E7 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776141E2256ED69500E831E7 /* HeaderView.swift */; };
 		776141E8256ED74900E831E7 /* InitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776141E7256ED74900E831E7 /* InitialViewModel.swift */; };
 		776141ED256ED78600E831E7 /* InitialViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 776141EC256ED78600E831E7 /* InitialViewModelProtocol.swift */; };
+		77B51C362576678F006D2B8A /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77B51C352576678F006D2B8A /* Image.swift */; };
 		77BAFDCC256D3AF200F1F83A /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BAFDCB256D3AF200F1F83A /* InitialViewController.swift */; };
 		77BAFDD4256D3E3700F1F83A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 77BAFDD3256D3E3700F1F83A /* .swiftlint.yml */; };
 		77BE479E256C29FC00D8B223 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BE479D256C29FC00D8B223 /* InitialView.swift */; };
@@ -80,6 +81,7 @@
 		776141E2256ED69500E831E7 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		776141E7256ED74900E831E7 /* InitialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModel.swift; sourceTree = "<group>"; };
 		776141EC256ED78600E831E7 /* InitialViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewModelProtocol.swift; sourceTree = "<group>"; };
+		77B51C352576678F006D2B8A /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		77BAFDCB256D3AF200F1F83A /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		77BAFDD3256D3E3700F1F83A /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		77BE479D256C29FC00D8B223 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				FE07FD54256C0CD400E1A537 /* Font.swift */,
 				FE07FD59256C305C00E1A537 /* Calendar.swift */,
 				776141D4256E813A00E831E7 /* View.swift */,
+				77B51C352576678F006D2B8A /* Image.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -529,6 +532,7 @@
 				FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */,
 				773147EA257042D30092CF60 /* CalendarBiding.swift in Sources */,
 				773147FC25704CD90092CF60 /* EditionTableViewCell.swift in Sources */,
+				77B51C362576678F006D2B8A /* Image.swift in Sources */,
 				FE07FD22256BE8EE00E1A537 /* HabitCardData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

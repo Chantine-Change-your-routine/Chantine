@@ -18,6 +18,14 @@ class InitialView: UIView {
     }
     
     // ui components
+    lazy var modalIndicator: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .lightGray
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = 4
+        return button
+    }()
+    
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Olá, amigo."
@@ -48,7 +56,7 @@ class InitialView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.backgroundColor = .clear
-        button.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold)), for: .normal)
+        button.setImage(UIImage(systemName: "plus", withConfiguration: UIImage.SymbolConfiguration(weight: .bold))?.withTintColor(.actionColor, renderingMode: .alwaysOriginal).scalePreservingAspectRatio(targetSize: CGSize(width: 30, height: 30)), for: .normal)
         button.tintColor = .actionColor
         button.layer.cornerRadius = 5
         return button
@@ -70,6 +78,7 @@ class InitialView: UIView {
         tableView.rowHeight = 100
         tableView.separatorStyle = .none
         tableView.allowsSelection = true
+        tableView.showsVerticalScrollIndicator = false
         tableView.register(InitialTableViewCell.self, forCellReuseIdentifier: "InitialTableViewCell")
         return tableView
     }()
@@ -80,10 +89,18 @@ class InitialView: UIView {
     }
     
     func settingConstraints() {
+        self.viewTableView.addSubview(modalIndicator)
+        NSLayoutConstraint.activate([
+            modalIndicator.heightAnchor.constraint(equalToConstant: 8),
+            modalIndicator.widthAnchor.constraint(equalToConstant: 70),
+            modalIndicator.centerXAnchor.constraint(equalTo: self.viewTableView.centerXAnchor),
+            modalIndicator.topAnchor.constraint(equalTo: self.viewTableView.topAnchor, constant: 16)
+        ])
+        
         self.addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20)
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50)
         ])
         
         self.addSubview(mascotImageView)
