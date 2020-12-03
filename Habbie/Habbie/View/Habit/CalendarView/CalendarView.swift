@@ -56,8 +56,8 @@ class CalendarView: UIView {
         self.layer.cornerRadius = 10
         self.layer.shadowColor = UIColor.black.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 0)
-        self.layer.shadowRadius = 15
-        self.layer.shadowOpacity = 0.2
+        self.layer.shadowRadius = 5
+        self.layer.shadowOpacity = 0.1
 
         self.addSubview(titleLabel)
         titleLabel.text = "\(calendar.monthName()), \(calendar.currentYear)"
@@ -121,7 +121,7 @@ class CalendarView: UIView {
 
         let numberOfDays = calendar.numberOfDays()
         let firstWeekDay = calendar.firstWeekdayOfMonth()
-        let offsetPastMonth = 7 - firstWeekDay
+        let offsetPastMonth = (firstWeekDay == 1) ? 6 : 7 - (9 - firstWeekDay)
         let offsetNextMonth = 42 - (offsetPastMonth + numberOfDays)
         let lastDayPastMonth = calendar.lastDayOfPastMonth()
 

@@ -30,8 +30,8 @@ class HabitViewController: UIViewController {
         cardView.layer.cornerRadius = 10
         cardView.layer.shadowColor = UIColor.black.cgColor
         cardView.layer.shadowOffset = CGSize(width: 0, height: 0)
-        cardView.layer.shadowRadius = 15
-        cardView.layer.shadowOpacity = 0.2
+        cardView.layer.shadowRadius = 5
+        cardView.layer.shadowOpacity = 0.1
         return cardView
     }()
 
@@ -88,7 +88,7 @@ class HabitViewController: UIViewController {
         
         self.view.addSubview(calendarView)
         calendarView.topAnchor.constraint(equalTo: habitCardView.bottomAnchor,
-                                          constant: 20).isActive = true
+                                          constant: 30).isActive = true
         calendarView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
     }
 
