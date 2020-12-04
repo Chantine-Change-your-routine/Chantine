@@ -18,8 +18,20 @@ class NewHabitView: UIView {
         imageView.layer.masksToBounds = true
         imageView.layer.cornerRadius = imageView.frame.height/2
         self.addSubview(imageView)
-        
+
         return imageView
+    }()
+
+    lazy var editLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Editar"
+        label.font = UIFont.systemFont(ofSize: 9, weight: .regular)
+        label.textAlignment = NSTextAlignment.center
+        label.numberOfLines = 1
+        label.textColor = UIColor.white
+        label.backgroundColor = UIColor.black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     lazy var titleTextField: UITextField = {
@@ -27,6 +39,8 @@ class NewHabitView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         title.borderStyle = .roundedRect
+
+        title.tintColor = .actionColor
         title.placeholder = "Beber água"
         title.textAlignment = .left
         title.clearButtonMode = .always
@@ -40,6 +54,7 @@ class NewHabitView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         title.borderStyle = .roundedRect
+        title.tintColor = .actionColor
         title.placeholder = "Ficar hidratado"
         title.textAlignment = .left
         title.clearButtonMode = .always
@@ -81,26 +96,6 @@ class NewHabitView: UIView {
         return tableView
     }()
 
-    lazy var pickerView: UIPickerView = {
-        let picker = UIPickerView()
-//        picker.isHidden = false
-//        //picker.translatesAutoresizingMaskIntoConstraints = false
-//        picker.backgroundColor = UIColor.white
-//        picker.setValue(UIColor.black, forKey: "textColor")
-//        picker.autoresizingMask = .flexibleWidth
-//        picker.contentMode = .center
-//        picker.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 100)
-//        self.addSubview(picker)
-
-        return picker
-    }()
-
-    lazy var toolBar: UIToolbar = {
-        let toolBar = UIToolbar()
-
-        return toolBar
-    }()
-
     override init(frame: CGRect) {
            super.init(frame: frame)
            backgroundColor = .white
@@ -121,12 +116,16 @@ class NewHabitView: UIView {
     }
 
     func setPetImageViewConstraints() {
+        self.petImageView.addSubview(editLabel)
         NSLayoutConstraint.activate([
             petImageView.widthAnchor.constraint(equalToConstant: 70),
             petImageView.heightAnchor.constraint(equalToConstant: 70),
             petImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
             petImageView.rightAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.rightAnchor),
-            petImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20)
+            petImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            editLabel.bottomAnchor.constraint(equalTo: petImageView.bottomAnchor, constant: 0),
+            editLabel.centerXAnchor.constraint(equalTo: petImageView.centerXAnchor),
+            editLabel.widthAnchor.constraint(equalToConstant: 70)
         ])
     }
 

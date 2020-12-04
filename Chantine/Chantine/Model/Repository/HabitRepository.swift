@@ -16,6 +16,7 @@ class HabitRepository: RepositoryProtocol {
     let habit = Habit()
     let coreDataStack = CoreDataStack.shared
 
+    @discardableResult
     func create(data: HabitBiding) -> Habit? {
 
         habit.identifier = data.identifier

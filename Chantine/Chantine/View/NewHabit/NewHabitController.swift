@@ -9,19 +9,23 @@ import UIKit
 
 class NewHabitController: UIViewController {
 
-    private let titles = ["Data de início", "Lembretes", "Frequência"]
-    private var exemples = ["Hoje", "08:00, 10:00", "Todos os dias"]
+    private let titles = ["Data de início", "Lembrete", "Frequência"]
+    private var exemples = ["Hoje", "08:00", "Todos os dias"]
+    private let repeatText = ["Todos os dias", "Segunda", "Terça", "Quarta", "Quinta", "Sexta", "Sábado", "Domingo"]
+
+    let newHabitViewModal = NewHabitViewModal.newHabitViewModal
+
+    let habitTeste = HabitBiding(title: "fafadsf", goal: "adfadsf", startDate: "2020-12-03", reminders: [Date()], imageID: 1, repetition: [1, 2], calendarHistoryID: "fdsfs")
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setDismissKeyboard()
+        setupActionSheetCaller()
         addNavbarItems()
         view.backgroundColor = .white
         contentView.editionHabitTableView.register(EditionTableViewCell.self, forCellReuseIdentifier: "cell")
         contentView.editionHabitTableView.delegate = self
         contentView.editionHabitTableView.dataSource = self
-        contentView.pickerView.delegate = self
-        contentView.pickerView.dataSource = self
     }
 
     lazy var contentView: NewHabitView = {
@@ -37,19 +41,19 @@ class NewHabitController: UIViewController {
         title = "Novo Hábito"
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancelar", style: .plain, target: self,
                                                            action: #selector(dismissModal))
-        navigationItem.leftBarButtonItem?.tintColor = .orange
+        navigationItem.leftBarButtonItem?.tintColor = .actionColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Salvar", style: .plain, target: self,
                                                             action: #selector(saveActivity))
-        navigationItem.rightBarButtonItem?.tintColor = .orange
+        navigationItem.rightBarButtonItem?.tintColor = .actionColor
     }
 
     @objc func dismissModal() {
-        _ = navigationController?.popViewController(animated: true)
-//        self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
 
     @objc func saveActivity() {
-        self.dismiss(animated: true, completion: nil)
+        newHabitViewModal.saveHabit(habit: habitTeste)
+        self.navigationController?.popViewController(animated: true)
     }
 
     func setDismissKeyboard() {
@@ -62,36 +66,42 @@ class NewHabitController: UIViewController {
         view.endEditing(true)
     }
 
-    func selectPicker(_ tag: Int) {
-        showPicker()
-        print(tag)
+    private func setupActionSheetCaller() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.displayActionSheet))
+        tap.numberOfTouchesRequired = 1
+        contentView.petImageView.addGestureRecognizer(tap)
+        contentView.petImageView.isUserInteractionEnabled = true
     }
 
-    func showPicker() {
-        contentView.pickerView = UIPickerView.init()
-        contentView.pickerView.isHidden = false
-        contentView.pickerView.backgroundColor = UIColor.white
-        contentView.pickerView.setValue(UIColor.black, forKey: "textColor")
-        contentView.pickerView.autoresizingMask = .flexibleWidth
-        contentView.pickerView.contentMode = .center
-        contentView.pickerView.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 100)
-        contentView.pickerView.contentMode = .center
-        contentView.pickerView.isHidden = false
-        contentView.addSubview(contentView.pickerView)
+    @objc private func displayActionSheet() {
+        let optionalMenu = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        contentView.toolBar.isHidden = false
-        contentView.toolBar.translatesAutoresizingMaskIntoConstraints = false
-        contentView.toolBar.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 50)
-        contentView.toolBar.items = [UIBarButtonItem.init(title: "Done", style: .done, target: self,
-                                              action: #selector(onDoneButtonTapped))]
-        contentView.addSubview(contentView.toolBar)
+        let choosePhoto = UIAlertAction(title: "Escolher Foto", style: .default, handler: importPicture)
+        let cancel = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+
+        optionalMenu.addAction(choosePhoto)
+        optionalMenu.addAction(cancel)
+
+        self.present(optionalMenu, animated: true, completion: nil)
     }
 
-    @objc func onDoneButtonTapped() {
-        contentView.toolBar.removeFromSuperview()
-        contentView.pickerView.removeFromSuperview()
+}
+
+extension NewHabitController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        guard let image = info[.editedImage] as? UIImage else { return }
+        contentView.petImageView.image = image
+        dismiss(animated: true, completion: nil)
     }
 
+    func importPicture(alert: UIAlertAction) {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
 }
 
 extension NewHabitController: UITableViewDataSource, UITableViewDelegate {
@@ -108,16 +118,23 @@ extension NewHabitController: UITableViewDataSource, UITableViewDelegate {
     cell.title.text = titles[indexPath.row]
     cell.accessoryType = .disclosureIndicator
     cell.selectionStyle = .none
-    cell.buttonCell.setTitle(exemples[indexPath.row], for: .normal)
-    cell.buttonCell.tag = indexPath.row
+    cell.textField.placeholder = exemples[indexPath.row]
+    if indexPath.row == 0 {
+        cell.textField.inputView = generatePicker(pickerName: .startDate)
+    }
+    if indexPath.row == 1 {
+        cell.textField.inputView = generatePicker(pickerName: .reminders)
+    }
+    if indexPath.row == 2 {
+        cell.textField.inputView = generatePicker(pickerName: .frequencies)
+    }
     return cell
   }
-
 }
 
 extension NewHabitController: UIPickerViewDelegate, UIPickerViewDataSource {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        titles.count
+        repeatText.count
     }
 
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -125,7 +142,78 @@ extension NewHabitController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return titles[row]
+        return repeatText[row]
     }
 
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        guard let cell = contentView.editionHabitTableView.cellForRow(at: IndexPath(row: 2, section: 0))
+            as? EditionTableViewCell
+            else {
+                fatalError("Error")
+        }
+        cell.textField.text = repeatText[row]
+    }
+
+}
+
+extension NewHabitController {
+
+    private func generatePicker(pickerName: Pickers) -> UIView {
+        let datePicker = UIDatePicker()
+        let picker = UIPickerView()
+        datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
+
+        switch pickerName {
+        case .startDate:
+            datePicker.datePickerMode = .date
+            return datePicker
+        case .reminders:
+            datePicker.datePickerMode = .time
+            return datePicker
+        case .frequencies:
+            picker.dataSource = self
+            picker.delegate = self
+            return picker
+        }
+    }
+
+    @objc func handleDatePicker(_ datePicker: UIDatePicker) {
+        if datePicker.datePickerMode == .date {
+            guard let cell = contentView.editionHabitTableView.cellForRow(at: IndexPath(row: 0, section: 0))
+                as? EditionTableViewCell
+                else {
+                    fatalError("Error")
+            }
+            cell.textField.text = datePicker.date.formattedDate
+        } else {
+            guard let cell = contentView.editionHabitTableView.cellForRow(at: IndexPath(row: 1, section: 0))
+                as? EditionTableViewCell
+                else {
+                    fatalError("Error")
+            }
+            cell.textField.text = datePicker.date.formattedTime
+        }
+
+    }
+
+}
+
+extension Date {
+    static let formatterDate: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd yyyy"
+        return formatter
+    }()
+    var formattedDate: String {
+        return Date.formatterDate.string(from: self)
+    }
+
+    static let formatterTime: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        return formatter
+    }()
+    var formattedTime: String {
+        return Date.formatterTime.string(from: self)
+    }
 }
