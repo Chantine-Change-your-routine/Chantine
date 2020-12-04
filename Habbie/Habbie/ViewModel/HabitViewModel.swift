@@ -20,15 +20,15 @@ class HabitViewModel: HabitViewModelProtocol {
          self.calendarData = CalendarBindingData(month: 11, year: 2020, highlitedDaysRange: highlitedDays)
     }
 
+    func getHabitTitle() -> String {
+        return habitData.title
+    }
+
     func getCardData() -> HabitBindingData {
         return self.habitData
     }
 
     func getHighlightDaysRange() -> [ClosedRange<Int>] {
         return self.calendarData.highlitedDaysRange
-    }
-
-    func getHabitTitle() -> String {
-        return self.habitData.title
     }
 }

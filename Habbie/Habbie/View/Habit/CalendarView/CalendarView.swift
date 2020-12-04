@@ -17,13 +17,7 @@ class CalendarView: UIView {
         }
     }
 
-    private let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Janeiro, 2020"
-        label.font = .roundedFont(ofSize: 17, weight: .semibold)
-        label.tintColor = .label
-        return label
-    }()
+    private let titleLabel: UILabel = UILabel()
 
     private let proportion: CGFloat
 
@@ -61,6 +55,7 @@ class CalendarView: UIView {
 
         self.addSubview(titleLabel)
         titleLabel.text = "\(calendar.monthName()), \(calendar.currentYear)"
+        titleLabel.font = .roundedFont(ofSize: proportionalSize(20), weight: .semibold)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: proportionalSize(20)).isActive = true
         titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -179,12 +174,6 @@ class CalendarView: UIView {
     }
 
     public func proportionalSize(_ value: CGFloat) -> CGFloat {
-        if self.proportion >= 0.9 {
-            return value
-        } else if self.proportion <= 0.6 {
-            return CGFloat.rounded(value * 0.75)()
-        } else {
-            return CGFloat.rounded(value * 0.9)()
-        }
+        return value * self.proportion
     }
 }
