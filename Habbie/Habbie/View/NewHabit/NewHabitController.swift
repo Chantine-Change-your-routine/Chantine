@@ -15,7 +15,7 @@ class NewHabitController: UIViewController {
 
     let newHabitViewModal = NewHabitViewModal.newHabitViewModal
 
-    let habitTeste = HabitBiding(title: "fafadsf", goal: "adfadsf", startDate: "2020-12-03", reminders: [Date()], imageID: 1, repetition: [1, 2], calendarHistoryID: "fdsfs")
+    let habitTeste = HabitBiding(title: "fafadsf", goal: "adfadsf", startDate: "2020/12/03", reminders: [Date()], imageID: 1, repetition: [1, 2], calendarHistoryID: "fdsfs")
 
     override func viewDidLoad() {
         super.viewDidLoad()

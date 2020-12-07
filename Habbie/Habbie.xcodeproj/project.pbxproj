@@ -89,17 +89,17 @@
 		7C8CA012256E83800057FB3C /* EditionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditionTableViewCell.swift; sourceTree = "<group>"; };
 		7C9447EE256BED5B009D8C86 /* NewHabitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitView.swift; sourceTree = "<group>"; };
 		7C9447F1256BF3F5009D8C86 /* NewHabitController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitController.swift; sourceTree = "<group>"; };
-		FE07FC9B2567FC8700E1A537 /* Chantine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chantine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE07FC9B2567FC8700E1A537 /* Habbie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habbie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FE07FCA52567FC8700E1A537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FE07FCAA2567FC8900E1A537 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FE07FCAD2567FC8900E1A537 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FE07FCAF2567FC8900E1A537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE07FCB42567FC8A00E1A537 /* ChantineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChantineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE07FCB42567FC8A00E1A537 /* HabbieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabbieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FCB82567FC8A00E1A537 /* ChantineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChantineTests.swift; sourceTree = "<group>"; };
 		FE07FCBA2567FC8A00E1A537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FE07FCBF2567FC8A00E1A537 /* ChantineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChantineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE07FCBF2567FC8A00E1A537 /* HabbieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HabbieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FCC32567FC8A00E1A537 /* ChantineUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChantineUITests.swift; sourceTree = "<group>"; };
 		FE07FCC52567FC8A00E1A537 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FE07FCF0256BCE2500E1A537 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -195,9 +195,9 @@
 			isa = PBXGroup;
 			children = (
 				77BAFDD3256D3E3700F1F83A /* .swiftlint.yml */,
-				FE07FC9D2567FC8700E1A537 /* Chantine */,
-				FE07FCB72567FC8A00E1A537 /* ChantineTests */,
-				FE07FCC22567FC8A00E1A537 /* ChantineUITests */,
+				FE07FC9D2567FC8700E1A537 /* Habbie */,
+				FE07FCB72567FC8A00E1A537 /* HabieTests */,
+				FE07FCC22567FC8A00E1A537 /* HabbieUITests */,
 				FE07FC9C2567FC8700E1A537 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -205,14 +205,14 @@
 		FE07FC9C2567FC8700E1A537 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FE07FC9B2567FC8700E1A537 /* Chantine.app */,
-				FE07FCB42567FC8A00E1A537 /* ChantineTests.xctest */,
-				FE07FCBF2567FC8A00E1A537 /* ChantineUITests.xctest */,
+				FE07FC9B2567FC8700E1A537 /* Habbie.app */,
+				FE07FCB42567FC8A00E1A537 /* HabbieTests.xctest */,
+				FE07FCBF2567FC8A00E1A537 /* HabbieUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		FE07FC9D2567FC8700E1A537 /* Chantine */ = {
+		FE07FC9D2567FC8700E1A537 /* Habbie */ = {
 			isa = PBXGroup;
 			children = (
 				77BAFDC9256D3AC000F1F83A /* ViewController */,
@@ -224,25 +224,25 @@
 				FE07FCAA2567FC8900E1A537 /* Assets.xcassets */,
 				FE07FCAF2567FC8900E1A537 /* Info.plist */,
 			);
-			path = Chantine;
+			path = Habbie;
 			sourceTree = "<group>";
 		};
-		FE07FCB72567FC8A00E1A537 /* ChantineTests */ = {
+		FE07FCB72567FC8A00E1A537 /* HabieTests */ = {
 			isa = PBXGroup;
 			children = (
 				FE07FCB82567FC8A00E1A537 /* ChantineTests.swift */,
 				FE07FCBA2567FC8A00E1A537 /* Info.plist */,
 			);
-			path = ChantineTests;
+			path = HabieTests;
 			sourceTree = "<group>";
 		};
-		FE07FCC22567FC8A00E1A537 /* ChantineUITests */ = {
+		FE07FCC22567FC8A00E1A537 /* HabbieUITests */ = {
 			isa = PBXGroup;
 			children = (
 				FE07FCC32567FC8A00E1A537 /* ChantineUITests.swift */,
 				FE07FCC52567FC8A00E1A537 /* Info.plist */,
 			);
-			path = ChantineUITests;
+			path = HabbieUITests;
 			sourceTree = "<group>";
 		};
 		FE07FCDB256BCD7400E1A537 /* Model */ = {
@@ -358,9 +358,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		FE07FC9A2567FC8700E1A537 /* Chantine */ = {
+		FE07FC9A2567FC8700E1A537 /* Habbie */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FE07FCC82567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "Chantine" */;
+			buildConfigurationList = FE07FCC82567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "Habbie" */;
 			buildPhases = (
 				FE07FC972567FC8700E1A537 /* Sources */,
 				FE07FC982567FC8700E1A537 /* Frameworks */,
@@ -371,14 +371,14 @@
 			);
 			dependencies = (
 			);
-			name = Chantine;
+			name = Habbie;
 			productName = Chantine;
-			productReference = FE07FC9B2567FC8700E1A537 /* Chantine.app */;
+			productReference = FE07FC9B2567FC8700E1A537 /* Habbie.app */;
 			productType = "com.apple.product-type.application";
 		};
-		FE07FCB32567FC8A00E1A537 /* ChantineTests */ = {
+		FE07FCB32567FC8A00E1A537 /* HabbieTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FE07FCCB2567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "ChantineTests" */;
+			buildConfigurationList = FE07FCCB2567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "HabbieTests" */;
 			buildPhases = (
 				FE07FCB02567FC8A00E1A537 /* Sources */,
 				FE07FCB12567FC8A00E1A537 /* Frameworks */,
@@ -389,14 +389,14 @@
 			dependencies = (
 				FE07FCB62567FC8A00E1A537 /* PBXTargetDependency */,
 			);
-			name = ChantineTests;
+			name = HabbieTests;
 			productName = ChantineTests;
-			productReference = FE07FCB42567FC8A00E1A537 /* ChantineTests.xctest */;
+			productReference = FE07FCB42567FC8A00E1A537 /* HabbieTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		FE07FCBE2567FC8A00E1A537 /* ChantineUITests */ = {
+		FE07FCBE2567FC8A00E1A537 /* HabbieUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FE07FCCE2567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "ChantineUITests" */;
+			buildConfigurationList = FE07FCCE2567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "HabbieUITests" */;
 			buildPhases = (
 				FE07FCBB2567FC8A00E1A537 /* Sources */,
 				FE07FCBC2567FC8A00E1A537 /* Frameworks */,
@@ -407,9 +407,9 @@
 			dependencies = (
 				FE07FCC12567FC8A00E1A537 /* PBXTargetDependency */,
 			);
-			name = ChantineUITests;
+			name = HabbieUITests;
 			productName = ChantineUITests;
-			productReference = FE07FCBF2567FC8A00E1A537 /* ChantineUITests.xctest */;
+			productReference = FE07FCBF2567FC8A00E1A537 /* HabbieUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -434,7 +434,7 @@
 					};
 				};
 			};
-			buildConfigurationList = FE07FC962567FC8700E1A537 /* Build configuration list for PBXProject "Chantine" */;
+			buildConfigurationList = FE07FC962567FC8700E1A537 /* Build configuration list for PBXProject "Habbie" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -447,9 +447,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				FE07FC9A2567FC8700E1A537 /* Chantine */,
-				FE07FCB32567FC8A00E1A537 /* ChantineTests */,
-				FE07FCBE2567FC8A00E1A537 /* ChantineUITests */,
+				FE07FC9A2567FC8700E1A537 /* Habbie */,
+				FE07FCB32567FC8A00E1A537 /* HabbieTests */,
+				FE07FCBE2567FC8A00E1A537 /* HabbieUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -566,12 +566,12 @@
 /* Begin PBXTargetDependency section */
 		FE07FCB62567FC8A00E1A537 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FE07FC9A2567FC8700E1A537 /* Chantine */;
+			target = FE07FC9A2567FC8700E1A537 /* Habbie */;
 			targetProxy = FE07FCB52567FC8A00E1A537 /* PBXContainerItemProxy */;
 		};
 		FE07FCC12567FC8A00E1A537 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = FE07FC9A2567FC8700E1A537 /* Chantine */;
+			target = FE07FC9A2567FC8700E1A537 /* Habbie */;
 			targetProxy = FE07FCC02567FC8A00E1A537 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -718,8 +718,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y8HUNAB446;
-				INFOPLIST_FILE = Chantine/Info.plist;
+				DEVELOPMENT_TEAM = TF4K4YZ8PT;
+				INFOPLIST_FILE = Habbie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -738,8 +738,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = Y8HUNAB446;
-				INFOPLIST_FILE = Chantine/Info.plist;
+				DEVELOPMENT_TEAM = TF4K4YZ8PT;
+				INFOPLIST_FILE = Habbie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -770,7 +770,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chantine.app/Chantine";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Habbie.app/Habbie";
 			};
 			name = Debug;
 		};
@@ -792,7 +792,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chantine.app/Chantine";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Habbie.app/Habbie";
 			};
 			name = Release;
 		};
@@ -839,7 +839,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		FE07FC962567FC8700E1A537 /* Build configuration list for PBXProject "Chantine" */ = {
+		FE07FC962567FC8700E1A537 /* Build configuration list for PBXProject "Habbie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FE07FCC62567FC8A00E1A537 /* Debug */,
@@ -848,7 +848,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE07FCC82567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "Chantine" */ = {
+		FE07FCC82567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "Habbie" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FE07FCC92567FC8A00E1A537 /* Debug */,
@@ -857,7 +857,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE07FCCB2567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "ChantineTests" */ = {
+		FE07FCCB2567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "HabbieTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FE07FCCC2567FC8A00E1A537 /* Debug */,
@@ -866,7 +866,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FE07FCCE2567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "ChantineUITests" */ = {
+		FE07FCCE2567FC8A00E1A537 /* Build configuration list for PBXNativeTarget "HabbieUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				FE07FCCF2567FC8A00E1A537 /* Debug */,
