@@ -160,6 +160,11 @@ extension NewHabitController {
 
     private func generatePicker(pickerName: Pickers) -> UIView {
         let datePicker = UIDatePicker()
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        } else {
+            // Fallback on earlier versions
+        }
         let picker = UIPickerView()
         datePicker.addTarget(self, action: #selector(handleDatePicker), for: .valueChanged)
 

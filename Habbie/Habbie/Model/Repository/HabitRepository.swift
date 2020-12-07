@@ -13,22 +13,21 @@ class HabitRepository: RepositoryProtocol {
     typealias T = Habit
     typealias A = HabitBiding
 
-    let habit = Habit()
     let coreDataStack = CoreDataStack.shared
 
     @discardableResult
     func create(data: HabitBiding) -> Habit? {
 
-        let habitTest = Habit()
+        let habit = Habit(context: coreDataStack.mainContext)
 
-        habitTest.identifier = data.identifier
-        habitTest.title = data.title
-        habitTest.goal = data.goal
-        habitTest.startDate = data.startDate
-        habitTest.reminders = data.reminders
-        habitTest.imageID = data.imageID
-        habitTest.repetition = data.repetition
-        habitTest.calendarHistoryID = data.calendarHistoryID
+        habit.identifier = data.identifier
+        habit.title = data.title
+        habit.goal = data.goal
+        habit.startDate = data.startDate
+        habit.reminders = data.reminders
+        habit.imageID = data.imageID
+        habit.repetition = data.repetition
+        habit.calendarHistoryID = data.calendarHistoryID
 
         let calendar = Calendar.current
         let month = Int16(calendar.component(.month, from: Date()))
@@ -38,7 +37,7 @@ class HabitRepository: RepositoryProtocol {
             try coreDataStack.mainContext.save()
             let calendarRepository = CalendarRepository()
             calendarRepository.create(data: CalendarBinding(habitID: data.identifier, month: month, year: year))
-            return habitTest
+            return habit
         } catch let error as NSError {
             print("Error: \(error), description: \(error.userInfo)")
             return nil

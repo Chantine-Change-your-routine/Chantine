@@ -20,7 +20,7 @@ class CalendarRepository: RepositoryProtocol {
     @discardableResult
     func create(data: CalendarBinding) -> CalendarHistory? {
 
-        let calendar = CalendarHistory()
+        let calendar = CalendarHistory(context: coreDataStack.mainContext)
         calendar.identifier = data.identifier
         calendar.habitID = data.habitID
         calendar.month = Int16(data.month)
