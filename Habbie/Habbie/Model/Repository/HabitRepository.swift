@@ -13,7 +13,6 @@ class HabitRepository: RepositoryProtocol {
     typealias T = Habit
     typealias A = HabitBiding
 
-    let habit = Habit()
     let managedObjectContext: NSManagedObjectContext
     let coreDataStack: CoreDataStack
     
@@ -23,6 +22,7 @@ class HabitRepository: RepositoryProtocol {
     }
 
     func create(data: HabitBiding) -> Habit? {
+        let habit = Habit(context: self.coreDataStack.mainContext)
 
         habit.identifier = data.identifier
         habit.title = data.title

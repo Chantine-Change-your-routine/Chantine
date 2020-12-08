@@ -45,7 +45,7 @@
 		FE07FD79256C5C5500E1A537 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD78256C5C5500E1A537 /* MainViewController.swift */; };
 		FEBB8298256D367500C0BB0C /* CalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB8297256D367500C0BB0C /* CalendarDayView.swift */; };
 		FEBB82D1256EC32300C0BB0C /* CalendarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB82D0256EC32300C0BB0C /* CalendarData.swift */; };
-		FEC710FF2571651B0033E743 /* Chantine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEC710FD2571651B0033E743 /* Chantine.xcdatamodeld */; };
+		FEC710FF2571651B0033E743 /* Habbie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEC710FD2571651B0033E743 /* Habbie.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,7 +246,7 @@
 		FE07FCDB256BCD7400E1A537 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FEC710FD2571651B0033E743 /* Chantine.xcdatamodeld */,
+				FEC710FD2571651B0033E743 /* Habbie.xcdatamodeld */,
 				FE07FD20256BE8DE00E1A537 /* Structs */,
 				773147E3257042D30092CF60 /* Repository */,
 			);
@@ -537,7 +537,7 @@
 				776141ED256ED78600E831E7 /* InitialViewModelProtocol.swift in Sources */,
 				77BAFDCC256D3AF200F1F83A /* InitialViewController.swift in Sources */,
 				776141E8256ED74900E831E7 /* InitialViewModel.swift in Sources */,
-				FEC710FF2571651B0033E743 /* Chantine.xcdatamodeld in Sources */,
+				FEC710FF2571651B0033E743 /* Habbie.xcdatamodeld in Sources */,
 				770B8F4D256D51F70011F985 /* InitialTableViewCell.swift in Sources */,
 				773147FD25704CD90092CF60 /* NewHabitController.swift in Sources */,
 				773147ED257042D30092CF60 /* CalendarHistoryRepository.swift in Sources */,
@@ -872,13 +872,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FEC710FD2571651B0033E743 /* Chantine.xcdatamodeld */ = {
+		FEC710FD2571651B0033E743 /* Habbie.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				FEC710FE2571651B0033E743 /* Chantine.xcdatamodel */,
 			);
 			currentVersion = FEC710FE2571651B0033E743 /* Chantine.xcdatamodel */;
-			path = Chantine.xcdatamodeld;
+			path = Habbie.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
