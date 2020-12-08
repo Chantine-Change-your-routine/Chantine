@@ -13,7 +13,6 @@ protocol HabitViewModelProtocol {
 //    static var calendarRepository: CalendarRepository { get }
     
     var habitData: HabitBindingData { get set }
-    var calendarData: CalendarBindingData { get set }
 
     init(habitData: HabitBindingData)
 
