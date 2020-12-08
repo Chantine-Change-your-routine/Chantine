@@ -67,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		770B8F4C256D51F70011F985 /* InitialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialTableViewCell.swift; sourceTree = "<group>"; };
+		77273029257930630053AD2F /* Habbie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Habbie.entitlements; sourceTree = "<group>"; };
 		772A6A1E256D7F46001E5888 /* CardComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponentView.swift; sourceTree = "<group>"; };
 		773147E4257042D30092CF60 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		773147E5257042D30092CF60 /* CalendarBiding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarBiding.swift; sourceTree = "<group>"; };
@@ -211,6 +212,7 @@
 		FE07FC9D2567FC8700E1A537 /* Habbie */ = {
 			isa = PBXGroup;
 			children = (
+				77273029257930630053AD2F /* Habbie.entitlements */,
 				77BAFDC9256D3AC000F1F83A /* ViewController */,
 				FE07FCDB256BCD7400E1A537 /* Model */,
 				FE07FCE2256BCD7B00E1A537 /* View */,
@@ -709,15 +711,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Habbie/Habbie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TF4K4YZ8PT;
+				DEVELOPMENT_TEAM = VH525588L5;
 				INFOPLIST_FILE = Habbie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlosChantine;
+				MARKETING_VERSION = 0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlos.Habbie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -729,15 +733,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Habbie/Habbie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TF4K4YZ8PT;
+				DEVELOPMENT_TEAM = VH525588L5;
 				INFOPLIST_FILE = Habbie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlosChantine;
+				MARKETING_VERSION = 0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlos.Habbie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

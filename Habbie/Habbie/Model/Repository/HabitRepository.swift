@@ -81,7 +81,6 @@ class HabitRepository: RepositoryProtocol {
             print("Error: \(error) description: \(error.userInfo)")
             return []
         }
-
     }
 
     func update(model: HabitBiding) -> Bool {
