@@ -10,16 +10,14 @@ import Habbie
 class TestCoreDataStack: CoreDataStack {
     override init() {
     super.init()
-    
-    let coreDataStack = CoreDataStack()
-    // 1
+
     let persistentStoreDescription = NSPersistentStoreDescription()
     persistentStoreDescription.type = NSInMemoryStoreType
+    
+    let container = NSPersistentContainer(
+        name: CoreDataStack.modelName,
+        managedObjectModel: CoreDataStack.model)
 
-    // 2
-    let container = NSPersistentContainer(name: coreDataStack.modelName)
-   
-    // 3
     container.persistentStoreDescriptions = [persistentStoreDescription]
 
     container.loadPersistentStores { _, error in

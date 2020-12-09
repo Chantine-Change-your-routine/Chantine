@@ -15,14 +15,14 @@ class HabitRepository: RepositoryProtocol {
 
     let managedObjectContext: NSManagedObjectContext
     let coreDataStack: CoreDataStack
-    
+
     public init(managedObjectContext: NSManagedObjectContext, coreDataStack: CoreDataStack) {
         self.managedObjectContext = managedObjectContext
         self.coreDataStack = coreDataStack
     }
 
     func create(data: HabitBiding) -> Habit? {
-        let habit = Habit(context: self.coreDataStack.mainContext)
+        guard let habit = NSEntityDescription.insertNewObject(forEntityName: "Habit", into: coreDataStack.mainContext) as? Habit else { return nil }
 
         habit.identifier = data.identifier
         habit.title = data.title
@@ -56,7 +56,7 @@ class HabitRepository: RepositoryProtocol {
 
         do {
             let result = try
-                coreDataStack.mainContext.fetch(habitFetchRequest)
+                managedObjectContext.fetch(habitFetchRequest)
             if result.count > 0 {
                 if let habit = result.first { return habit } else {
                     return nil
@@ -77,7 +77,7 @@ class HabitRepository: RepositoryProtocol {
         let habitFetchRequest: NSFetchRequest<Habit> = Habit.fetchRequest()
 
         do {
-            let results = try coreDataStack.mainContext.fetch(habitFetchRequest)
+            let results = try managedObjectContext.fetch(habitFetchRequest)
             if results.count > 0 { //found a habit
                 return results
             } else { //habit not found
