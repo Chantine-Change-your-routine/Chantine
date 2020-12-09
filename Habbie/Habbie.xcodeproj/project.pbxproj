@@ -28,6 +28,7 @@
 		77BE479E256C29FC00D8B223 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BE479D256C29FC00D8B223 /* InitialView.swift */; };
 		E60CC0EA257A888500A8CD2A /* HabbieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CC0E9257A888500A8CD2A /* HabbieUITests.swift */; };
 		E60CC0F5257E455700A8CD2A /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CC0F4257E455600A8CD2A /* TestCoreDataStack.swift */; };
+		E60CC105257FB5E700A8CD2A /* HabitRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E60CC104257FB5E700A8CD2A /* HabitRepositoryTests.swift */; };
 		FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */; };
 		FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */; };
 		FE07FCA62567FC8700E1A537 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FE07FCA42567FC8700E1A537 /* Main.storyboard */; };
@@ -91,6 +92,7 @@
 		E60CC0E9257A888500A8CD2A /* HabbieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabbieUITests.swift; sourceTree = "<group>"; };
 		E60CC0EB257A888500A8CD2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E60CC0F4257E455600A8CD2A /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
+		E60CC104257FB5E700A8CD2A /* HabitRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitRepositoryTests.swift; sourceTree = "<group>"; };
 		FE07FC9B2567FC8700E1A537 /* Habbie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Habbie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FE07FC9E2567FC8700E1A537 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FE07FCA02567FC8700E1A537 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 			children = (
 				E60CC0DB257A886800A8CD2A /* Info.plist */,
 				E60CC0F4257E455600A8CD2A /* TestCoreDataStack.swift */,
+				E60CC104257FB5E700A8CD2A /* HabitRepositoryTests.swift */,
 			);
 			path = HabbieTests;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E60CC105257FB5E700A8CD2A /* HabitRepositoryTests.swift in Sources */,
 				E60CC0F5257E455700A8CD2A /* TestCoreDataStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -25,8 +25,8 @@ class CalendarRepository: RepositoryProtocol {
     
     @discardableResult
     func create(data: CalendarBinding) -> CalendarHistory? {
-        
-        let calendar = CalendarHistory(context: coreDataStack.mainContext)
+        guard let calendar = NSEntityDescription.insertNewObject(forEntityName: "CalendarHistory", into: coreDataStack.mainContext) as? CalendarHistory else { return nil }
+//        let calendar = CalendarHistory(context: coreDataStack.mainContext)
         calendar.identifier = data.identifier
         calendar.habitID = data.habitID
         calendar.month = Int16(data.month)
