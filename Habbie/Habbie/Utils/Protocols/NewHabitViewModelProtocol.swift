@@ -9,5 +9,5 @@ import Foundation
 
 protocol NewHabitViewModelProtocol {
 
-    func saveHabit(habit: HabitBiding)
+    func saveHabit(habit: HabitBiding) -> Bool
 }

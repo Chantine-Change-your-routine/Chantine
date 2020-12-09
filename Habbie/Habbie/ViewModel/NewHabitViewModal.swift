@@ -7,13 +7,14 @@
 
 import Foundation
 
-class NewHabitViewModal: NewHabitViewModelProtocol {
+class NewHabitViewModel: NewHabitViewModelProtocol {
+    private let habitRepository = HabitRepository()
 
-    static let newHabitViewModal = NewHabitViewModal()
-    let habitRepository = HabitRepository()
-
-    func saveHabit(habit: HabitBiding) {
-        self.habitRepository.create(data: habit)
+    @discardableResult
+    func saveHabit(habit: HabitBiding) -> Bool {
+        if let _ = self.habitRepository.create(data: habit) {
+            return true
+        }
+        return false
     }
-
 }

@@ -41,12 +41,21 @@ class NewHabitView: UIView {
         title.borderStyle = .roundedRect
 
         title.tintColor = .actionColor
-        title.placeholder = "Beber água"
+        title.placeholder = "Titulo do seu novo hábito"
         title.textAlignment = .left
         title.clearButtonMode = .always
         self.addSubview(title)
 
         return title
+    }()
+    
+    lazy var pickerAvatar: UIPickerView = {
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.isHidden = true
+        picker.tag = 10
+        picker.backgroundColor = .primaryColor
+        return picker
     }()
 
     lazy var objectiveTextField: UITextField = {
@@ -55,7 +64,7 @@ class NewHabitView: UIView {
         title.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         title.borderStyle = .roundedRect
         title.tintColor = .actionColor
-        title.placeholder = "Ficar hidratado"
+        title.placeholder = "Qual é o seu objetivo?"
         title.textAlignment = .left
         title.clearButtonMode = .always
         self.addSubview(title)
@@ -89,8 +98,7 @@ class NewHabitView: UIView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.isScrollEnabled = false
-        tableView.frame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y,
-                                 width: tableView.frame.size.width, height: tableView.contentSize.height)
+        tableView.frame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y, width: tableView.frame.size.width, height: tableView.contentSize.height)
         self.addSubview(tableView)
 
         return tableView
@@ -113,6 +121,7 @@ class NewHabitView: UIView {
         setObjectiveLabelConstraints()
         setObjectiveTextFieldConstraints()
         setEditionHabitTableViewConstraints()
+//        setPickerAvatar()
     }
 
     func setPetImageViewConstraints() {
@@ -167,6 +176,16 @@ class NewHabitView: UIView {
             editionHabitTableView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -15),
             editionHabitTableView.topAnchor.constraint(equalTo: objectiveTextField.bottomAnchor, constant: 10),
             editionHabitTableView.heightAnchor.constraint(equalToConstant: 150)
+        ])
+    }
+    
+    func setPickerAvatar() {
+        self.addSubview(pickerAvatar)
+        NSLayoutConstraint.activate([
+            pickerAvatar.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            pickerAvatar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            pickerAvatar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            pickerAvatar.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
 }
