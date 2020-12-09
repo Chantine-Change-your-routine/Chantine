@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		770B8F4D256D51F70011F985 /* InitialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 770B8F4C256D51F70011F985 /* InitialTableViewCell.swift */; };
 		771E8F4325814B6E006FC58D /* ModalAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771E8F4225814B6E006FC58D /* ModalAvatarView.swift */; };
+		771E8F4825815D3B006FC58D /* ModalAvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 771E8F4725815D3B006FC58D /* ModalAvatarCollectionViewCell.swift */; };
 		772A6A1F256D7F46001E5888 /* CardComponentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 772A6A1E256D7F46001E5888 /* CardComponentView.swift */; };
 		773147E9257042D30092CF60 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773147E4257042D30092CF60 /* CoreDataStack.swift */; };
 		773147EA257042D30092CF60 /* CalendarBiding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 773147E5257042D30092CF60 /* CalendarBiding.swift */; };
@@ -77,6 +78,7 @@
 /* Begin PBXFileReference section */
 		770B8F4C256D51F70011F985 /* InitialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialTableViewCell.swift; sourceTree = "<group>"; };
 		771E8F4225814B6E006FC58D /* ModalAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAvatarView.swift; sourceTree = "<group>"; };
+		771E8F4725815D3B006FC58D /* ModalAvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalAvatarCollectionViewCell.swift; sourceTree = "<group>"; };
 		772A6A1E256D7F46001E5888 /* CardComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponentView.swift; sourceTree = "<group>"; };
 		773147E4257042D30092CF60 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		773147E5257042D30092CF60 /* CalendarBiding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarBiding.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			children = (
 				77B3F41225814AC10018CB7B /* ModalAvatarViewController.swift */,
 				771E8F4225814B6E006FC58D /* ModalAvatarView.swift */,
+				771E8F4725815D3B006FC58D /* ModalAvatarCollectionViewCell.swift */,
 			);
 			path = ModalAvatar;
 			sourceTree = "<group>";
@@ -574,6 +577,7 @@
 				FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */,
 				77B3F3FD258133E20018CB7B /* NewHabitDelegate.swift in Sources */,
 				773147EA257042D30092CF60 /* CalendarBiding.swift in Sources */,
+				771E8F4825815D3B006FC58D /* ModalAvatarCollectionViewCell.swift in Sources */,
 				77B51C362576678F006D2B8A /* Image.swift in Sources */,
 				FE07FD22256BE8EE00E1A537 /* HabitCardData.swift in Sources */,
 				7C8CA013256E83800057FB3C /* EditionTableViewCell.swift in Sources */,

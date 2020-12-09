@@ -7,6 +7,7 @@
 
 import Foundation
 
+//swiftlint: disable unused_optional_binding
 class NewHabitViewModel: NewHabitViewModelProtocol {
     private let habitRepository = HabitRepository()
 
