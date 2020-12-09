@@ -23,6 +23,9 @@
 		77BAFDCC256D3AF200F1F83A /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BAFDCB256D3AF200F1F83A /* InitialViewController.swift */; };
 		77BAFDD4256D3E3700F1F83A /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 77BAFDD3256D3E3700F1F83A /* .swiftlint.yml */; };
 		77BE479E256C29FC00D8B223 /* InitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77BE479D256C29FC00D8B223 /* InitialView.swift */; };
+		7C2F208A257FC1CA004B9BC8 /* RepetitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F2089257FC1CA004B9BC8 /* RepetitionViewController.swift */; };
+		7C2F208F257FC247004B9BC8 /* RepetitionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C2F208E257FC247004B9BC8 /* RepetitionView.swift */; };
+		7C5C1BB62580F463007AF7D8 /* RepetitionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5C1BB52580F463007AF7D8 /* RepetitionTableViewCell.swift */; };
 		7C64A34D2577C19D00466B76 /* NewHabitViewModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C64A34C2577C19D00466B76 /* NewHabitViewModal.swift */; };
 		7C806C8325790A2200763C05 /* NewHabitViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C806C8225790A2200763C05 /* NewHabitViewModelProtocol.swift */; };
 		7C8CA013256E83800057FB3C /* EditionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8CA012256E83800057FB3C /* EditionTableViewCell.swift */; };
@@ -84,6 +87,9 @@
 		77BAFDCB256D3AF200F1F83A /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		77BAFDD3256D3E3700F1F83A /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		77BE479D256C29FC00D8B223 /* InitialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialView.swift; sourceTree = "<group>"; };
+		7C2F2089257FC1CA004B9BC8 /* RepetitionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionViewController.swift; sourceTree = "<group>"; };
+		7C2F208E257FC247004B9BC8 /* RepetitionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionView.swift; sourceTree = "<group>"; };
+		7C5C1BB52580F463007AF7D8 /* RepetitionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepetitionTableViewCell.swift; sourceTree = "<group>"; };
 		7C64A34C2577C19D00466B76 /* NewHabitViewModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitViewModal.swift; sourceTree = "<group>"; };
 		7C806C8225790A2200763C05 /* NewHabitViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHabitViewModelProtocol.swift; sourceTree = "<group>"; };
 		7C8CA012256E83800057FB3C /* EditionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditionTableViewCell.swift; sourceTree = "<group>"; };
@@ -187,6 +193,9 @@
 				7C9447EE256BED5B009D8C86 /* NewHabitView.swift */,
 				7C9447F1256BF3F5009D8C86 /* NewHabitController.swift */,
 				7C8CA012256E83800057FB3C /* EditionTableViewCell.swift */,
+				7C2F2089257FC1CA004B9BC8 /* RepetitionViewController.swift */,
+				7C2F208E257FC247004B9BC8 /* RepetitionView.swift */,
+				7C5C1BB52580F463007AF7D8 /* RepetitionTableViewCell.swift */,
 			);
 			path = NewHabit;
 			sourceTree = "<group>";
@@ -514,6 +523,7 @@
 				FE07FD27256BEC8200E1A537 /* CalendarView.swift in Sources */,
 				FE07FD79256C5C5500E1A537 /* MainViewController.swift in Sources */,
 				FEBB82D1256EC32300C0BB0C /* CalendarData.swift in Sources */,
+				7C2F208A257FC1CA004B9BC8 /* RepetitionViewController.swift in Sources */,
 				FE07FD0F256BE55600E1A537 /* HabitViewController.swift in Sources */,
 				FE07FD55256C0CD400E1A537 /* Font.swift in Sources */,
 				773147EB257042D30092CF60 /* HabitRepository.swift in Sources */,
@@ -525,6 +535,7 @@
 				7C806C8325790A2200763C05 /* NewHabitViewModelProtocol.swift in Sources */,
 				77BAFDCC256D3AF200F1F83A /* InitialViewController.swift in Sources */,
 				776141E8256ED74900E831E7 /* InitialViewModel.swift in Sources */,
+				7C2F208F257FC247004B9BC8 /* RepetitionView.swift in Sources */,
 				FEC710FF2571651B0033E743 /* Chantine.xcdatamodeld in Sources */,
 				770B8F4D256D51F70011F985 /* InitialTableViewCell.swift in Sources */,
 				773147ED257042D30092CF60 /* CalendarHistoryRepository.swift in Sources */,
@@ -535,6 +546,7 @@
 				776141E3256ED69500E831E7 /* HeaderView.swift in Sources */,
 				773147E9257042D30092CF60 /* CoreDataStack.swift in Sources */,
 				FE07FC9F2567FC8700E1A537 /* AppDelegate.swift in Sources */,
+				7C5C1BB62580F463007AF7D8 /* RepetitionTableViewCell.swift in Sources */,
 				FE07FD17256BE5CC00E1A537 /* HabitViewModel.swift in Sources */,
 				FE07FCA12567FC8700E1A537 /* SceneDelegate.swift in Sources */,
 				773147EA257042D30092CF60 /* CalendarBiding.swift in Sources */,

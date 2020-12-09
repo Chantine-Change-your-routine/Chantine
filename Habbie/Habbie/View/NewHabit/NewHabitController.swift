@@ -15,8 +15,9 @@ class NewHabitController: UIViewController {
 
     let newHabitViewModal = NewHabitViewModal.newHabitViewModal
 
-    let habitTeste = HabitBiding(title: "fafadsf", goal: "adfadsf", startDate: "2020/12/03", reminders: [Date()], imageID: 1, repetition: [1, 2], calendarHistoryID: "fdsfs")
-
+//  instância do hábito que irá ser alterado
+    var editedHabit: HabitBiding?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setDismissKeyboard()
@@ -26,6 +27,11 @@ class NewHabitController: UIViewController {
         contentView.editionHabitTableView.register(EditionTableViewCell.self, forCellReuseIdentifier: "cell")
         contentView.editionHabitTableView.delegate = self
         contentView.editionHabitTableView.dataSource = self
+        //testfunc()
+    }
+    func testfunc() {
+        editedHabit = HabitBiding(title: "fdsafa", goal: "fsdfdsf", startDate: "21-12-2010", reminders: [Date()], imageID: 1, repetition: [1, 2], calendarHistoryID: "fdsfsdfsdf")
+        fillHabitsFields()
     }
 
     lazy var contentView: NewHabitView = {
@@ -47,13 +53,52 @@ class NewHabitController: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = .actionColor
     }
 
+    func fillHabitsFields() {
+        contentView.titleTextField.text = editedHabit?.title
+        contentView.objectiveTextField.text = editedHabit?.goal
+        //changeDataOnCell(index: 0, text: editedHabit!.startDate)
+    }
+
     @objc func dismissModal() {
         self.navigationController?.popViewController(animated: true)
     }
 
     @objc func saveActivity() {
-        newHabitViewModal.saveHabit(habit: habitTeste)
+        let habit = captureUserEntry()
+        let newHabit = HabitBiding(title: habit.title, goal: habit.goal, startDate: habit.startDate, reminders: [Date()], imageID: 1, repetition: [1, 2], calendarHistoryID: habit.calendarHistoryID)
+        newHabitViewModal.saveHabit(habit: newHabit)
         self.navigationController?.popViewController(animated: true)
+    }
+
+    private func captureUserEntry() -> HabitBiding {
+        let title = contentView.titleTextField.text!
+        let goal = contentView.objectiveTextField.text!
+//      ver a lógica para salvar imagem
+//        habit.imageID = contentView.petImageView.image
+        let startDate = getDataOnCell(index: 0)
+//      ver a lógica para salvar tais arrays
+//        habit.reminders = Data(getDataOnCell(index: 1))
+//        habit.repetition = getDataOnCell(index: 2)
+        return HabitBiding(title: title, goal: goal, startDate: startDate, reminders: [Date()], imageID: 1, repetition: [1, 2], calendarHistoryID: "fsdfsdf")
+    }
+
+    private func getDataOnCell(index: Int) -> String {
+        guard let cell = contentView.editionHabitTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EditionTableViewCell
+
+        else {
+            fatalError("Error")
+        }
+        return cell.textField.text!
+    }
+
+    private func changeDataOnCell(index: Int, text: String) {
+        guard let cell = contentView.editionHabitTableView.cellForRow(at: IndexPath(row: index, section: 0)) as? EditionTableViewCell
+
+        else {
+            fatalError("Error")
+        }
+
+        cell.textField.text = text
     }
 
     func setDismissKeyboard() {
@@ -106,9 +151,17 @@ extension NewHabitController: UIImagePickerControllerDelegate, UINavigationContr
 
 extension NewHabitController: UITableViewDataSource, UITableViewDelegate {
 
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return titles.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return titles.count
   }
+
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if indexPath.row == 2 {
+        let controller = RepetitionViewController()
+//        self.navigationController?.pushViewController(controller, animated: true)
+        self.navigationController?.present(controller, animated: true)
+    }
+}
 
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? EditionTableViewCell
@@ -125,9 +178,9 @@ extension NewHabitController: UITableViewDataSource, UITableViewDelegate {
     if indexPath.row == 1 {
         cell.textField.inputView = generatePicker(pickerName: .reminders)
     }
-    if indexPath.row == 2 {
-        cell.textField.inputView = generatePicker(pickerName: .frequencies)
-    }
+//    if indexPath.row == 2 {
+//        cell.textField.inputView = generatePicker(pickerName: .frequencies)
+//    }
     return cell
   }
 }
