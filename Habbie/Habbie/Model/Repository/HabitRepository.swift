@@ -186,7 +186,5 @@ class HabitRepository: RepositoryProtocol {
         }
 
         return false
-
     }
-    
 }
