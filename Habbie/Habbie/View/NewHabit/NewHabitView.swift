@@ -16,10 +16,23 @@ class NewHabitView: UIView {
         imageView.contentMode = .scaleAspectFill
         imageView.image = UIImage(named: "drinking-water-thumbnail-with-text")
         imageView.layer.masksToBounds = true
+        imageView.isHidden = true
         imageView.layer.cornerRadius = imageView.frame.height/2
         self.addSubview(imageView)
-        
+
         return imageView
+    }()
+
+    lazy var editLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Editar"
+        label.font = UIFont.systemFont(ofSize: 9, weight: .regular)
+        label.textAlignment = NSTextAlignment.center
+        label.numberOfLines = 1
+        label.textColor = UIColor.white
+        label.backgroundColor = UIColor.black
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
     }()
 
     lazy var titleTextField: UITextField = {
@@ -27,12 +40,23 @@ class NewHabitView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         title.borderStyle = .roundedRect
-        title.placeholder = "Beber água"
+
+        title.tintColor = .actionColor
+        title.placeholder = "Titulo do seu novo hábito"
         title.textAlignment = .left
         title.clearButtonMode = .always
         self.addSubview(title)
 
         return title
+    }()
+    
+    lazy var pickerAvatar: UIPickerView = {
+        let picker = UIPickerView()
+        picker.translatesAutoresizingMaskIntoConstraints = false
+        picker.isHidden = true
+        picker.tag = 10
+        picker.backgroundColor = .primaryColor
+        return picker
     }()
 
     lazy var objectiveTextField: UITextField = {
@@ -40,7 +64,8 @@ class NewHabitView: UIView {
         title.translatesAutoresizingMaskIntoConstraints = false
         title.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         title.borderStyle = .roundedRect
-        title.placeholder = "Ficar hidratado"
+        title.tintColor = .actionColor
+        title.placeholder = "Qual é o seu objetivo?"
         title.textAlignment = .left
         title.clearButtonMode = .always
         self.addSubview(title)
@@ -74,31 +99,10 @@ class NewHabitView: UIView {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.isScrollEnabled = false
-        tableView.frame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y,
-                                 width: tableView.frame.size.width, height: tableView.contentSize.height)
+        tableView.frame = CGRect(x: tableView.frame.origin.x, y: tableView.frame.origin.y, width: tableView.frame.size.width, height: tableView.contentSize.height)
         self.addSubview(tableView)
 
         return tableView
-    }()
-
-    lazy var pickerView: UIPickerView = {
-        let picker = UIPickerView()
-//        picker.isHidden = false
-//        //picker.translatesAutoresizingMaskIntoConstraints = false
-//        picker.backgroundColor = UIColor.white
-//        picker.setValue(UIColor.black, forKey: "textColor")
-//        picker.autoresizingMask = .flexibleWidth
-//        picker.contentMode = .center
-//        picker.frame.size = CGSize(width: UIScreen.main.bounds.size.width, height: 100)
-//        self.addSubview(picker)
-
-        return picker
-    }()
-
-    lazy var toolBar: UIToolbar = {
-        let toolBar = UIToolbar()
-
-        return toolBar
     }()
 
     override init(frame: CGRect) {
@@ -112,34 +116,39 @@ class NewHabitView: UIView {
     }
 
     func setConstraints() {
-        setPetImageViewConstraints()
+//        setPetImageViewConstraints()
         setTitleTextFieldConstraints()
         setTitleLabelConstraints()
         setObjectiveLabelConstraints()
         setObjectiveTextFieldConstraints()
         setEditionHabitTableViewConstraints()
+//        setPickerAvatar()
     }
 
     func setPetImageViewConstraints() {
+        self.petImageView.addSubview(editLabel)
         NSLayoutConstraint.activate([
             petImageView.widthAnchor.constraint(equalToConstant: 70),
             petImageView.heightAnchor.constraint(equalToConstant: 70),
             petImageView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 20),
             petImageView.rightAnchor.constraint(lessThanOrEqualTo: safeAreaLayoutGuide.rightAnchor),
-            petImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20)
+            petImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20),
+            editLabel.bottomAnchor.constraint(equalTo: petImageView.bottomAnchor, constant: 0),
+            editLabel.centerXAnchor.constraint(equalTo: petImageView.centerXAnchor),
+            editLabel.widthAnchor.constraint(equalToConstant: 70)
         ])
     }
 
     func setTitleLabelConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: petImageView.rightAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 20)
         ])
     }
 
     func setTitleTextFieldConstraints() {
         NSLayoutConstraint.activate([
-            titleTextField.leftAnchor.constraint(equalTo: petImageView.rightAnchor, constant: 20),
+            titleTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 20),
             titleTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -15),
             titleTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
             titleTextField.heightAnchor.constraint(equalToConstant: 44)
@@ -149,14 +158,14 @@ class NewHabitView: UIView {
     func setObjectiveLabelConstraints() {
         NSLayoutConstraint.activate([
             objectiveLabel.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
-            objectiveLabel.topAnchor.constraint(equalTo: petImageView.bottomAnchor, constant: 26)
+            objectiveLabel.topAnchor.constraint(equalTo: self.titleTextField.bottomAnchor, constant: 20)
         ])
     }
 
     func setObjectiveTextFieldConstraints() {
         NSLayoutConstraint.activate([
-            objectiveTextField.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
-            objectiveTextField.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -15),
+            objectiveTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+            objectiveTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15),
             objectiveTextField.topAnchor.constraint(equalTo: objectiveLabel.bottomAnchor, constant: 5),
             objectiveTextField.heightAnchor.constraint(equalToConstant: 44)
         ])
@@ -164,10 +173,20 @@ class NewHabitView: UIView {
 
     func setEditionHabitTableViewConstraints() {
         NSLayoutConstraint.activate([
-            editionHabitTableView.leftAnchor.constraint(equalTo: safeAreaLayoutGuide.leftAnchor, constant: 16),
-            editionHabitTableView.rightAnchor.constraint(equalTo: safeAreaLayoutGuide.rightAnchor, constant: -15),
+            editionHabitTableView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+            editionHabitTableView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -15),
             editionHabitTableView.topAnchor.constraint(equalTo: objectiveTextField.bottomAnchor, constant: 10),
             editionHabitTableView.heightAnchor.constraint(equalToConstant: 150)
+        ])
+    }
+    
+    func setPickerAvatar() {
+        self.addSubview(pickerAvatar)
+        NSLayoutConstraint.activate([
+            pickerAvatar.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            pickerAvatar.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            pickerAvatar.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            pickerAvatar.heightAnchor.constraint(equalToConstant: 300)
         ])
     }
 }
