@@ -79,11 +79,15 @@ class NewHabitController: UIViewController {
     
     @objc func saveActivity() {
         if let habit = captureUserEntry() {
-            if !self.habitViewModel.saveHabit(habit: habit) {
-                let alert = UIAlertController(title: "Ops!", message: "Ocorreu um erro ao efetuar o cadastro.", preferredStyle: .alert)
-                let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
-                alert.addAction(dismissAction)
-                self.present(alert, animated: true, completion: nil)
+            if let _ = self.editedHabit {
+                self.habitViewModel.updateHabit(habit: habit)
+            } else {
+                if !self.habitViewModel.saveHabit(habit: habit) {
+                    let alert = UIAlertController(title: "Ops!", message: "Ocorreu um erro ao efetuar o cadastro.", preferredStyle: .alert)
+                    let dismissAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                    alert.addAction(dismissAction)
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
         } else {
             let alert = UIAlertController(title: "Ops!", message: "Ocorreu um erro ao efetuar o cadastro.", preferredStyle: .alert)

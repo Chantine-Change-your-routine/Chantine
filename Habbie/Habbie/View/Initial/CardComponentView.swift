@@ -102,10 +102,14 @@ class CardComponentView: UIView {
             checkButton.backgroundColor = colorCheck
             checkButton.setImage(UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold)), for: .normal)
             checkButton.tintColor = .white
+            
+            // salvar no user defaults
         } else {
             checkButton.backgroundColor = .white
             checkButton.setImage(nil, for: .normal)
             checkButton.tintColor = .none
+            
+            // remove user defaults
         }
     }
     

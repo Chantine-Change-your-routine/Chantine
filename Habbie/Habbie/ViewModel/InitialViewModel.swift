@@ -10,6 +10,7 @@ import UIKit
 class InitialViewModel: InitialViewModelProtocol {
     var dataSource: [HabitBindingData]
     var habitRepository: HabitRepository
+    private let userDefault = UserDefaults.standard
     
     static let initialViewModel = InitialViewModel()
     
@@ -33,6 +34,8 @@ class InitialViewModel: InitialViewModelProtocol {
     
     func biding() {
         let habitCoreData = self.habitRepository.getTodayHabits()
+        var ids : [String] = []
+        
         dataSource.removeAll()
         for habit in habitCoreData {
             let arrayProgress =  habit.currentProgress!
@@ -56,7 +59,25 @@ class InitialViewModel: InitialViewModelProtocol {
                 lightColor = .white
                 darkColor = .blackColor
             }
+            
+//            if let identifier = habit.identifier {
+//                ids.append(identifier)
+//                if let userDefaultsIDs = userDefault.array(forKey: "TodayHabitsDone") as? [String] {
+//                    if !userDefaultsIDs.contains(identifier) {
+//                        dataSource.append(HabitBindingData(identifier: habit.identifier!, title: habit.title!, description: habit.goal!, imageId: Int(habit.imageID), bgcolor: lightColor, bgcolorDark: darkColor, progress: Float(grouped) / Float(arrayProgress.count)))
+//                    }
+//                }
+//            }
+//            
+//            if let userDefaultsIDs = userDefault.array(forKey: "TodayHabits") as? [String] {
+//                if ids != userDefaultsIDs {
+//                    userDefault.set(ids, forKey: "TodayHabits")
+//                    userDefault.set([], forKey: "TodayHabitsDone")
+//                }
+//            }
+            
             dataSource.append(HabitBindingData(identifier: habit.identifier!, title: habit.title!, description: habit.goal!, imageId: Int(habit.imageID), bgcolor: lightColor, bgcolorDark: darkColor, progress: Float(grouped) / Float(arrayProgress.count)))
+
         }
     }
 }
