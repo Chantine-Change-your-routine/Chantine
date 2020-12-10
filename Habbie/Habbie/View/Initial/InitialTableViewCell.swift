@@ -8,6 +8,7 @@
 import UIKit
 
 class InitialTableViewCell: UITableViewCell {
+    var identifier: String = ""
     var cellView: CardComponentView = {
         let view = CardComponentView(type: .checkable)
         return view
@@ -25,6 +26,7 @@ class InitialTableViewCell: UITableViewCell {
     
     func setData(_ data: HabitBindingData) {
         cellView.setData(data)
+        cellView.identifier = self.identifier
     }
     
     func setup() {

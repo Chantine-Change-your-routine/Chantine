@@ -7,6 +7,7 @@
 
 import UIKit
 
+//swiftlint:disabel unused_optional_binding
 class NewHabitController: UIViewController {
     let habitViewModel: NewHabitViewModel = NewHabitViewModel()
     

@@ -12,8 +12,10 @@ enum CardType {
 }
 
 class CardComponentView: UIView {
+    var identifier: String = ""
     var colorCheck: UIColor = .white
     var type: CardType
+    private let userDefault = UserDefaults.standard
     
     required init(frame: CGRect = .zero, type: CardType) {
         self.type = type
@@ -103,7 +105,17 @@ class CardComponentView: UIView {
             checkButton.setImage(UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold)), for: .normal)
             checkButton.tintColor = .white
             
-            // salvar no user defaults
+            if var userDefaultsIDs = userDefault.array(forKey: "TodayHabitsDone") as? [String] {
+                if userDefaultsIDs.contains(identifier) {
+                    if let index = userDefaultsIDs.firstIndex(of: identifier) {
+                        userDefaultsIDs.remove(at: index)
+                        userDefault.set(userDefaultsIDs, forKey: "TodayHabitsDone")
+                    } else {
+                        userDefaultsIDs.append(identifier)
+                        userDefault.set(userDefaultsIDs, forKey: "TodayHabitsDone")
+                    }
+                }
+            }
         } else {
             checkButton.backgroundColor = .white
             checkButton.setImage(nil, for: .normal)
@@ -132,7 +144,7 @@ class CardComponentView: UIView {
             checkButton.heightAnchor.constraint(equalToConstant: 40),
             checkButton.widthAnchor.constraint(equalToConstant: 40),
             checkButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
-
+            
         ])
         
         NSLayoutConstraint.activate([
@@ -159,7 +171,7 @@ class CardComponentView: UIView {
         
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
-//            titleLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12)
+            //            titleLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12)
         ])
         
         addSubview(progressBar)

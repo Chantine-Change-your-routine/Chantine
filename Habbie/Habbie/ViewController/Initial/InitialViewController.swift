@@ -77,8 +77,9 @@ extension InitialViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = InitialView().tableView.dequeueReusableCell(withIdentifier: "InitialTableViewCell") as? InitialTableViewCell else {
             return InitialTableViewCell()
         }
-        
-        cell.setData(viewModel.getCellData(forIndex: indexPath.row))
+        let data = viewModel.getCellData(forIndex: indexPath.row)
+        cell.setData(data)
+        cell.identifier = data.identifier
         return cell
     }
 
