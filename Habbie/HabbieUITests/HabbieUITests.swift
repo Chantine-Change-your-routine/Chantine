@@ -1,13 +1,13 @@
 //
-//  ChantineUITests.swift
-//  ChantineUITests
+//  HabbieUITests.swift
+//  HabbieUITests
 //
-//  Created by Pedro Sousa on 20/11/20.
+//  Created by Brena Amorim on 04/12/20.
 //
 
 import XCTest
 
-class ChantineUITests: XCTestCase {
+class HabbieUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
