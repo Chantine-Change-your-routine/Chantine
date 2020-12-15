@@ -17,5 +17,5 @@ protocol HabitViewModelProtocol {
     init(habitData: HabitBindingData)
 
     func getCardData() -> HabitBindingData
-//    func getCalendarData() -> CalendarData
+    func getHabitTitle() -> String
 }

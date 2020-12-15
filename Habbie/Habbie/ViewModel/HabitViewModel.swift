@@ -12,6 +12,13 @@ class HabitViewModel: HabitViewModelProtocol {
 
     required init(habitData: HabitBindingData) {
         self.habitData = habitData
+         let rows = calendarRepository.readRows(habitID: habitData.identifier)
+         let highlitedDays: [ClosedRange<Int>] = rows.map { Int($0.start)...Int($0.end) }
+         self.calendarData = CalendarBindingData(month: 11, year: 2020, highlitedDaysRange: highlitedDays)
+    }
+
+    func getHabitTitle() -> String {
+        return habitData.title
     }
 
     func getCardData() -> HabitBindingData {
@@ -26,9 +33,5 @@ class HabitViewModel: HabitViewModelProtocol {
         return highlitedDays
         //        self.calendarData = CalendarBindingData(month: 11, year: 2020,
         //                                                highlitedDaysRange: [1...5, 7...8, 12...20, 22...28])
-    }
-
-    func getHabitTitle() -> String {
-        return self.habitData.title
     }
 }
