@@ -2,6 +2,8 @@
 
 > iOS application that helps you start or maintain a habit.
 
+![Make It Great - Chantine 002](https://user-images.githubusercontent.com/32069720/102219286-07c52100-3ebe-11eb-89e5-c15c6eedc09d.jpeg)
+
 ## Authors
 
  👤 **Beatriz Carlos**
