@@ -12,9 +12,13 @@ enum CardType {
 }
 
 class CardComponentView: UIView {
+    var identifier: String = ""
     var colorCheck: UIColor = .white
+    var type: CardType
+    private let userDefault = UserDefaults.standard
     
     required init(frame: CGRect = .zero, type: CardType) {
+        self.type = type
         super.init(frame: frame)
         setupUI()
         
@@ -31,7 +35,7 @@ class CardComponentView: UIView {
     }
     
     func setData(_ data: HabitBindingData) {
-        titleLabel.text = data.title
+        titleLabel.text = (self.type == .descriptive) ? data.description : data.title
         avatarImageView.image = UIImage(named: getImage(imageId: data.imageId))
         avatarImageView.backgroundColor = data.bgcolorDark
         backgroundColor = data.bgcolor
@@ -44,6 +48,10 @@ class CardComponentView: UIView {
     lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Beber água"
+        label.numberOfLines = 1
+        label.lineBreakMode = .byTruncatingTail
+        label.adjustsFontSizeToFitWidth = true
+        label.minimumScaleFactor = 0.7
         label.textColor = .blackColor
         label.font = .roundedFont(ofSize: 17, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -75,7 +83,7 @@ class CardComponentView: UIView {
     
     lazy var dateLabel: UILabel = {
         let label = UILabel()
-        label.text = "Falta 2 dias - 08:00"
+        label.text = "Seu progresso"
         label.textColor = .blackColor
         label.font = .roundedFont(ofSize: 12, weight: .medium)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -96,10 +104,24 @@ class CardComponentView: UIView {
             checkButton.backgroundColor = colorCheck
             checkButton.setImage(UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold)), for: .normal)
             checkButton.tintColor = .white
+            
+            if var userDefaultsIDs = userDefault.array(forKey: "TodayHabitsDone") as? [String] {
+                if userDefaultsIDs.contains(identifier) {
+                    if let index = userDefaultsIDs.firstIndex(of: identifier) {
+                        userDefaultsIDs.remove(at: index)
+                        userDefault.set(userDefaultsIDs, forKey: "TodayHabitsDone")
+                    } else {
+                        userDefaultsIDs.append(identifier)
+                        userDefault.set(userDefaultsIDs, forKey: "TodayHabitsDone")
+                    }
+                }
+            }
         } else {
             checkButton.backgroundColor = .white
             checkButton.setImage(nil, for: .normal)
             checkButton.tintColor = .none
+            
+            // remove user defaults
         }
     }
     
@@ -121,11 +143,13 @@ class CardComponentView: UIView {
             checkButton.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 8),
             checkButton.heightAnchor.constraint(equalToConstant: 40),
             checkButton.widthAnchor.constraint(equalToConstant: 40),
-            checkButton.leadingAnchor.constraint(equalTo: progressBar.trailingAnchor, constant: 25)
+            checkButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+            
         ])
         
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 5),
+            titleLabel.trailingAnchor.constraint(equalTo: self.checkButton.leadingAnchor, constant: -16),
             progressBar.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16)
         ])
     }
@@ -147,14 +171,15 @@ class CardComponentView: UIView {
         
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12)
+            //            titleLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12)
         ])
         
         addSubview(progressBar)
         NSLayoutConstraint.activate([
-            progressBar.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12),
+            progressBar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            progressBar.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             progressBar.heightAnchor.constraint(equalToConstant: 10),
-            progressBar.widthAnchor.constraint(equalToConstant: 200)
+            progressBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
         ])
     }
     
@@ -172,7 +197,6 @@ class CardComponentView: UIView {
         default:
             imageName = ""
         }
-        
         return imageName
     }
 }

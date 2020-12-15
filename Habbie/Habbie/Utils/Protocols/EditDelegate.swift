@@ -10,7 +10,6 @@ import Foundation
 enum Pickers {
     case startDate
     case reminders
-    case frequencies
 }
 
 protocol EditDelegate: class {

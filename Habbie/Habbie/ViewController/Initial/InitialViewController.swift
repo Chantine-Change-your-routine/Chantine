@@ -29,6 +29,12 @@ class InitialViewController: UIViewController {
         modalIndicatorGesture()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.viewModel.realoadDataSource()
+        self.initialView.tableView.reloadData()
+    }
+    
     func modalIndicatorGesture() {
         let modalIndicatorGesture = UISwipeGestureRecognizer(target: self, action: #selector(gestureIndicatorModal))
         modalIndicatorGesture.direction = .up
@@ -50,8 +56,6 @@ class InitialViewController: UIViewController {
     @objc func buttonTapped(_ : UIButton) {
         let controller = NewHabitController()
         self.navigationController?.pushViewController(controller, animated: true)
-//        self.present(controller, animated: true, completion: nil)
-
     }
     
     func configureTableView() {
@@ -73,8 +77,9 @@ extension InitialViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = InitialView().tableView.dequeueReusableCell(withIdentifier: "InitialTableViewCell") as? InitialTableViewCell else {
             return InitialTableViewCell()
         }
-        
-        cell.setData(viewModel.getCellData(forIndex: indexPath.row))
+        let data = viewModel.getCellData(forIndex: indexPath.row)
+        cell.setData(data)
+        cell.identifier = data.identifier
         return cell
     }
 

@@ -1,8 +1,8 @@
 //
-//  CalendarData.swift
-//  Chantine
+//  CalendarBinding.swift
+//  Habbie
 //
-//  Created by Pedro Sousa on 25/11/20.
+//  Created by Beatriz Carlos on 09/12/20.
 //
 
 import Foundation

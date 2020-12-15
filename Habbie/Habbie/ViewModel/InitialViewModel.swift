@@ -9,13 +9,15 @@ import UIKit
 
 class InitialViewModel: InitialViewModelProtocol {
     var dataSource: [HabitBindingData]
-    //    var habitRepository: HabitRepository
+    var habitRepository: HabitRepository
+    private let userDefault = UserDefaults.standard
     
     static let initialViewModel = InitialViewModel()
     
     private init () {
         self.dataSource = []
-        setMocking()
+        self.habitRepository = HabitRepository(managedObjectContext: CoreDataStack.shared.mainContext, coreDataStack: CoreDataStack.shared)
+        biding()
     }
     
     func numberOfRows() -> Int {
@@ -25,16 +27,54 @@ class InitialViewModel: InitialViewModelProtocol {
     func getCellData(forIndex index: Int) -> HabitBindingData {
         return dataSource[index]
     }
-
-    //    func biding() -> HabitBindingData {
-    //        return nil
-    //    }
     
-    func setMocking() {
-        self.dataSource.append(HabitBindingData(identifier: "Beber água", title: "Beber água", description: "Vamos ficar hidratados, meus rins agradecem.", imageId: 1, bgcolor: .blueLightColor, bgcolorDark: .blueDarkColor, progress: 45))
-        self.dataSource.append(HabitBindingData(identifier: "Comer salada", title: "Comer salada", description: "Vamos comer salada para ficar saudável.", imageId: 3, bgcolor: .yellowLightColor, bgcolorDark: .yellowDarkColor, progress: 20))
-        self.dataSource.append(HabitBindingData(identifier: "Fazer exercicios fisicos", title: "Fazer exercicios fisicos", description: "Vamos ser fitness.", imageId: 2, bgcolor: .greenLightColor, bgcolorDark: .greenDarkColor, progress: 2))
-        self.dataSource.append(HabitBindingData(identifier: "Ler um livro.", title: "Ler um livro", description: "Ao ler 10 paginas por dia, voce pode ler até 3 livros no mês.", imageId: 4, bgcolor: .lavenderLightColor, bgcolorDark: .lavenderDarkColor, progress: 45))
-
+    func realoadDataSource() {
+        biding()
+    }
+    
+    func biding() {
+        let todayHabitsDone: [String] = userDefault.array(forKey: "TodayHabitsDone") as? [String] ?? []
+        let habitCoreData = self.habitRepository.getTodayHabits()
+        var ids: [String] = []
+        
+        dataSource.removeAll()
+        for habit in habitCoreData {
+            let arrayProgress =  habit.currentProgress!
+            let grouped = (arrayProgress.filter { $0 == 1}.count)
+            var lightColor: UIColor = .white
+            var darkColor: UIColor = .blackColor
+            
+            switch Int(habit.imageID) {
+            case 1:
+                lightColor = .blueLightColor
+                darkColor = .blueDarkColor
+            case 2:
+                lightColor = .greenLightColor
+                darkColor = .greenDarkColor
+            case 3:
+                lightColor = .yellowLightColor
+                darkColor = .yellowDarkColor
+            case 4:
+                lightColor = .lavenderLightColor
+                darkColor = .lavenderDarkColor
+            default:
+                lightColor = .white
+                darkColor = .blackColor
+            }
+            
+            if let identifier = habit.identifier {
+                ids.append(identifier)
+                if !todayHabitsDone.contains(identifier) {
+                    dataSource.append(HabitBindingData(identifier: habit.identifier!, title: habit.title!, description: habit.goal!, imageId: Int(habit.imageID), bgcolor: lightColor, bgcolorDark: darkColor, progress: Float(grouped) / Float(arrayProgress.count)))
+                }
+            }
+        }
+        
+        if let userDefaultsIDs = userDefault.array(forKey: "TodayHabits") as? [String] {
+            if ids != userDefaultsIDs {
+                userDefault.set(ids, forKey: "TodayHabits")
+                userDefault.set([], forKey: "TodayHabitsDone")
+            }
+        }
     }
 }

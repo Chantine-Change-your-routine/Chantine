@@ -1,10 +1,11 @@
 //
-//  HabitCardData.swift
-//  Chantine
+//  HabitBindingData.swift
+//  Habbie
 //
-//  Created by Pedro Sousa on 23/11/20.
+//  Created by Beatriz Carlos on 09/12/20.
 //
 
+import Foundation
 import UIKit
 
 struct HabitBindingData {
