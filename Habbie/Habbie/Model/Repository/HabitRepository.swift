@@ -13,10 +13,16 @@ class HabitRepository: RepositoryProtocol {
     typealias T = Habit
     typealias A = HabitBiding
 
-    let habit = Habit()
-    let coreDataStack = CoreDataStack.shared
+    let managedObjectContext: NSManagedObjectContext
+    let coreDataStack: CoreDataStack
+
+    public init(managedObjectContext: NSManagedObjectContext, coreDataStack: CoreDataStack) {
+        self.managedObjectContext = managedObjectContext
+        self.coreDataStack = coreDataStack
+    }
 
     func create(data: HabitBiding) -> Habit? {
+        guard let habit = NSEntityDescription.insertNewObject(forEntityName: "Habit", into: coreDataStack.mainContext) as? Habit else { return nil }
 
         habit.identifier = data.identifier
         habit.title = data.title
@@ -25,7 +31,7 @@ class HabitRepository: RepositoryProtocol {
         habit.reminders = data.reminders
         habit.imageID = data.imageID
         habit.repetition = data.repetition
-        habit.calendarHistoryID = data.calendarHistoryID
+        habit.currentProgress = Array(repeating: 0, count: data.repetition.count)
 
         let calendar = Calendar.current
         let month = Int16(calendar.component(.month, from: Date()))
@@ -33,8 +39,8 @@ class HabitRepository: RepositoryProtocol {
 
         do {
             try coreDataStack.mainContext.save()
-            let calendarRepository = CalendarRepository()
-            calendarRepository.create(data: CalendarBinding(habitID: habit.identifier!, month: month, year: year))
+            let calendarRepository = CalendarRepository(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
+            calendarRepository.create(data: CalendarBinding(habitID: habit.identifier!, month: month, year: year, frequency: data.repetition))
             return habit
         } catch let error as NSError {
             print("Error: \(error), description: \(error.userInfo)")
@@ -50,7 +56,7 @@ class HabitRepository: RepositoryProtocol {
 
         do {
             let result = try
-                coreDataStack.mainContext.fetch(habitFetchRequest)
+                managedObjectContext.fetch(habitFetchRequest)
             if result.count > 0 {
                 if let habit = result.first { return habit } else {
                     return nil
@@ -71,7 +77,7 @@ class HabitRepository: RepositoryProtocol {
         let habitFetchRequest: NSFetchRequest<Habit> = Habit.fetchRequest()
 
         do {
-            let results = try coreDataStack.mainContext.fetch(habitFetchRequest)
+            let results = try managedObjectContext.fetch(habitFetchRequest)
             if results.count > 0 { //found a habit
                 return results
             } else { //habit not found
@@ -81,7 +87,6 @@ class HabitRepository: RepositoryProtocol {
             print("Error: \(error) description: \(error.userInfo)")
             return []
         }
-
     }
 
     func update(model: HabitBiding) -> Bool {
@@ -152,5 +157,34 @@ class HabitRepository: RepositoryProtocol {
         return readAll().filter { $0.repetition!.contains(weekday) }
 
     }
+    
+    func updateCurrentProgress(identifier: String) -> Bool {
 
+        if let readHabit = read(identifier: identifier) {
+            let calendar = Calendar.current
+            let weekday = calendar.component(.weekday, from: Date())
+
+            guard var progress = readHabit.currentProgress else { return false}
+            guard let index = readHabit.repetition?.firstIndex(of: weekday) else { return false }
+
+            if progress[index] == 1 {
+                progress[index] = 0
+            } else {
+                progress[index] = 1
+            }
+
+            readHabit.currentProgress = progress
+
+            do {
+                try coreDataStack.mainContext.save()
+                return true
+            } catch let error as NSError {
+                print("Error: \(error), description: \(error.userInfo)")
+                return false
+            }
+
+        }
+
+        return false
+    }
 }

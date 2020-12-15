@@ -8,10 +8,7 @@
 import Foundation
 
 class HabitViewModel: HabitViewModelProtocol {
-    let calendarRepository = CalendarRepository()
-
     var habitData: HabitBindingData
-    var calendarData: CalendarBindingData
 
     required init(habitData: HabitBindingData) {
         self.habitData = habitData
@@ -29,6 +26,12 @@ class HabitViewModel: HabitViewModelProtocol {
     }
 
     func getHighlightDaysRange() -> [ClosedRange<Int>] {
-        return self.calendarData.highlitedDaysRange
+        let coreDataStack = CoreDataStack.shared
+        let repository =  CalendarRepository(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
+        let rows = repository.readRows(habitID: habitData.identifier)
+        let highlitedDays: [ClosedRange<Int>] = rows.map { Int($0.start)...Int($0.end) }
+        return highlitedDays
+        //        self.calendarData = CalendarBindingData(month: 11, year: 2020,
+        //                                                highlitedDaysRange: [1...5, 7...8, 12...20, 22...28])
     }
 }

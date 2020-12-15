@@ -10,7 +10,7 @@ import UIKit
 struct HabitBindingData {
     let identifier: String
     let title: String
-    let description: String
+    let description: String?
     let imageId: Int
     let bgcolor: UIColor
     let bgcolorDark: UIColor
