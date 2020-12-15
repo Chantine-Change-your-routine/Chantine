@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "Artboard Copy 3.png",
+      "filename" : "reading-square.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Artboard Copy 3@2x.png",
+      "filename" : "reading-square@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Artboard Copy 3@3x.png",
+      "filename" : "reading-square@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

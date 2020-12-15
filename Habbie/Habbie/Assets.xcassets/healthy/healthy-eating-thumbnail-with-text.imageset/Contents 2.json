@@ -1,17 +1,15 @@
 {
   "images" : [
     {
-      "filename" : "Imagem 1.png",
+      "filename" : "healthy-eating-thumbnail-with-text.jpg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "Imagem 1@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "Imagem 1@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

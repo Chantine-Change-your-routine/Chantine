@@ -40,6 +40,7 @@ class InitialView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(named: "mascot")
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -66,7 +67,8 @@ class InitialView: UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
-        view.layer.cornerRadius = 30
+        view.layer.cornerRadius = 20
+        view.layer.masksToBounds = true
 
         return view
     }()
@@ -99,19 +101,20 @@ class InitialView: UIView {
         
         self.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 50)
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16)
         ])
         
         self.addSubview(mascotImageView)
         NSLayoutConstraint.activate([
-            mascotImageView.topAnchor.constraint(equalTo: self.titleLabel.topAnchor, constant: 18),
-            mascotImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor)
+            mascotImageView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 18),
+            mascotImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            mascotImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.2)
         ])
         
         self.addSubview(viewTableView)
         NSLayoutConstraint.activate([
-            viewTableView.topAnchor.constraint(equalTo: self.mascotImageView.bottomAnchor, constant: 45),
+            viewTableView.topAnchor.constraint(equalTo: self.mascotImageView.bottomAnchor, constant: 20),
             viewTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             viewTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             viewTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor)

@@ -10,9 +10,9 @@ import UIKit
 
 protocol InitialViewModelProtocol {
     var dataSource: [HabitBindingData] { get set }
-//    var habitRepository: HabitRepository { get }
+    var habitRepository: HabitRepository { get }
     
     func numberOfRows() -> Int
     func getCellData(forIndex index: Int) -> HabitBindingData
-//    func biding() -> HabitBindingData
+    func biding()
 }

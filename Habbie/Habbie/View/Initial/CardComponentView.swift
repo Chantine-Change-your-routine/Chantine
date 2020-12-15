@@ -54,7 +54,7 @@ class CardComponentView: UIView {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .blueDarkColor
-        imageView.layer.cornerRadius = 30
+        imageView.layer.cornerRadius = 15
         imageView.layer.masksToBounds = false
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
@@ -121,7 +121,8 @@ class CardComponentView: UIView {
             checkButton.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 8),
             checkButton.heightAnchor.constraint(equalToConstant: 40),
             checkButton.widthAnchor.constraint(equalToConstant: 40),
-            checkButton.leadingAnchor.constraint(equalTo: progressBar.trailingAnchor, constant: 25)
+            checkButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+
         ])
         
         NSLayoutConstraint.activate([
@@ -141,8 +142,8 @@ class CardComponentView: UIView {
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12.5),
             avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 60),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 60)
+            avatarImageView.heightAnchor.constraint(equalToConstant: 50),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 40)
         ])
         
         addSubview(titleLabel)
@@ -152,9 +153,10 @@ class CardComponentView: UIView {
         
         addSubview(progressBar)
         NSLayoutConstraint.activate([
-            progressBar.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12),
+            progressBar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+//            progressBar.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12),
             progressBar.heightAnchor.constraint(equalToConstant: 10),
-            progressBar.widthAnchor.constraint(equalToConstant: 200)
+            progressBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
         ])
     }
     
@@ -172,7 +174,6 @@ class CardComponentView: UIView {
         default:
             imageName = ""
         }
-        
         return imageName
     }
 }

@@ -46,7 +46,7 @@
 		FE07FD79256C5C5500E1A537 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FE07FD78256C5C5500E1A537 /* MainViewController.swift */; };
 		FEBB8298256D367500C0BB0C /* CalendarDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB8297256D367500C0BB0C /* CalendarDayView.swift */; };
 		FEBB82D1256EC32300C0BB0C /* CalendarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEBB82D0256EC32300C0BB0C /* CalendarData.swift */; };
-		FEC710FF2571651B0033E743 /* Chantine.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEC710FD2571651B0033E743 /* Chantine.xcdatamodeld */; };
+		FEC710FF2571651B0033E743 /* Habbie.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FEC710FD2571651B0033E743 /* Habbie.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +68,7 @@
 
 /* Begin PBXFileReference section */
 		770B8F4C256D51F70011F985 /* InitialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialTableViewCell.swift; sourceTree = "<group>"; };
+		77273029257930630053AD2F /* Habbie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Habbie.entitlements; sourceTree = "<group>"; };
 		772A6A1E256D7F46001E5888 /* CardComponentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardComponentView.swift; sourceTree = "<group>"; };
 		773147E4257042D30092CF60 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		773147E5257042D30092CF60 /* CalendarBiding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarBiding.swift; sourceTree = "<group>"; };
@@ -232,6 +233,7 @@
 		FE07FC9D2567FC8700E1A537 /* Habbie */ = {
 			isa = PBXGroup;
 			children = (
+				77273029257930630053AD2F /* Habbie.entitlements */,
 				77BAFDC9256D3AC000F1F83A /* ViewController */,
 				FE07FCDB256BCD7400E1A537 /* Model */,
 				FE07FCE2256BCD7B00E1A537 /* View */,
@@ -247,7 +249,7 @@
 		FE07FCDB256BCD7400E1A537 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				FEC710FD2571651B0033E743 /* Chantine.xcdatamodeld */,
+				FEC710FD2571651B0033E743 /* Habbie.xcdatamodeld */,
 				FE07FD20256BE8DE00E1A537 /* Structs */,
 				773147E3257042D30092CF60 /* Repository */,
 			);
@@ -539,7 +541,7 @@
 				776141ED256ED78600E831E7 /* InitialViewModelProtocol.swift in Sources */,
 				77BAFDCC256D3AF200F1F83A /* InitialViewController.swift in Sources */,
 				776141E8256ED74900E831E7 /* InitialViewModel.swift in Sources */,
-				FEC710FF2571651B0033E743 /* Chantine.xcdatamodeld in Sources */,
+				FEC710FF2571651B0033E743 /* Habbie.xcdatamodeld in Sources */,
 				770B8F4D256D51F70011F985 /* InitialTableViewCell.swift in Sources */,
 				773147FD25704CD90092CF60 /* NewHabitController.swift in Sources */,
 				773147ED257042D30092CF60 /* CalendarHistoryRepository.swift in Sources */,
@@ -793,15 +795,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Habbie/Habbie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QQK85Y8S7P;
+				DEVELOPMENT_TEAM = VH525588L5;
 				INFOPLIST_FILE = Habbie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlosChantine;
+				MARKETING_VERSION = 0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlos.Habbie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -813,15 +817,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Habbie/Habbie.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QQK85Y8S7P;
+				DEVELOPMENT_TEAM = VH525588L5;
 				INFOPLIST_FILE = Habbie/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlosChantine;
+				MARKETING_VERSION = 0.2;
+				PRODUCT_BUNDLE_IDENTIFIER = com.beatrizcarlos.Habbie;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -870,13 +876,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		FEC710FD2571651B0033E743 /* Chantine.xcdatamodeld */ = {
+		FEC710FD2571651B0033E743 /* Habbie.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				FEC710FE2571651B0033E743 /* Chantine.xcdatamodel */,
 			);
 			currentVersion = FEC710FE2571651B0033E743 /* Chantine.xcdatamodel */;
-			path = Chantine.xcdatamodeld;
+			path = Habbie.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

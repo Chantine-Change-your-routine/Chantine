@@ -23,7 +23,6 @@ class HabitRepository: RepositoryProtocol {
 
     func create(data: HabitBiding) -> Habit? {
         guard let habit = NSEntityDescription.insertNewObject(forEntityName: "Habit", into: coreDataStack.mainContext) as? Habit else { return nil }
-//        let habit = Habit(context: CoreDataStack.shared.mainContext)
 
         habit.identifier = data.identifier
         habit.title = data.title
@@ -88,7 +87,6 @@ class HabitRepository: RepositoryProtocol {
             print("Error: \(error) description: \(error.userInfo)")
             return []
         }
-
     }
 
     func update(model: HabitBiding) -> Bool {
@@ -188,7 +186,5 @@ class HabitRepository: RepositoryProtocol {
         }
 
         return false
-
     }
-    
 }
