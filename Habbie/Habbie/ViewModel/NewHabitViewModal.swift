@@ -11,7 +11,7 @@ import Foundation
 class NewHabitViewModel: NewHabitViewModelProtocol {
     private let habitRepository = HabitRepository(managedObjectContext: CoreDataStack.shared.mainContext, coreDataStack: CoreDataStack.shared)
 
-    @discardableResult
+//    @discardableResult
     func saveHabit(habit: HabitBiding) -> Bool {
         if let _ = self.habitRepository.create(data: habit) {
             return true

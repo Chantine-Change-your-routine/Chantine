@@ -7,7 +7,7 @@
 
 import UIKit
 
-//swiftlint:disabel unused_optional_binding
+//swiftlint:disable unused_optional_binding
 class NewHabitController: UIViewController {
     let habitViewModel: NewHabitViewModel = NewHabitViewModel()
     
@@ -118,9 +118,9 @@ class NewHabitController: UIViewController {
         if let identifier = editedHabit?.identifier {
             return HabitBiding(identifier: identifier, title: title, goal: goal, startDate: startDate, reminders: startDate, imageID: Int16(random), repetition: repetitionChecks.sorted())
 
+        } else {
+            return HabitBiding(identifier: UUID().uuidString, title: title, goal: goal, startDate: startDate, reminders: startDate, imageID: Int16(random), repetition: repetitionChecks.sorted())
         }
-        
-        return nil
     }
     
     func setDismissKeyboard() {
