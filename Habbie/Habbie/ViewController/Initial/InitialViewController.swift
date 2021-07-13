@@ -46,9 +46,10 @@ class InitialViewController: UIViewController {
     }
     
     @objc func gestureIndicatorModal(_ gesture: UISwipeGestureRecognizer) {
-        initialView.viewTableView.topAnchor.constraint(equalTo: view.topAnchor)
-
 //        initialView.viewTableView.heightAnchor.constraint(equalToConstant: )
+        let controller = InitialModalViewController()
+        self.present(controller, animated: true)
+        
         print("button pressed")
     }
     
