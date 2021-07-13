@@ -11,10 +11,14 @@ class InitialViewController: UIViewController {
     let colorArray = [UIColor.blueLightColor, UIColor.greenLightColor, UIColor.yellowLightColor, UIColor.lavenderLightColor]
     let viewModel = InitialViewModel.initialViewModel
     
+    let sections = ["Atividades de hoje", "Atividades concluídas"]
+    
     var initialView: InitialView = {
         let view = InitialView()
         return view
     }()
+    
+    var refreshControl: UIRefreshControl?
     
     override func loadView() {
         view = initialView
@@ -27,15 +31,15 @@ class InitialViewController: UIViewController {
         navigationController?.navigationBar.barTintColor = .primaryColor
         setupUI()
         modalIndicatorGesture()
+        addRefreshControl()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.viewModel.realoadDataSource()
         self.initialView.tableView.reloadData()
-        modalIndicatorGesture()
     }
-    
+
     func modalIndicatorGesture() {
         let modalIndicatorGesture = UISwipeGestureRecognizer(target: self, action: #selector(gestureIndicatorModal))
         modalIndicatorGesture.direction = .up
@@ -67,22 +71,53 @@ class InitialViewController: UIViewController {
         self.initialView.tableView.delegate = self
         self.initialView.tableView.dataSource = self
     }
+    
+    func addRefreshControl() {
+        refreshControl = UIRefreshControl()
+        guard let refreshControl = refreshControl else {return}
+        refreshControl.tintColor = .actionColor
+        refreshControl.addTarget(self, action: #selector(refreshTable), for: .valueChanged)
+        initialView.tableView.addSubview(refreshControl)
+    }
+    
+    @objc func refreshTable() {
+        self.viewModel.realoadDataSource()
+        self.initialView.tableView.reloadData()
+        refreshControl?.endRefreshing()
+    }
 }
 
 extension InitialViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.numberOfRows()
-    }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return sections.count
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = HeaderView()
+        header.backgroundColor = .white
+
+        if section == 0 {
+            header.titleLabelHeader.text = sections[0]
+        } else {
+            header.titleLabelHeader.text = sections[1]
+        }
+        
+        return header
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 0 {
+            return viewModel.numberOfRows()
+        }
+        return viewModel.numberOfHabitsDone()
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = InitialView().tableView.dequeueReusableCell(withIdentifier: "InitialTableViewCell") as? InitialTableViewCell else {
             return InitialTableViewCell()
         }
-        let data = viewModel.getCellData(forIndex: indexPath.row)
+        let data = indexPath.section == 0 ? viewModel.getCellData(forIndex: indexPath.row) : viewModel.getHabitsDone(forIndex: indexPath.row)
         cell.setData(data)
         cell.identifier = data.identifier
         return cell
@@ -90,7 +125,7 @@ extension InitialViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let controller = HabitViewController()
-        let habitViewModel = HabitViewModel(habitData: self.viewModel.getCellData(forIndex: indexPath.row))
+        let habitViewModel = HabitViewModel(habitData: indexPath.section == 0 ? viewModel.getCellData(forIndex: indexPath.row) : viewModel.getHabitsDone(forIndex: indexPath.row))
         controller.viewModel = habitViewModel
         self.navigationController?.pushViewController(controller, animated: true)
     }

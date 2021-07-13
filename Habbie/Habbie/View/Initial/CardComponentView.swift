@@ -42,6 +42,18 @@ class CardComponentView: UIView {
         progressBar.setProgress(data.progress/100, animated: false)
         progressBar.tintColor = data.bgcolorDark
         self.colorCheck = data.bgcolorDark
+
+        if let ids = userDefault.array(forKey: "TodayHabitsDone") as? [String] {
+            if ids.contains(data.identifier) {
+                checkButton.backgroundColor = colorCheck
+                checkButton.setImage(UIImage(systemName: "checkmark", withConfiguration: UIImage.SymbolConfiguration(weight: .bold)), for: .normal)
+                checkButton.tintColor = .white
+            } else {
+                checkButton.backgroundColor = .white
+                checkButton.setImage(nil, for: .normal)
+                checkButton.tintColor = .none
+            }
+        }
     }
     
     // UI components
@@ -128,7 +140,7 @@ class CardComponentView: UIView {
                     userDefault.set(userDefaultsIDs, forKey: "TodayHabitsDone")
                 }
                 
-                // remove user defaults
+                // remove from user defaults
             }
         }
     }

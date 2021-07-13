@@ -78,6 +78,7 @@ class InitialView: UIView {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .clear
         tableView.rowHeight = 100
+        tableView.sectionHeaderHeight = 61
         tableView.separatorStyle = .none
         tableView.allowsSelection = true
         tableView.showsVerticalScrollIndicator = false
@@ -120,26 +121,26 @@ class InitialView: UIView {
             viewTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
         ])
         
-        self.viewTableView.addSubview(todayLabel)
-        NSLayoutConstraint.activate([
-            todayLabel.topAnchor.constraint(equalTo: self.viewTableView.topAnchor, constant: 43),
-            todayLabel.leadingAnchor.constraint(equalTo: self.viewTableView.leadingAnchor, constant: 20)
-        ])
+//        self.viewTableView.addSubview(todayLabel)
+//        NSLayoutConstraint.activate([
+//            todayLabel.topAnchor.constraint(equalTo: self.viewTableView.topAnchor, constant: 43),
+//            todayLabel.leadingAnchor.constraint(equalTo: self.viewTableView.leadingAnchor, constant: 20)
+//        ])
         
+        self.viewTableView.addSubview(tableView)
+        NSLayoutConstraint.activate([
+            tableView.topAnchor.constraint(equalTo: self.modalIndicator.bottomAnchor),
+            tableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.viewTableView.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.viewTableView.trailingAnchor)
+        ])
+
         self.viewTableView.addSubview(addHabitButon)
         NSLayoutConstraint.activate([
             addHabitButon.topAnchor.constraint(equalTo: self.viewTableView.topAnchor, constant: 30),
             addHabitButon.trailingAnchor.constraint(equalTo: self.viewTableView.trailingAnchor, constant: -20),
             addHabitButon.heightAnchor.constraint(equalToConstant: 60),
             addHabitButon.widthAnchor.constraint(equalToConstant: 60)
-        ])
-        
-        self.viewTableView.addSubview(tableView)
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: self.todayLabel.bottomAnchor, constant: 20),
-            tableView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor),
-            tableView.leadingAnchor.constraint(equalTo: self.viewTableView.leadingAnchor),
-            tableView.trailingAnchor.constraint(equalTo: self.viewTableView.trailingAnchor)
         ])
     }
 }
