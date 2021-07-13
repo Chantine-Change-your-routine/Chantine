@@ -8,15 +8,22 @@
 import UIKit
 
 class InitialTableViewCell: UITableViewCell {
-    var identifier: String = ""
     var cellView: CardComponentView = {
         let view = CardComponentView(type: .checkable)
         return view
     }()
     
+    var identifier: String {
+        didSet {
+            cellView.identifier = identifier
+        }
+    }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        self.identifier = ""
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.selectionStyle = .none
+        cellView.identifier = self.identifier
         setup()
     }
     

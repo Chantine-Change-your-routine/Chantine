@@ -12,7 +12,7 @@ class NewHabitController: UIViewController {
     let habitViewModel: NewHabitViewModel = NewHabitViewModel()
     
     private let titles = ["Data de início", "Lembrete", "Frequência"]
-    private var exemples = ["2/9/20", "8:00 PM", "Seg, Ter, Qua ..."]
+    private var exemples = ["02/9/20", "8:00", "Seg, Ter, Qua ..."]
     private let repeatText = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sab"]
     private var repetitionTextField: UITextField?
     private var startDateTextField: UITextField?
@@ -108,9 +108,11 @@ class NewHabitController: UIViewController {
         guard let startDateTextField = startDateTextField else { return nil }
         guard let reminderTextField = remainderTextField else { return nil }
         
-        let startDateText = "\(startDateTextField.text!), \(reminderTextField.text!)"
+        let startDateText = "\(startDateTextField.text!) \(reminderTextField.text!)"
         
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_BR_POSIX")
+        dateFormatter.dateFormat = "dd/MM/yy HH:mm a"
         dateFormatter.dateStyle = .short
         dateFormatter.timeStyle = .short
         
@@ -257,7 +259,9 @@ extension NewHabitController {
     
     @objc func handleDatePicker(_ datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        
+        dateFormatter.locale = Locale(identifier: "en_BR")
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd/MM/yy, HH:mm a")
+
         if datePicker.datePickerMode == .date {
             guard let cell = contentView.editionHabitTableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EditionTableViewCell else {  return  }
             dateFormatter.dateStyle = .short
@@ -265,6 +269,7 @@ extension NewHabitController {
             cell.textField.text = dateFormatter.string(from: datePicker.date)
         } else {
             guard let cell = contentView.editionHabitTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as? EditionTableViewCell else {  return  }
+            
             dateFormatter.dateStyle = .none
             dateFormatter.timeStyle = .short
             cell.textField.text = dateFormatter.string(from: datePicker.date)

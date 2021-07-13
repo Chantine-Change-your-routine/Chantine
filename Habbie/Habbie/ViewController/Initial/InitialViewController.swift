@@ -33,6 +33,7 @@ class InitialViewController: UIViewController {
         super.viewDidAppear(animated)
         self.viewModel.realoadDataSource()
         self.initialView.tableView.reloadData()
+        modalIndicatorGesture()
     }
     
     func modalIndicatorGesture() {
@@ -45,7 +46,10 @@ class InitialViewController: UIViewController {
     }
     
     @objc func gestureIndicatorModal(_ gesture: UISwipeGestureRecognizer) {
+        initialView.viewTableView.topAnchor.constraint(equalTo: view.topAnchor)
+
 //        initialView.viewTableView.heightAnchor.constraint(equalToConstant: )
+        print("button pressed")
     }
     
     func setupUI() {

@@ -106,97 +106,105 @@ class CardComponentView: UIView {
             checkButton.tintColor = .white
             
             if var userDefaultsIDs = userDefault.array(forKey: "TodayHabitsDone") as? [String] {
-                if userDefaultsIDs.contains(identifier) {
-                    if let index = userDefaultsIDs.firstIndex(of: identifier) {
-                        userDefaultsIDs.remove(at: index)
-                        userDefault.set(userDefaultsIDs, forKey: "TodayHabitsDone")
-                    } else {
-                        userDefaultsIDs.append(identifier)
-                        userDefault.set(userDefaultsIDs, forKey: "TodayHabitsDone")
-                    }
+                print(userDefaultsIDs)
+                if !userDefaultsIDs.contains(identifier) {
+                    userDefaultsIDs.append(identifier)
+                    userDefault.set(userDefaultsIDs, forKey: "TodayHabitsDone")
                 }
+            } else {
+                var userDefaultsIDs = [String]()
+                userDefaultsIDs.append(identifier)
+                userDefault.set(userDefaultsIDs, forKey: "TodayHabitsDone")
+                //                print(userDefault.array(forKey: "TodayHabitsDone"))
             }
         } else {
             checkButton.backgroundColor = .white
             checkButton.setImage(nil, for: .normal)
             checkButton.tintColor = .none
             
-            // remove user defaults
+            if var userDefaultsIDs = userDefault.array(forKey: "TodayHabitsDone") as? [String] {
+                if let index = userDefaultsIDs.firstIndex(of: identifier) {
+                    userDefaultsIDs.remove(at: index)
+                    userDefault.set(userDefaultsIDs, forKey: "TodayHabitsDone")
+                }
+                
+                // remove user defaults
+            }
         }
     }
-    
-    func descriptiveCard() {
-        addSubview(dateLabel)
-        NSLayoutConstraint.activate([
-            dateLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 14),
-            dateLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12),
-            progressBar.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 8),
-            titleLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 5)
-        ])
         
-        titleLabel.font = .roundedFont(ofSize: 15, weight: .medium)
-    }
-    
-    func checkableCard() {
-        addSubview(checkButton)
-        NSLayoutConstraint.activate([
-            checkButton.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 8),
-            checkButton.heightAnchor.constraint(equalToConstant: 40),
-            checkButton.widthAnchor.constraint(equalToConstant: 40),
-            checkButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+        func descriptiveCard() {
+            addSubview(dateLabel)
+            NSLayoutConstraint.activate([
+                dateLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 14),
+                dateLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12),
+                progressBar.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 8),
+                titleLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 5)
+            ])
             
-        ])
-        
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 5),
-            titleLabel.trailingAnchor.constraint(equalTo: self.checkButton.leadingAnchor, constant: -16),
-            progressBar.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16)
-        ])
-    }
-    
-    func setupUI() {
-        backgroundColor = .blueLightColor
-        self.layer.cornerRadius = 10
-        setupContrants()
-    }
-    
-    func setupContrants() {
-        addSubview(avatarImageView)
-        NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12.5),
-            avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 60),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 60)
-        ])
-        
-        addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            //            titleLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12)
-        ])
-        
-        addSubview(progressBar)
-        NSLayoutConstraint.activate([
-            progressBar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            progressBar.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-            progressBar.heightAnchor.constraint(equalToConstant: 10),
-            progressBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
-        ])
-    }
-    
-    public func getImage(imageId image: Int) -> String {
-        var imageName = ""
-        switch image {
-        case 1:
-            imageName = "drinking-water-thumbnail"
-        case 2:
-            imageName = "physical-exercises-thumbnail"
-        case 3:
-            imageName = "healthy-eating-thumbnail"
-        case 4:
-            imageName = "reading-thumbnail"
-        default:
-            imageName = ""
+            titleLabel.font = .roundedFont(ofSize: 15, weight: .medium)
         }
-        return imageName
+        
+        func checkableCard() {
+            addSubview(checkButton)
+            NSLayoutConstraint.activate([
+                checkButton.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: 8),
+                checkButton.heightAnchor.constraint(equalToConstant: 40),
+                checkButton.widthAnchor.constraint(equalToConstant: 40),
+                checkButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20)
+                
+            ])
+            
+            NSLayoutConstraint.activate([
+                titleLabel.topAnchor.constraint(equalTo: avatarImageView.topAnchor, constant: 5),
+                titleLabel.trailingAnchor.constraint(equalTo: self.checkButton.leadingAnchor, constant: -16),
+                progressBar.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16)
+            ])
+        }
+        
+        func setupUI() {
+            backgroundColor = .blueLightColor
+            self.layer.cornerRadius = 10
+            setupContrants()
+        }
+        
+        func setupContrants() {
+            addSubview(avatarImageView)
+            NSLayoutConstraint.activate([
+                avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 12.5),
+                avatarImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+                avatarImageView.heightAnchor.constraint(equalToConstant: 60),
+                avatarImageView.widthAnchor.constraint(equalToConstant: 60)
+            ])
+            
+            addSubview(titleLabel)
+            NSLayoutConstraint.activate([
+                //            titleLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 12)
+            ])
+            
+            addSubview(progressBar)
+            NSLayoutConstraint.activate([
+                progressBar.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                progressBar.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+                progressBar.heightAnchor.constraint(equalToConstant: 10),
+                progressBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5)
+            ])
+        }
+        
+        public func getImage(imageId image: Int) -> String {
+            var imageName = ""
+            switch image {
+            case 1:
+                imageName = "drinking-water-thumbnail"
+            case 2:
+                imageName = "physical-exercises-thumbnail"
+            case 3:
+                imageName = "healthy-eating-thumbnail"
+            case 4:
+                imageName = "reading-thumbnail"
+            default:
+                imageName = ""
+            }
+            return imageName
+        }
     }
-}
