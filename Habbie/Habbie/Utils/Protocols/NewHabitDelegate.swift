@@ -8,6 +8,6 @@
 import Foundation
 import UIKit
 
-protocol NewHabitDelegate: class {
+protocol NewHabitDelegate: AnyObject {
     func setRepetition(repetition: [Int])
 }

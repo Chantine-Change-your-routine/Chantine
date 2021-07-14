@@ -15,6 +15,7 @@ class InitialViewController: UIViewController {
     
     var initialView: InitialView = {
         let view = InitialView()
+
         return view
     }()
     
@@ -30,8 +31,10 @@ class InitialViewController: UIViewController {
         self.title = ""
         navigationController?.navigationBar.barTintColor = .primaryColor
         setupUI()
-        modalIndicatorGesture()
         addRefreshControl()
+        
+        initialView.viewTableView.addGestureRecognizer(createSwipeGestureRecognizer(for: .up))
+        initialView.viewTableView.addGestureRecognizer(createSwipeGestureRecognizer(for: .down))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -40,21 +43,39 @@ class InitialViewController: UIViewController {
         self.initialView.tableView.reloadData()
     }
 
-    func modalIndicatorGesture() {
-        let modalIndicatorGesture = UISwipeGestureRecognizer(target: self, action: #selector(gestureIndicatorModal))
-        modalIndicatorGesture.direction = .up
-        modalIndicatorGesture.numberOfTouchesRequired = 1
-        
-        initialView.modalIndicator.addGestureRecognizer(modalIndicatorGesture)
-        initialView.modalIndicator.isUserInteractionEnabled = true
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.viewModel.realoadDataSource()
+        self.initialView.tableView.reloadData()
     }
     
-    @objc func gestureIndicatorModal(_ gesture: UISwipeGestureRecognizer) {
-//        initialView.viewTableView.heightAnchor.constraint(equalToConstant: )
-        let controller = InitialModalViewController()
-        self.present(controller, animated: true)
-        
-        print("button pressed")
+    @objc private func didSwipe(_ sender: UISwipeGestureRecognizer) {
+        // Current Frame
+        var frame = self.initialView.viewTableView.frame
+
+        switch sender.direction {
+        case .up:
+            frame = CGRect(x: 0, y: self.view.frame.height, width: self.view.frame.width, height: -self.view.frame.height)
+        case .down:
+            frame = CGRect(x: 0, y: UIScreen.main.bounds.height * 0.27, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.73)
+        default:
+            break
+        }
+
+        UIView.animate(withDuration: 0.25) {
+            self.view.layoutIfNeeded()
+            self.initialView.viewTableView.frame = frame
+        }
+    }
+    
+    private func createSwipeGestureRecognizer(for direction: UISwipeGestureRecognizer.Direction) -> UISwipeGestureRecognizer {
+        // Initialize Swipe Gesture Recognizer
+        let swipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(didSwipe(_:)))
+
+        // Configure Swipe Gesture Recognizer
+        swipeGestureRecognizer.direction = direction
+
+        return swipeGestureRecognizer
     }
     
     func setupUI() {

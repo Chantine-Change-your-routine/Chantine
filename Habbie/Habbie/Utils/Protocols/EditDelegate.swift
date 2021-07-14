@@ -12,6 +12,6 @@ enum Pickers {
     case reminders
 }
 
-protocol EditDelegate: class {
+protocol EditDelegate: AnyObject {
     func showPicker(pickerName: Pickers)
 }

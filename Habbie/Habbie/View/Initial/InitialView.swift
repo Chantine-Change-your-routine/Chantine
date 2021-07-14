@@ -17,6 +17,8 @@ class InitialView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    var topModalHeight: Int?
+
     // ui components
     lazy var modalIndicator: UIButton = {
         let button = UIButton()
@@ -28,7 +30,7 @@ class InitialView: UIView {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Olá, amigo."
+        label.text = "Olá, amigo"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .left
         label.textColor = .blackColor
@@ -44,15 +46,6 @@ class InitialView: UIView {
         return imageView
     }()
     
-    lazy var todayLabel: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .roundedFont(ofSize: 22, weight: .bold)
-        label.text = "Atividades de hoje"
-        label.textColor = .blackColor
-        return label
-    }()
-    
     lazy var addHabitButon: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -64,12 +57,12 @@ class InitialView: UIView {
     }()
     
     lazy var viewTableView: UIView = {
-        let view = UIView()
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(frame: CGRect(x: 0, y: UIScreen.main.bounds.height * 0.27, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.73))
+
         view.backgroundColor = .white
         view.layer.cornerRadius = 20
-        view.layer.masksToBounds = true
 
+        view.layer.masksToBounds = true
         return view
     }()
     
@@ -114,18 +107,6 @@ class InitialView: UIView {
         ])
         
         self.addSubview(viewTableView)
-        NSLayoutConstraint.activate([
-            viewTableView.topAnchor.constraint(equalTo: self.mascotImageView.bottomAnchor, constant: 20),
-            viewTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            viewTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            viewTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor)
-        ])
-        
-//        self.viewTableView.addSubview(todayLabel)
-//        NSLayoutConstraint.activate([
-//            todayLabel.topAnchor.constraint(equalTo: self.viewTableView.topAnchor, constant: 43),
-//            todayLabel.leadingAnchor.constraint(equalTo: self.viewTableView.leadingAnchor, constant: 20)
-//        ])
         
         self.viewTableView.addSubview(tableView)
         NSLayoutConstraint.activate([
